@@ -1343,6 +1343,65 @@
                             <li><strong>משפט רימן:</strong> אם טור מתכנס בתנאי, אז ניתן לשנות את סדר סכומו כך שיתכנס לכל מספר ממשי, יתבדר לאינסוף/מינוס אינסוף, או יתבדר באופן לא מוגדר.</li>
                         </ul>
                     </div>
+
+                    <div class="theorem">
+                        <h3>המשפט היסודי של החשבון האינטגרלי - הוכחה מפורטת</h3>
+                        <div class="definition">
+                            <strong>הגדרה:</strong><br>
+                            תהי $f: [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית בקטע $[a, b]$.<br>
+                            נגדיר את הפונקציה $\tilde{F}: [a, b] \to \mathbb{R}$ על ידי $\tilde{F}(x) = \int_a^x f(t) dt$ לכל $x \in [a, b]$.<br>
+                            פונקציה זו נקראת <strong>הפונקציה הצוברת</strong> של $f$.
+                        </div>
+                        
+                        <div class="definition">
+                            <strong>המשפט קובע שאז מתקיים:</strong><br>
+                            א. <strong>$\tilde{F}$ רציפה בקטע $[a, b]$</strong>.<br>
+                            ב. <strong>אם $f$ רציפה (מימין/משמאל) בנקודה $x_0 \in [a, b]$, אזי $\tilde{F}$ גזירה (מימין/משמאל) ב-$x_0$, ומתקיים $\tilde{F}'_+(x_0) = f(x_0)$ וכן $\tilde{F}'_-(x_0) = f(x_0)$</strong>.<br><br>
+                            בפרט, אם $f$ רציפה ב-$x_0$, אז $\tilde{F}$ גזירה ב-$x_0$ ומתקיים $\tilde{F}'(x_0) = f(x_0)$.<br>
+                            כמו כן, אם $f$ רציפה על כל הקטע $[a,b]$, אז $\tilde{F}$ היא פונקציה קדומה של $f$ בקטע $[a,b]$, כלומר $\forall x \in [a,b] \tilde{F}'(x) = f(x)$ (עם גזירות חד-צדדית בקצוות).
+                        </div>
+                        
+                        <div class="proof">
+                            <strong>הוכחה לסעיף א' (רציפות $\tilde{F}$):</strong><br>
+                            המקורות מציינים כי $\tilde{F}$ רציפה בקטע $[a, b]$, אך <strong>אינם מפרטים את ההוכחה המלאה לסעיף זה באופן מפורש</strong> בטקסט שסופק.
+                        </div>
+                        
+                        <div class="proof">
+                            <strong>הוכחה לסעיף ב' (גזירות $\tilde{F}$):</strong><br>
+                            נוכיח את הגזירות מימין בנקודה $x_0 \in [a, b)$ במקרה ש-$f$ רציפה מימין ב-$x_0$. ההוכחה לגזירות משמאל דומה.<br><br>
+                            
+                            <strong>1. ניסוח יחס הנגזרת והקשר לרציפות $f$:</strong><br>
+                            תהי $\epsilon > 0$ נתון. מכיוון ש-$f$ רציפה מימין ב-$x_0$, קיים $\delta > 0$ (אשר תלוי ב-$\epsilon$) כך שלכל $t \in [a, b)$ המקיים $x_0 \le t < x_0 + \delta$, מתקיים $|f(t) - f(x_0)| < \frac{\epsilon}{2}$.<br><br>
+                            
+                            <strong>2. מניפולציה אלגברית של יחס הנגזרת:</strong><br>
+                            עבור $x \in [a, b]$ המקיים $x_0 < x < x_0 + \delta$, נבחן את הביטוי עבור הנגזרת:<br>
+                            $\left| \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} - f(x_0) \right|$<br><br>
+                            נשתמש בהגדרת $\tilde{F}(x)$ ובתכונות האינטגרל:<br>
+                            $\tilde{F}(x) - \tilde{F}(x_0) = \int_a^x f(t) dt - \int_a^{x_0} f(t) dt = \int_{x_0}^x f(t) dt$<br><br>
+                            כמו כן, $f(x_0)(x - x_0) = \int_{x_0}^x f(x_0) dt$ (מאחר ש-$f(x_0)$ הוא קבוע ביחס ל-$t$).<br><br>
+                            לכן, הביטוי הופך להיות:<br>
+                            $\left| \frac{1}{x - x_0} \left( \int_{x_0}^x f(t) dt - \int_{x_0}^x f(x_0) dt \right) \right|$<br><br>
+                            שזה שווה ל:<br>
+                            $\left| \frac{1}{x - x_0} \int_{x_0}^x (f(t) - f(x_0)) dt \right|$<br><br>
+                            
+                            <strong>3. שימוש במונוטוניות האינטגרל וחסם:</strong><br>
+                            מכיוון ש- $x_0 < t \le x \le x_0 + \delta$, כל $t$ בקטע האינטגרציה $[x_0, x]$ מקיים את התנאי $x_0 \le t < x_0 + \delta$. לכן, לכל $t \in [x_0, x]$, מתקיים $|f(t) - f(x_0)| < \frac{\epsilon}{2}$.<br><br>
+                            נשתמש בתכונת מונוטוניות האינטגרל ($|\int g| \le \int |g|$):<br>
+                            $\left| \frac{1}{x - x_0} \int_{x_0}^x (f(t) - f(x_0)) dt \right| \le \frac{1}{x - x_0} \int_{x_0}^x |f(t) - f(x_0)| dt$<br><br>
+                            נציב את החסם שמצאנו בסעיף 1:<br>
+                            $\le \frac{1}{x - x_0} \int_{x_0}^x \frac{\epsilon}{2} dt$<br><br>
+                            האינטגרל של קבוע הוא הקבוע כפול אורך הקטע:<br>
+                            $= \frac{1}{x - x_0} \cdot \frac{\epsilon}{2} \cdot (x - x_0) = \frac{\epsilon}{2}$<br><br>
+                            
+                            <strong>4. מסקנה:</strong><br>
+                            הראינו שלכל $\epsilon > 0$, קיים $\delta > 0$ כך שאם $x_0 < x < x_0 + \delta$, אז $\left| \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} - f(x_0) \right| < \epsilon$.<br><br>
+                            משמעות הדבר היא <strong>$\lim_{x \to x_0^+} \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} = f(x_0)$</strong>, כלומר <strong>$\tilde{F}'_+(x_0) = f(x_0)$</strong>.<br><br>
+                            
+                            באופן דומה, ניתן להוכיח שאם $f$ רציפה משמאל בנקודה $x_0 \in (a, b]$, אז $\tilde{F}$ גזירה משמאל ב-$x_0$ ומתקיים $\tilde{F}'_-(x_0) = f(x_0)$.<br><br>
+                            
+                            <strong>לסיכום:</strong> המשפט קובע שאם פונקציה $f$ אינטגרבילית בקטע, הפונקציה הצוברת שלה $\tilde{F}$ רציפה בקטע זה, ובנקודות שבהן $f$ רציפה, $\tilde{F}$ גזירה ונגזרתה שווה ל-$f$. $\blacksquare$
+                        </div>
+                    </div>
             </section>
 
             <section id="quiz" class="quiz-section">

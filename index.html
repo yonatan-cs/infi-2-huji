@@ -23,6 +23,73 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="פתח תפריט ניווט">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Floating Table of Contents -->
+    <nav class="floating-toc" id="floatingToc">
+        <div class="floating-toc-header">
+            <h3>תוכן עניינים</h3>
+            <button class="close-btn" id="closeToc" aria-label="סגור תפריט">&times;</button>
+        </div>
+        <div class="floating-toc-content">
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="basic-topics">נושאים בסיסיים</button>
+                <div class="accordion-content" id="basic-topics">
+                    <a href="#primitives">פונקציות קדומות ואינטגרלים לא מסוימים</a>
+                    <a href="#exponential">הפונקציה האקספוננציאלית והלוגריתמית</a>
+                    <a href="#lhopital">כלל לופיטל</a>
+                    <a href="#integration-methods">שיטות אינטגרציה מתקדמות</a>
+                    <a href="#taylor">פולינומי טיילור ופיתוחי טיילור</a>
+                    <a href="#taylor-series">טורי טיילור</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="integrals">אינטגרלים</button>
+                <div class="accordion-content" id="integrals">
+                    <a href="#definite-integral">האינטגרל המסוים (אינטגרל רימן/דרבו)</a>
+                    <a href="#uniform-continuity">רציפות במידה שווה</a>
+                    <a href="#fundamental-theorem">המשפט היסודי של החשבון האינפיניטסימלי</a>
+                    <a href="#improper-integrals">אינטגרלים לא אמיתיים</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="series">טורים וסדרות</button>
+                <div class="accordion-content" id="series">
+                    <a href="#infinite-series">טורים אינסופיים</a>
+                    <a href="#non-positive-series">טורים שאינם אי-שליליים</a>
+                    <a href="#function-sequences">התכנסות במ"ש של סדרות פונקציות</a>
+                    <a href="#series-continuation">טורים - המשך</a>
+                    <a href="#infinite-products">מכפלות אינסופיות</a>
+                    <a href="#series-advanced">טורים שאינם אי-שליליים - המשך</a>
+                    <a href="#power-series">טורי חזקות</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="additional">נושאים נוספים</button>
+                <div class="accordion-content" id="additional">
+                    <a href="#limsup-liminf">גבול עליון וגבול תחתון של סדרות</a>
+                    <a href="#old-series">טורים (סקירה כללית)</a>
+                    <a href="#proofs">הוכחות חוזרות ומשפטים חשובים</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="practice">תרגול ובחינות</button>
+                <div class="accordion-content" id="practice">
+                    <a href="#quiz">בחינה עצמית</a>
+                    <a href="#answers">פתרונות מפורטים</a>
+                    <a href="#essay">שאלות חיבור אקדמיות</a>
+                    <a href="#faq">שאלות נפוצות מתקדמות</a>
+                    <a href="#dictionary">מילון מונחים מתמטיים</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header class="header">
             <h1>למידת אינפיניטסימל 2: מדריך לימוד מקיף</h1>
@@ -2315,5 +2382,78 @@
             <p>מדריך לימוד אינפי 2 - מעוצב במיוחד להצגה נקייה של נוסחאות מתמטיות בעברית</p>
         </footer>
     </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const floatingToc = document.getElementById('floatingToc');
+        const closeToc = document.getElementById('closeToc');
+
+        hamburgerBtn.addEventListener('click', function() {
+            floatingToc.classList.toggle('show');
+            hamburgerBtn.classList.toggle('active');
+        });
+
+        closeToc.addEventListener('click', function() {
+            floatingToc.classList.remove('show');
+            hamburgerBtn.classList.remove('active');
+        });
+
+        // Close TOC when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!floatingToc.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+                floatingToc.classList.remove('show');
+                hamburgerBtn.classList.remove('active');
+            }
+        });
+
+        // Accordion functionality
+        const accordionBtns = document.querySelectorAll('.accordion-btn');
+        
+        accordionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                const isOpen = targetContent.classList.contains('show');
+                
+                // Close all other accordions
+                document.querySelectorAll('.accordion-content').forEach(content => {
+                    content.classList.remove('show');
+                });
+                document.querySelectorAll('.accordion-btn').forEach(button => {
+                    button.classList.remove('active');
+                });
+                
+                // Toggle current accordion
+                if (!isOpen) {
+                    targetContent.classList.add('show');
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Auto-close TOC when clicking on a link
+        const tocLinks = document.querySelectorAll('.floating-toc a');
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                floatingToc.classList.remove('show');
+                hamburgerBtn.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html> 

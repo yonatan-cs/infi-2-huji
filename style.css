@@ -1,6 +1,204 @@
 /* RTL and Hebrew Font Support */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=Computer+Modern+Serif&display=swap');
 
+/* Hamburger Menu Button */
+.hamburger-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #2c3e50;
+    border: none;
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+    background: #34495e;
+    transform: scale(1.05);
+}
+
+.hamburger-btn span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Floating Table of Contents */
+.floating-toc {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    border-left: 3px solid #3498db;
+}
+
+.floating-toc.show {
+    right: 0;
+}
+
+.floating-toc-header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.floating-toc-header h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.floating-toc-content {
+    padding: 20px;
+}
+
+/* Accordion Styles */
+.toc-section {
+    margin-bottom: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-btn {
+    width: 100%;
+    background: #f8f9fa;
+    border: none;
+    padding: 15px 20px;
+    text-align: right;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.accordion-btn::after {
+    content: '+';
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.accordion-btn.active::after {
+    transform: rotate(45deg);
+}
+
+.accordion-btn:hover {
+    background: #e9ecef;
+    color: #3498db;
+}
+
+.accordion-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #ffffff;
+}
+
+.accordion-content.show {
+    max-height: 500px;
+    padding: 15px 0;
+}
+
+.accordion-content a {
+    display: block;
+    padding: 8px 20px;
+    color: #2c3e50;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-right: 3px solid transparent;
+}
+
+.accordion-content a:hover {
+    background: #f8f9fa;
+    color: #3498db;
+    border-right-color: #3498db;
+    padding-right: 17px;
+}
+
+/* Hide original navigation on small screens and when hamburger is active */
+@media (max-width: 768px) {
+    .nav-section {
+        display: none;
+    }
+}
+
+/* Large screens - show both but make hamburger less prominent */
+@media (min-width: 769px) {
+    .hamburger-btn {
+        opacity: 0.7;
+    }
+    
+    .hamburger-btn:hover {
+        opacity: 1;
+    }
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;

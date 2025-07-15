@@ -22,6 +22,43 @@
     transition: all 0.3s ease;
 }
 
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 1000;
+    background: #2c3e50;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.4);
+}
+
 .hamburger-btn:hover {
     background: #2980b9;
     transform: scale(1.1);
@@ -738,6 +775,13 @@ body {
     .header h1 {
         font-size: 2.4rem;
     }
+    
+    .back-to-top {
+        bottom: 25px;
+        left: 25px;
+        width: 48px;
+        height: 48px;
+    }
 }
 
 /* Mobile styles */
@@ -808,6 +852,14 @@ body {
         z-index: 1001;
     }
     
+    .back-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+    
     .toc {
         grid-template-columns: 1fr;
     }
@@ -854,6 +906,14 @@ body {
     .floating-toc {
         width: 95vw;
         right: -95vw;
+    }
+    
+    .back-to-top {
+        bottom: 15px;
+        left: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 14px;
     }
     
     .definition, .theorem, .property, .notation {

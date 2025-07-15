@@ -30,6 +30,11 @@
         <span></span>
     </button>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="חזור לראש העמוד">
+        ↑
+    </button>
+
     <!-- Floating Table of Contents -->
     <nav class="floating-toc" id="floatingToc">
         <div class="floating-toc-header">
@@ -2495,6 +2500,7 @@
             const floatingToc = document.querySelector('.floating-toc');
             const closeBtn = document.querySelector('.close-btn');
             const accordionBtns = document.querySelectorAll('.accordion-btn');
+            const backToTopBtn = document.querySelector('.back-to-top');
 
             // Toggle floating TOC
             if (hamburgerBtn) {
@@ -2531,6 +2537,26 @@
                     }
                 });
             });
+
+            // Back to Top Button functionality
+            if (backToTopBtn) {
+                // Show/hide button based on scroll position
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTopBtn.classList.add('show');
+                    } else {
+                        backToTopBtn.classList.remove('show');
+                    }
+                });
+
+                // Scroll to top when clicked
+                backToTopBtn.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
 
             // Topics are now always open - no accordion functionality needed
 

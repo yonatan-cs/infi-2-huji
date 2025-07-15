@@ -23,10 +23,78 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="פתח תפריט ניווט">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Floating Table of Contents -->
+    <nav class="floating-toc" id="floatingToc">
+        <div class="floating-toc-header">
+            <h3>תוכן עניינים</h3>
+            <button class="close-btn" id="closeToc" aria-label="סגור תפריט">&times;</button>
+        </div>
+        <div class="floating-toc-content">
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="basic-topics">נושאים בסיסיים</button>
+                <div class="accordion-content" id="basic-topics">
+                    <a href="#primitives">פונקציות קדומות ואינטגרלים לא מסוימים</a>
+                    <a href="#exponential">הפונקציה האקספוננציאלית והלוגריתמית</a>
+                    <a href="#lhopital">כלל לופיטל</a>
+                    <a href="#integration-methods">שיטות אינטגרציה מתקדמות</a>
+                    <a href="#taylor">פולינומי טיילור ופיתוחי טיילור</a>
+                    <a href="#taylor-series">טורי טיילור</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="integrals">אינטגרלים</button>
+                <div class="accordion-content" id="integrals">
+                    <a href="#definite-integral">האינטגרל המסוים (אינטגרל רימן/דרבו)</a>
+                    <a href="#uniform-continuity">רציפות במידה שווה</a>
+                    <a href="#fundamental-theorem">המשפט היסודי של החשבון האינפיניטסימלי</a>
+                    <a href="#improper-integrals">אינטגרלים לא אמיתיים</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="series">טורים וסדרות</button>
+                <div class="accordion-content" id="series">
+                    <a href="#infinite-series">טורים אינסופיים</a>
+                    <a href="#non-positive-series">טורים שאינם אי-שליליים</a>
+                    <a href="#function-sequences">התכנסות במ"ש של סדרות פונקציות</a>
+                    <a href="#series-continuation">טורים - המשך</a>
+                    <a href="#infinite-products">מכפלות אינסופיות</a>
+                    <a href="#series-advanced">טורים שאינם אי-שליליים - המשך</a>
+                    <a href="#power-series">טורי חזקות</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="additional">נושאים נוספים</button>
+                <div class="accordion-content" id="additional">
+                    <a href="#limsup-liminf">גבול עליון וגבול תחתון של סדרות</a>
+                    <a href="#old-series">טורים (סקירה כללית)</a>
+                    <a href="#proofs">הוכחות חוזרות ומשפטים חשובים</a>
+                </div>
+            </div>
+            <div class="toc-section">
+                <button class="accordion-btn" data-target="practice">תרגול ובחינות</button>
+                <div class="accordion-content" id="practice">
+                    <a href="#quiz">בחינה עצמית</a>
+                    <a href="#answers">פתרונות מפורטים</a>
+                    <a href="#essay">שאלות חיבור אקדמיות</a>
+                    <a href="#faq">שאלות נפוצות מתקדמות</a>
+                    <a href="#dictionary">מילון מונחים מתמטיים</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header class="header">
-            <h1>למידת אינפיניטסימל 2: מדריך לימוד מקיף</h1>
-            <p>מדריך מקצועי ואקדמי ללימוד אינפיניטסימל 2 - כולל תיאוריה מפורטת, הגדרות מדויקות, משפטים מוכחים ובחינה עצמית מקיפה</p>
+            <h1>אינפי 2 - מדריך לימוד מקיף לסטודנטים</h1>
+            <p>הכנתי את האתר הזה לטובת הסטודנטים באוניברסיטה העברית כדי שננצח את המבחן הארור הזה ונעבור את הקורס!</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">© כל הזכויות שמורות - Yonatan Rotem</p>
         </header>
 
         <nav class="nav-section">
@@ -62,8 +130,8 @@
 
         <main class="content">
             <section id="introduction">
-                <h2>מבוא אקדמי</h2>
-                <p>מדריך לימוד זה נועד לספק כלי מקצועי ומקיף ללימוד עצמי של קורס אינפיניטסימל 2. המדריך כולל תיאוריה מפורטת עם הגדרות מדויקות, משפטים מתקדמים, מבחני התכנסות וכלים פרקטיים להתמודדות עם חומר מורכב. המדריך בנוי על בסיס הטקסט המקורי ומורחב בפירוט רב לכל נושאי הקורס.</p>
+                <h2>מבוא למדריך</h2>
+                <p>ברוכים הבאים לאתר הלימוד שלנו לקורס אינפיניטסימל 2 באוניברסיטה העברית! מדריך לימוד זה נועד לספק כלי מקצועי ומקיף ללימוד עצמי של קורס אינפיניטסימל 2. המדריך כולל תיאוריה מפורטת עם הגדרות מדויקות, משפטים מתקדמים, מבחני התכנסות וכלים פרקטיים להתמודדות עם חומר מורכב. המדריך בנוי על בסיס הטקסט המקורי ומורחב בפירוט רב לכל נושאי הקורס - הכל כדי שתצליחו לנצח את המבחן ולעבור את הקורס בהצלחה!</p>
             </section>
 
             <section id="summary">
@@ -71,6 +139,7 @@
                 
                 <div class="topic" id="primitives">
                     <h3>שבוע 1: פונקציות קדומות ואינטגרלים לא מסוימים</h3>
+                    <div class="topic-content">
                     <div class="definition">
                         <strong>הגדרת פונקציה קדומה:</strong> תהי $f :D \to \mathbb{R}$ ויהי $I$ מקטע לא טריוויאלי (כלומר המכיל שתי נקודות שונות) המוכל בתחום ההגדרה של $f$. נאמר ש-$F$ פונקציה קדומה של $f$ במקטע $I$ אם ורק אם מתקיים $F'(x) = f(x)$ לכל $x \in I$, עם גזירה חד־צדדית בקצוות.
                     </div>
@@ -141,10 +210,12 @@
                             <p><strong>דוגמה:</strong> עבור $\int \frac{2x+5}{x^2+4x+4}dx$, המכנה הוא $(x+2)^2$. הפירוק לשברים חלקיים הוא $\frac{2}{x+2} + \frac{1}{(x+2)^2}$. האינטגרל המתקבל הוא $2\ln|x+2| - \frac{1}{x+2} + C$.</p>
                         </div>
                     </div>
+                    </div>
                 </div>
 
                 <div class="topic" id="exponential">
                     <h3>שבוע 2: הפונקציה האקספוננציאלית והלוגריתמית</h3>
+                    <div class="topic-content">
                     <div class="definition">
                         <strong>הפונקציה האקספוננציאלית (exp(x) או $e^x$):</strong>
                         <br><strong>הגדרה:</strong> $e = \lim_{n\to\infty} (1 + \frac{1}{n})^n$.
@@ -190,10 +261,12 @@
                     <div class="theorem">
                         <strong>הערה:</strong> $\log_a(y) = \frac{\ln(y)}{\ln(a)}$.
                     </div>
+                    </div>
                 </div>
 
                 <div class="topic" id="lhopital">
                     <h3>שבוע 3: כלל לופיטל</h3>
+                    <div class="topic-content">
                     <div class="theorem">
                         <strong>כלל לופיטל (גרסת 0/0):</strong> יהיו $f$ ו-$g$ שתי פונקציות גזירות ב-$x_0$ (ובפרט מוגדרות בסביבה מלאה של $x_0$). אם $f(x_0) = g(x_0) = 0$ ו-$g'(x_0) \neq 0$, אזי הגבול $\lim_{x\to x_0} \frac{f(x)}{g(x)}$ קיים ומתקיים 
                         $$\lim_{x\to x_0} \frac{f(x)}{g(x)} = \frac{f'(x_0)}{g'(x_0)}$$
@@ -220,7 +293,8 @@
 
                 <div class="topic" id="integration-methods">
                     <h3>שבוע 4: שיטות אינטגרציה מתקדמות</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>מבוא:</strong> שיטות מרכזיות לחישוב פונקציות קדומות מעבר לקדומות מיידיות ולינאריות האינטגרל.
                     </div>
                     
@@ -272,10 +346,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="topic" id="taylor">
+                    </div><div class="topic" id="taylor">
                     <h3>שבוע 5: פולינומי טיילור ופיתוחי טיילור</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה:</strong> יהי $n \in \mathbb{N} \cup \{0\}$ ותהי $f$ פונקציה רציפה ב-$a$ וגזירה $n$ פעמים בנקודה $a$ (כלומר $f(a), f'(a), \ldots, f^{(n)}(a)$ קיימים). אזי הפולינום:
                         $$P_{n,f,a}(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots + \frac{f^{(n)}(a)}{n!}(x-a)^n = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k$$
                         נקרא פולינום טיילור מסדר $n$ של $f$ סביב $a$.
@@ -329,10 +403,10 @@
                         <strong>מסקנה חשובה:</strong> כאשר רוצים לחשב קירובים לערך של פונקציה באמצעות פולינום טיילור, חשוב לבדוק מה קורה עם השארית המתאימה!
                     </div>
                 </div>
-
-                <div class="topic" id="taylor-series">
+                    </div><div class="topic" id="taylor-series">
                     <h3>שבוע 6: טורי טיילור</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרת טור טיילור:</strong> יהי $f$ פונקציה הגזירה אינסוף פעמים בנקודה $a$. טור טיילור של $f$ סביב $a$ הוא הטור האינסופי:
                         $$\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots$$
                     </div>
@@ -383,10 +457,10 @@
                         פונקציה זו גזירה אינסוף פעמים ב-$x=0$ עם כל הנגזרות שוות 0, אך טור טיילור שלה (הטור האפס) מתכנס רק ב-$x=0$.
                     </div>
                 </div>
-
-                <div class="topic" id="uniform-continuity">
+                    </div><div class="topic" id="uniform-continuity">
                     <h3>שבוע 7.5: רציפות במידה שווה (Uniform Continuity)</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה:</strong> תהי $D \subseteq \mathbb{R}$ ותהי $f : D \to \mathbb{R}$ פונקציה נתונה. נאמר ש-$f$ רציפה במובן שווה ב-$D$ אם ורק אם $\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D \; |x_2 - x_1| < \delta \Rightarrow |f(x_2) - f(x_1)| < \varepsilon$.
                     </div>
                     
@@ -415,10 +489,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="topic" id="definite-integral">
+                    </div><div class="topic" id="definite-integral">
                     <h3>שבוע 7: האינטגרל המסוים (אינטגרל רימן/דרבו)</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה (חלוקה):</strong> תהיו $a, b \in \mathbb{R}$ כך ש-$a < b$. חלוקה (partition) של הקטע $[a, b]$ היא קבוצה סופית $P$ של נקודות מהקטע $[a, b]$ הכוללת גם את $a$ וגם את $b$. מקובל לסמן: $P = \{x_0, x_1, \ldots, x_n\}$ כך ש-$a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
                     </div>
                     
@@ -471,10 +545,10 @@
                         <br><strong>דוגמה: פונקציית דיריכלה:</strong> פונקציית דיריכלה מוגדרת כ-$D(x) = \begin{cases} 1 & \text{if } x \in \mathbb{Q} \\ 0 & \text{if } x \notin \mathbb{Q} \end{cases}$. פונקציה זו אינה אינטגרבילית בכל קטע $[a,b]$ כי התנודה שלה בכל תת-קטע היא 1 (מכיוון שכל קטע מכיל מספרים רציונליים ואי-רציונליים). אם נשנה את הפונקציה כך שתחזיר 1 בנקודה בודדת ו-0 בכל מקום אחר, הפונקציה החדשה תהיה אינטגרבילית ואינטגרלה יהיה 0.
                     </div>
                 </div>
-
-                <div class="topic" id="fundamental-theorem">
+                    </div><div class="topic" id="fundamental-theorem">
                     <h3>שבוע 8: המשפט היסודי של החשבון האינפיניטסימלי</h3>
-                    <div class="theorem">
+                    <div class="topic-content">
+<div class="theorem">
                         <strong>המשפט היסודי של החשבון האינפיניטסימלי (חלק א'):</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית. תהי $\tilde{F}(x) = \int_a^x f(t) dt$ פונקציה צוברת.
                         <ul>
                             <li><strong>א.</strong> $\tilde{F}$ רציפה וליפשיצית בקטע $[a, b]$.</li>
@@ -537,11 +611,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="topic" id="improper-integrals">
+                    </div><div class="topic" id="improper-integrals">
                     <h3>שבוע 12: אינטגרלים לא אמיתיים (Improper Integrals)</h3>
-                    
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>סוג 1: תחום אינטגרציה אינסופי:</strong> תהי $f : [a, \infty) \to \mathbb{R}$ פונקציה אינטגרבילית בכל קטע סגור וחסום $[a, N]$. נאמר שהאינטגרל הלא אמיתי $\int_a^\infty f(x) dx$ מתכנס אם הגבול $\lim_{N\to\infty} \int_a^N f(x) dx$ קיים במובן הצר. במקרה זה, ערך האינטגרל שווה לגבול.
                         
                         <br><em>הערה: אם הגבול אינו קיים במובן הצר, האינטגרל "מתבדר".</em>
@@ -638,11 +711,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="topic" id="limsup-liminf">
+                    </div><div class="topic" id="limsup-liminf">
                     <h3>נושא נוסף: גבול עליון וגבול תחתון של סדרות</h3>
-                    
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה עבור סדרה חסומה:</strong> לכל סדרה חסומה $(a_n)_{n=1}^\infty$:
                         <p><strong>סדרת הסופרמומים:</strong> נבנה את סדרת הסופרמומים: $u_n = \sup\{a_n, a_{n+1}, a_{n+2}, \ldots\}$.</p>
                         
@@ -676,10 +748,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="topic" id="infinite-series">
+                    </div><div class="topic" id="infinite-series">
                     <h3>שבוע 9: טורים אינסופיים</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה (סדרה של סכומים חלקיים):</strong> תהי $(a_n)_{n=1}^\infty$ סדרה ממשית נתונה. נגדיר סדרה חדשה $(S_k)_{k=1}^\infty$, הנקראת סדרת הסכומים החלקיים של $(a_n)_{n=1}^\infty$, על ידי $S_k = \sum_{n=1}^k a_n = a_1 + \ldots + a_k$.
                         
                         <br><strong>טור:</strong> הביטוי $\sum_n a_n$ נקרא טור של הסדרה $(a_n)_{n=1}^\infty$.
@@ -869,10 +941,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="topic" id="non-positive-series">
+                    </div><div class="topic" id="non-positive-series">
                     <h3>שבוע 10: טורים שאינם אי-שליליים</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>טורים עם איברים חיוביים ושליליים:</strong> עד כה עסקנו בעיקר בטורים אי-שליליים. כעת נלמד על טורים שעשויים להכיל איברים שליליים וחיוביים.
                     </div>
                     
@@ -926,10 +998,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="topic" id="function-sequences">
+                    </div><div class="topic" id="function-sequences">
                     <h3>שבוע 11: התכנסות במ"ש של סדרות פונקציות</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה (סדרת פונקציות):</strong> יהי $D \subseteq \mathbb{R}$. אם לכל $n \in \mathbb{N}$ נתונה פונקציה $f_n : D \to \mathbb{R}$, אזי $(f_n)_{n=1}^\infty$ נקראת סדרת פונקציות (ממשיות) ב-$D$.
                     </div>
                     
@@ -1003,10 +1075,10 @@
                         <br><strong>מסקנה (גזירה איבר-איבר של טורי פונקציות):</strong> אם $\sum_k f_k$ טור פונקציות גזירות ב-$[a,b]$ שטור הנגזרות $\sum_k f'_k$ מתכנס במ"ש לפונקציה $g$ ב-$[a,b]$, וקיים $u \in [a,b]$ כך ש-$\sum_k f_k(u)$ מתכנס, אזי טור הפונקציות $\sum_k f_k$ מתכנס לפונקציה $f$ ב-$[a,b]$, $f$ גזירה ב-$[a,b]$ ו-$f' = g$. (כלומר ניתן לגזור איבר-איבר).
                     </div>
                 </div>
-
-                <div class="topic" id="series-advanced">
+                    </div><div class="topic" id="series-advanced">
                     <h3>שבוע 14: טורים שאינם אי-שליליים - המשך</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>דוגמאות נוספות לטורים שאינם אי-שליליים:</strong>
                         <ul>
                             <li><strong>התכנסות בהחלט:</strong> $\sum \frac{\sin(n)}{n^2}$ מתכנס בהחלט</li>
@@ -1052,10 +1124,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="topic" id="power-series">
+                    </div><div class="topic" id="power-series">
                     <h3>שבוע 15: טורי חזקות (Power Series)</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה:</strong> תהי $(a_k)_{k=0}^\infty$ סדרה ממשית ו-$x_0 \in \mathbb{R}$. לכל $k \in \mathbb{N} \cup \{0\}$ נגדיר את הפונקציה $f_k : \mathbb{R} \to \mathbb{R}$ על ידי $f_k(x) = a_k(x-x_0)^k$. טור הפונקציות $\sum_{k=0}^\infty f_k(x) = \sum_{k=0}^\infty a_k(x-x_0)^k$ נקרא טור חזקות ב-$x$ סביב $x_0$.
                     </div>
                     
@@ -1126,10 +1198,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="topic" id="taylor-series">
+                    </div><div class="topic" id="taylor-series">
                     <h3>טורי טיילור</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה:</strong> תהי $f : (x_0 - \delta, x_0 + \delta) \to \mathbb{R}$ פונקציה מוגדרת בסביבת הנקודה $x_0$ וגזירה אינסוף פעמים בנקודה $x_0$. טור החזקות 
                         $$T_{f,x_0}(x) = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n$$
                         מוגדר להיות טור טיילור של $f$ בנקודה $x_0$.
@@ -1145,10 +1217,10 @@
                         <strong>משפט (יחידות של טור חזקות כטור טיילור):</strong> אם פונקציה $f(x)$ שווה לטור חזקות $\sum_{n=0}^\infty a_n(x-x_0)^n$ על קטע כלשהו המכיל את $x_0$, אזי טור החזקות הזה הוא בהכרח טור טיילור של $f$ סביב $x_0$, כלומר $a_n = \frac{f^{(n)}(x_0)}{n!}$ לכל $n \in \mathbb{N} \cup \{0\}$.
                     </div>
                 </div>
-
-                <div class="topic" id="series-continuation">
+                    </div><div class="topic" id="series-continuation">
                     <h3>שבוע 13: טורים - המשך</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>דוגמאות להתכנסות טורים:</strong> שימוש מתקדם במבחנים שנלמדו, כולל מבחני ההשוואה, מבחן המנה (ד'אלמבר), מבחן השורש (קושי), מבחן האינטגרל.
                     </div>
                     
@@ -1187,10 +1259,10 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="topic" id="infinite-products">
+                    </div><div class="topic" id="infinite-products">
                     <h3>שבוע 13.5: מכפלות אינסופיות</h3>
-                    <div class="definition">
+                    <div class="topic-content">
+<div class="definition">
                         <strong>הגדרה:</strong> תהי $(a_n)_{n=1}^\infty$ סדרה נתונה של מספרים ממשיים חיוביים (כלומר $a_n > 0$ לכל $n \in \mathbb{N}$). נגדיר סדרה חדשה $(P_k)_{k=1}^\infty$, הנקראת סדרת המכפלות החלקיות של $(a_n)_{n=1}^\infty$, על ידי $P_k = \prod_{n=1}^k a_n = a_1 \cdot \ldots \cdot a_k$.
                         
                         <br>הביטוי $\prod_n a_n$ נקרא מכפלה אינסופית.
@@ -1210,10 +1282,10 @@
                         <strong>קשר בין התכנסות טור להתכנסות מכפלה אינסופית:</strong> תהי $(a_n)_{n=1}^\infty$ סדרה של מספרים ממשיים המקיימת $a_n > 0$ לכל $n$ כמעט תמיד. אזי המכפלה האינסופית $\prod_n (1 + a_n)$ מתכנסת אם ורק אם הטור $\sum_n a_n$ מתכנס. (קיימת גם גרסה עבור $\prod_n (1 - a_n)$).
                     </div>
                 </div>
-
-                <div class="topic" id="old-series">
+                    </div><div class="topic" id="old-series">
                     <h3>נושא נוסף: טורים (סקירה כללית)</h3>
-                    <p><em>חזרה על המושגים הבסיסיים ביותר של טורים, להשלמת הידע ולחיזוק הבנת היסודות:</em></p>
+                    <div class="topic-content">
+<p><em>חזרה על המושגים הבסיסיים ביותר של טורים, להשלמת הידע ולחיזוק הבנת היסודות:</em></p>
                     
                     <div class="definition">
                         <strong>טור ($\sum a_n$):</strong> סדרה של סכומים חלקיים $S_k = \sum_{n=1}^k a_n$. הטור מתכנס אם סדרת הסכומים החלקיים מתכנסת.
@@ -1276,7 +1348,7 @@
                             <li><strong>משפט רימן:</strong> אם טור מתכנס בתנאי, אז ניתן לשנות את סדר סכומו כך שיתכנס לכל מספר ממשי, יתבדר לאינסוף/מינוס אינסוף, או יתבדר באופן לא מוגדר.</li>
                         </ul>
                     </div>
-            </section>
+                    </div></section>
 
             <section id="quiz" class="quiz-section">
                 <h2>בחינה עצמית מקיפה</h2>
@@ -2312,8 +2384,140 @@
         </main>
 
         <footer>
-            <p>מדריך לימוד אינפי 2 - מעוצב במיוחד להצגה נקייה של נוסחאות מתמטיות בעברית</p>
+            <p>אתר נוצר לטובת סטודנטי אינפי 2 באוניברסיטה העברית - בהצלחה במבחן! 🎯</p>
         </footer>
     </div>
+
+    <!-- JavaScript for Hamburger Menu, Floating TOC, and Content Accordion -->
+    <script>
+        // Hamburger Menu and Floating TOC functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+            const floatingToc = document.querySelector('.floating-toc');
+            const closeBtn = document.querySelector('.close-btn');
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+            // Toggle floating TOC
+            if (hamburgerBtn) {
+                hamburgerBtn.addEventListener('click', function() {
+                    hamburgerBtn.classList.toggle('active');
+                    floatingToc.classList.toggle('show');
+                });
+            }
+
+            // Close floating TOC
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    hamburgerBtn.classList.remove('active');
+                    floatingToc.classList.remove('show');
+                });
+            }
+
+            // Accordion functionality for TOC
+            accordionBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all accordion sections
+                    accordionBtns.forEach(function(otherBtn) {
+                        otherBtn.classList.remove('active');
+                        otherBtn.nextElementSibling.classList.remove('show');
+                    });
+                    
+                    // Toggle current section
+                    if (!isActive) {
+                        this.classList.add('active');
+                        content.classList.add('show');
+                    }
+                });
+            });
+
+            // Content accordion functionality for topics
+            const topics = document.querySelectorAll('.topic');
+            
+            topics.forEach(function(topic) {
+                const header = topic.querySelector('h3');
+                const content = topic.querySelector('.topic-content');
+                
+                if (header && content) {
+                    // Make header clickable
+                    header.style.cursor = 'pointer';
+                    header.style.userSelect = 'none';
+                    header.style.position = 'relative';
+                    
+                    // Add toggle icon
+                    const toggleIcon = document.createElement('span');
+                    toggleIcon.className = 'topic-toggle';
+                    toggleIcon.innerHTML = '▼';
+                    toggleIcon.style.position = 'absolute';
+                    toggleIcon.style.left = '20px';
+                    toggleIcon.style.fontSize = '1.2rem';
+                    toggleIcon.style.transition = 'transform 0.3s ease';
+                    header.appendChild(toggleIcon);
+                    
+                    // Initially collapse content
+                    content.style.display = 'none';
+                    
+                    // Add click event
+                    header.addEventListener('click', function() {
+                        const isCollapsed = content.style.display === 'none';
+                        
+                        if (isCollapsed) {
+                            content.style.display = 'block';
+                            toggleIcon.style.transform = 'rotate(180deg)';
+                            topic.classList.add('topic-expanded');
+                        } else {
+                            content.style.display = 'none';
+                            toggleIcon.style.transform = 'rotate(0deg)';
+                            topic.classList.remove('topic-expanded');
+                        }
+                    });
+                }
+            });
+
+            // Close floating TOC when clicking on main content
+            document.addEventListener('click', function(e) {
+                if (!floatingToc.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                    hamburgerBtn.classList.remove('active');
+                    floatingToc.classList.remove('show');
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        // If target is inside a collapsed topic, expand it first
+                        const parentTopic = target.closest('.topic');
+                        if (parentTopic) {
+                            const content = parentTopic.querySelector('.topic-content');
+                            const header = parentTopic.querySelector('h3');
+                            const toggleIcon = header.querySelector('.topic-toggle');
+                            
+                            if (content && content.style.display === 'none') {
+                                content.style.display = 'block';
+                                if (toggleIcon) {
+                                    toggleIcon.style.transform = 'rotate(180deg)';
+                                }
+                                parentTopic.classList.add('topic-expanded');
+                            }
+                        }
+                        
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close floating TOC after clicking link
+                        hamburgerBtn.classList.remove('active');
+                        floatingToc.classList.remove('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

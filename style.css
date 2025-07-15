@@ -62,7 +62,7 @@
     height: 100vh;
     background: #ffffff;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
-    z-index: 999;
+    z-index: 1000;
     transition: right 0.3s ease;
     overflow-y: auto;
     border-left: 3px solid #3498db;
@@ -81,7 +81,7 @@
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 1001;
+    z-index: 1002;
 }
 
 .floating-toc-header h3 {
@@ -214,6 +214,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Container and Layout */
@@ -225,6 +226,8 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     border-radius: 0;
     min-height: 100vh;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 /* Header Styling */
@@ -373,6 +376,18 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+    z-index: 10;
+}
+
+/* Topic accordion styles */
+.topic-expanded {
+    border-color: #3498db;
+    box-shadow: 0 6px 25px rgba(52, 152, 219, 0.15);
+}
+
+.topic-toggle {
+    color: #3498db;
+    font-weight: bold;
 }
 
 /* Mathematical Content Boxes */
@@ -504,6 +519,15 @@ li::marker {
 /* Mathematical Expressions */
 .MathJax {
     font-size: 1.1em !important;
+    direction: ltr;
+    text-align: center;
+}
+
+/* Prevent overflow for long mathematical expressions */
+.MathJax_Display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
 }
 
 /* Emphasis and Styling */
@@ -691,34 +715,154 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+/* Tablet styles */
+@media (max-width: 1024px) {
     .container {
-        padding: 0 10px;
+        padding: 0 15px;
     }
     
-    .header h1 {
-        font-size: 2.2rem;
-    }
-    
-    .header p {
-        font-size: 1rem;
-    }
-    
-    .content {
-        padding: 20px 15px;
+    .floating-toc {
+        width: 320px;
+        right: -320px;
     }
     
     .topic {
-        padding: 20px 15px;
-        margin-bottom: 30px;
+        padding: 25px 20px;
     }
     
     .topic h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+    }
+    
+    .header h1 {
+        font-size: 2.4rem;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+        margin: 0;
+    }
+    
+    .header {
+        padding: 30px 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
+    
+    .header p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .content {
+        padding: 15px 10px;
+    }
+    
+    .topic {
+        padding: 15px 12px;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: visible;
+    }
+    
+    .topic h3 {
+        font-size: 1.3rem;
+        padding-right: 50px; /* Make room for the number circle */
+        line-height: 1.4;
+        text-align: right;
+        position: relative;
+    }
+    
+    .topic h3::before {
+        right: 5px;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+        z-index: 15;
+    }
+    
+    .floating-toc {
+        width: 90vw;
+        right: -90vw;
+        max-width: 350px;
+    }
+    
+    .floating-toc-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .hamburger-btn {
+        top: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        z-index: 1001;
     }
     
     .toc {
         grid-template-columns: 1fr;
+    }
+    
+    .definition, .theorem, .property, .notation {
+        padding: 15px 18px;
+        margin: 15px 0;
+        font-size: 0.95rem;
+    }
+    
+    .definition::before, .theorem::before, .property::before, .notation::before {
+        right: 15px;
+        font-size: 0.75rem;
+        padding: 3px 10px;
+    }
+    
+    /* Better math formula display on mobile */
+    .MathJax {
+        font-size: 0.95em !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.6rem;
+    }
+    
+    .topic h3 {
+        font-size: 1.2rem;
+        padding-right: 45px;
+    }
+    
+    .topic h3::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        right: 3px;
+        top: 3px;
+    }
+    
+    .floating-toc {
+        width: 95vw;
+        right: -95vw;
+    }
+    
+    .definition, .theorem, .property, .notation {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .MathJax {
+        font-size: 0.9em !important;
     }
 }
 

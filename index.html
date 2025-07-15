@@ -61,6 +61,7 @@
                 <button class="accordion-btn" data-target="series">טורים וסדרות</button>
                 <div class="accordion-content" id="series">
                     <a href="#infinite-series">טורים אינסופיים</a>
+                    <a href="#comparison-tests">מבחני השוואה להתכנסות טורים</a>
                     <a href="#non-positive-series">טורים שאינם אי-שליליים</a>
                     <a href="#function-sequences">התכנסות במ"ש של סדרות פונקציות</a>
                     <a href="#series-continuation">טורים - המשך</a>
@@ -110,6 +111,7 @@
                 <li><a href="#uniform-continuity">רציפות במידה שווה</a></li>
                 <li><a href="#fundamental-theorem">המשפט היסודי של החשבון האינפיניטסימלי</a></li>
                 <li><a href="#infinite-series">טורים אינסופיים</a></li>
+                <li><a href="#comparison-tests">מבחני השוואה להתכנסות טורים - סיכום מקיף</a></li>
                 <li><a href="#non-positive-series">טורים שאינם אי-שליליים</a></li>
                 <li><a href="#function-sequences">התכנסות במ"ש של סדרות פונקציות</a></li>
                 <li><a href="#improper-integrals">אינטגרלים לא אמיתיים</a></li>
@@ -936,7 +938,163 @@
                         </div>
                     </div>
                 </div>
-                    </div><div class="topic" id="non-positive-series">
+
+                <div class="topic" id="comparison-tests">
+                    <h3>מבחני השוואה להתכנסות טורים - סיכום מקיף</h3>
+                    
+                    <div class="definition">
+                        <strong>הקדמה חשובה:</strong> להלן סיכום מבחני ההשוואה להתכנסות טורים, בהתבסס על המידע מהמקורות שסופקו ושיחתנו.
+                        <br><br>
+                        חשוב לזכור שמרבית מבחני ההשוואה מיועדים ל<strong>טורים אי-שליליים</strong> (כלומר, $a_n \ge 0$ לכל $n$ מספיק גדול). עבור טורים שאינם אי-שליליים, ניתן לעיתים לבחון התכנסות בהחלט (על ידי בחינת טור הערכים המוחלטים).
+                    </div>
+
+                    <div class="theorem">
+                        <strong>מבחני השוואה לטורים אי-שליליים:</strong>
+                    </div>
+
+                    <div class="property">
+                        <strong>1. מבחן ההשוואה הישיר (Direct Comparison Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהיינה סדרות $(a_n)_{n=1}^{\infty}$ ו-$(b_n)_{n=1}^{\infty}$ המקיימות $0 \le a_n \le b_n$ לכל $n \in \mathbb{N}$ (או לכל $n$ מספיק גדול).</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם $\sum_{n=1}^\infty b_n$ מתכנס, אזי $\sum_{n=1}^\infty a_n$ מתכנס.</strong></li>
+                                    <li><strong>אם $\sum_{n=1}^\infty a_n$ מתבדר, אזי $\sum_{n=1}^\infty b_n$ מתבדר.</strong></li>
+                                </ul>
+                            </li>
+                            <li>כמו כן, במקרה של התכנסות, $\sum_{n=1}^\infty a_n \le \sum_{n=1}^\infty b_n$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>2. מבחן ההשוואה באמצעות מנה</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהיינה $\sum a_n$ ו-$\sum b_n$ טורים אי-שליליים, כאשר $b_n \ne 0$ לכל $n$ מספיק גדול.</li>
+                            <li><strong>מסקנה:</strong> אם קיימים קבועים $0 < u, v \in \mathbb{R}$ כך ש-$u \le \frac{a_n}{b_n} \le v$ לכל $n$ מספיק גדול, אזי <strong>$\sum a_n$ מתכנס אם ורק אם $\sum b_n$ מתכנס</strong>.</li>
+                            <li><strong>הערה:</strong> אם ידוע רק $\frac{a_n}{b_n} \le v$, אזי התכנסות של $\sum b_n$ גוררת התכנסות של $\sum a_n$. אם ידוע רק $u \le \frac{a_n}{b_n}$, אזי התבדרות של $\sum a_n$ גוררת התבדרות של $\sum b_n$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>3. מבחן ההשוואה הגבולי (Limit Comparison Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהיינה $\sum a_n$ ו-$\sum b_n$ טורים אי-שליליים, כאשר $b_n \ne 0$ לכל $n$ מספיק גדול, וקיים הגבול $\lim_{n \to \infty} \frac{a_n}{b_n} = L$.</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם $0 < L \in \mathbb{R}$ (הגבול סופי וחיובי), אזי $\sum a_n$ מתכנס אם ורק אם $\sum b_n$ מתכנס.</strong></li>
+                                    <li>אם $L=0$: אם $\sum b_n$ מתכנס, אזי $\sum a_n$ מתכנס.</li>
+                                    <li>אם $L=\infty$: אם $\sum b_n$ מתבדר, אזי $\sum a_n$ מתבדר.</li>
+                                </ul>
+                            </li>
+                            <li><strong>הערה:</strong> מבחן זה הוא מקרה פרטי של מבחן ההשוואה באמצעות מנה.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>4. מבחן ההשוואה באמצעות מנות עוקבות</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהיינה $\sum a_n$ ו-$\sum b_n$ טורים אי-שליליים, כאשר $a_n, b_n \ne 0$ לכל $n$ מספיק גדול.</li>
+                            <li><strong>מסקנה:</strong> אם $\frac{a_{n+1}}{a_n} \le \frac{b_{n+1}}{b_n}$ לכל $n$ מספיק גדול, אז <strong>אם $\sum b_n$ מתכנס, אזי $\sum a_n$ מתכנס</strong>.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>5. מבחן ד'אלמבר (Ratio Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum a_n$ טור אי-שלילי, כאשר $a_n \ne 0$ לכל $n$ מספיק גדול.</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם קיים קבוע $q$ כך ש-$0 < q < 1$ ו-$\frac{a_{n+1}}{a_n} \le q$ לכל $n$ מספיק גדול, אזי $\sum a_n$ מתכנס.</strong></li>
+                                    <li><strong>אם קיים קבוע $q$ כך ש-$q \ge 1$ ו-$q \le \frac{a_{n+1}}{a_n}$ לכל $n$ מספיק גדול, אזי $\sum a_n$ מתבדר.</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>הערה:</strong> מבחן זה משמש להשוואה מרומזת עם טור הנדסי.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>6. מבחן ד'אלמבר הגבולי (Limit Ratio Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum a_n$ טור אי-שלילי, כאשר $a_n \ne 0$ לכל $n$ מספיק גדול, וקיים הגבול $\lim_{n \to \infty} \frac{a_{n+1}}{a_n} = L$.</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם $0 \le L < 1$, אזי $\sum a_n$ מתכנס.</strong></li>
+                                    <li><strong>אם $1 < L$, אזי $\sum a_n$ מתבדר.</strong></li>
+                                    <li><strong>אם $L=1$, לא ניתן להסיק מסקנה</strong> על התכנסות או התבדרות הטור.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>7. מבחן קושי לשורש (Root Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum a_n$ טור אי-שלילי.</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם קיים קבוע $q$ כך ש-$0 < q < 1$ ו-$\sqrt[n]{a_n} \le q$ לכל $n$ מספיק גדול, אזי $\sum a_n$ מתכנס.</strong></li>
+                                    <li><strong>אם $\sqrt[n]{a_n} \ge 1$ לכל $n$ מספיק גדול, אזי $\sum a_n$ מתבדר.</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>הערה:</strong> מבחן זה מבוסס על השוואה לטור הנדסי.</li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>8. מבחן קושי לשורש הגבולי (Limit Root Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum a_n$ טור אי-שלילי, וקיים הגבול העליון $\lim \sup_{n \to \infty} \sqrt[n]{a_n} = L$ (במובן הרחב).</li>
+                            <li><strong>מסקנה:</strong>
+                                <ul>
+                                    <li><strong>אם $0 \le L < 1$, אזי $\sum a_n$ מתכנס.</strong></li>
+                                    <li><strong>אם $1 < L$, אזי $\sum a_n$ מתבדר.</strong></li>
+                                    <li><strong>אם $L=1$, לא ניתן להסיק מסקנה</strong> על התכנסות או התבדרות הטור.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="property">
+                        <strong>9. מבחן האינטגרל (Integral Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהי $f: [1, \infty) \to \mathbb{R}$ פונקציה חיובית, מונוטונית יורדת וגזירה בקטע.</li>
+                            <li><strong>מסקנה:</strong> הטור $\sum_{n=1}^\infty f(n)$ <strong>מתכנס אם ורק אם האינטגרל הלא-אמיתי $\int_1^\infty f(x) dx$ מתכנס</strong>.</li>
+                            <li>במקרה זה מתקיים: $\sum_{n=2}^\infty f(n) \le \int_1^\infty f(x) dx \le \sum_{n=1}^\infty f(n)$.</li>
+                        </ul>
+                    </div>
+
+                    <div class="theorem">
+                        <strong>מבחנים נוספים הרלוונטיים להתכנסות טורים (גם לא-אי-שליליים):</strong>
+                    </div>
+
+                    <div class="notation">
+                        <strong>1. משפט הטור עם הסדרה האפסה (N-th Term Test for Divergence)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum a_n$ טור.</li>
+                            <li><strong>מסקנה:</strong> אם $\sum a_n$ מתכנס, אזי <strong>$\lim_{n \to \infty} a_n = 0$</strong>.</li>
+                            <li><strong>הערה חשובה:</strong> התנאי $\lim_{n \to \infty} a_n = 0$ <strong>אינו תנאי מספיק להתכנסות</strong>. כלומר, אם $a_n \to 0$, הטור עדיין יכול להתבדר (למשל, הטור ההרמוני $\sum 1/n$).</li>
+                        </ul>
+                    </div>
+
+                    <div class="notation">
+                        <strong>2. מבחן דיריכלה (Dirichlet's Test for Series)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> יהי $\sum b_n$ טור חסום (כלומר, סדרת סכומיו החלקיים חסומה). תהי $(a_n)_{n=1}^{\infty}$ סדרה השואפת לאפס באופן מונוטוני.</li>
+                            <li><strong>מסקנה:</strong> אזי הטור <strong>$\sum a_n b_n$ מתכנס</strong>.</li>
+                            <li><strong>הערה:</strong> מבחן זה מכליל את מבחן לייבניץ לטורים מתחלפים.</li>
+                        </ul>
+                    </div>
+
+                    <div class="notation">
+                        <strong>3. מבחן אבל (Abel's Test)</strong>
+                        <ul>
+                            <li><strong>תנאים:</strong> תהי $(a_n)_{n=1}^{\infty}$ סדרה מונוטונית וחסומה. יהי $\sum b_n$ טור מתכנס.</li>
+                            <li><strong>מסקנה:</strong> אזי הטור <strong>$\sum a_n b_n$ מתכנס</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="non-positive-series">
                     <h3>טורים שאינם אי-שליליים</h3>
                     <div class="topic-content">
 <div class="definition">
@@ -2438,7 +2596,7 @@
         </main>
 
         <footer>
-            <p>אתר נוצר לטובת סטודנטי אינפי 2 באוניברסיטה העברית - בהצלחה במבחן! 🎯</p>
+            <p>האתר נוצר לטובת כלל הסטודנטים באוניברסיטה העברית - בהצלחה במבחן! 🎯 © Yonatan Rotem</p>
         </footer>
     </div>
 

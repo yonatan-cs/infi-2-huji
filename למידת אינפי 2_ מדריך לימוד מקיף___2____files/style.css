@@ -1,0 +1,372 @@
+/* CSS for Infinitesimal Calculus 2 Study Guide */
+/* Hebrew text with mathematical formulas styling */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    direction: rtl;
+    text-align: right;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 0;
+}
+
+/* Main content styling */
+main {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* Section styling */
+section {
+    margin-bottom: 50px;
+    padding: 25px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border-right: 5px solid #667eea;
+}
+
+section h2 {
+    font-size: 2em;
+    color: #4a5568;
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+/* Topic styling */
+.topic {
+    margin-bottom: 35px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-right: 3px solid #48bb78;
+}
+
+.topic h3 {
+    font-size: 1.5em;
+    color: #2d3748;
+    margin-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(90deg, #48bb78, #38a169);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Mathematical content styling */
+.definition {
+    background-color: #e6fffa;
+    border-right: 4px solid #319795;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.theorem {
+    background-color: #fed7d7;
+    border-right: 4px solid #e53e3e;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.property {
+    background-color: #faf5ff;
+    border-right: 4px solid #805ad5;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.notation {
+    background-color: #fffbeb;
+    border-right: 4px solid #d69e2e;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+/* Lists styling */
+ul {
+    margin: 10px 0;
+    padding-right: 20px;
+}
+
+li {
+    margin: 8px 0;
+    text-align: right;
+}
+
+/* Quiz section styling */
+.quiz-questions, .answers {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.question, .answer {
+    background-color: #f7fafc;
+    border-right: 4px solid #3182ce;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.question strong, .answer strong {
+    color: #2b6cb0;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Essay questions styling */
+.essay-questions {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.essay-question {
+    background-color: #f0fff4;
+    border-right: 4px solid #38a169;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.essay-question h4 {
+    color: #2f855a;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.essay-question p {
+    margin: 12px 0;
+    text-align: right;
+}
+
+/* Dictionary styling */
+.dictionary {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.term {
+    background-color: #fffaf0;
+    border-right: 4px solid #dd6b20;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.term strong {
+    color: #c05621;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+/* FAQ styling */
+.faq-questions {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.faq-item {
+    background-color: #f8f9fa;
+    border-right: 4px solid #6f42c1;
+    padding: 25px;
+    margin: 25px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.faq-item h4 {
+    color: #5a2d82;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: 2px solid #6f42c1;
+    padding-bottom: 10px;
+}
+
+.faq-answer {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    border-right: 2px solid #e9ecef;
+    margin-top: 15px;
+}
+
+.faq-answer p {
+    margin: 15px 0;
+    line-height: 1.7;
+    text-align: right;
+}
+
+.faq-answer ul {
+    margin: 15px 0;
+    padding-right: 25px;
+}
+
+.faq-answer li {
+    margin: 12px 0;
+    line-height: 1.6;
+    text-align: right;
+}
+
+.faq-answer strong {
+    color: #6f42c1;
+    font-weight: bold;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #4a5568;
+    color: white;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+
+/* Mathematical formula styling */
+.MathJax {
+    direction: ltr;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    section h2 {
+        font-size: 1.5em;
+    }
+    
+    .topic h3 {
+        font-size: 1.2em;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    section {
+        padding: 15px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        font-size: 12pt;
+        background-color: white;
+    }
+    
+    .container {
+        box-shadow: none;
+        max-width: none;
+    }
+    
+    header {
+        background: none;
+        color: black;
+        page-break-after: avoid;
+    }
+    
+    section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    .topic {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .definition {
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+    
+    .theorem {
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+    
+    .property {
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+    
+    .notation {
+        background-color: #ffffff;
+        border-color: #000000;
+    }
+} 

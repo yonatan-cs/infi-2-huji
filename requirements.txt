@@ -1,0 +1,10 @@
+# Optional dependencies for PDF conversion
+# Install with: pip3 install -r requirements.txt
+
+# WeasyPrint for HTML to PDF conversion (alternative to wkhtmltopdf)
+weasyprint>=60.0
+ 
+# Additional dependencies that might be needed
+cffi>=1.15.0
+cairocffi>=1.4.0
+Pillow>=9.0.0 

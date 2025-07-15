@@ -1,0 +1,559 @@
+/* RTL and Hebrew Font Support */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=Computer+Modern+Serif&display=swap');
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Sans Hebrew', 'Times New Roman', serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    direction: rtl;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Container and Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: #ffffff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+.header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 0;
+    border-bottom: 4px solid #3498db;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Navigation and TOC */
+.nav-section {
+    background: #f8f9fa;
+    padding: 30px;
+    margin-bottom: 0;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-section h2 {
+    color: #2c3e50;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.nav-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+.toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    list-style: none;
+}
+
+.toc li {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.toc li:hover {
+    border-color: #3498db;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+    transform: translateY(-2px);
+}
+
+.toc a {
+    color: #2c3e50;
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.toc a:hover {
+    color: #3498db;
+    background: #f8f9fa;
+}
+
+/* Content Sections */
+.content {
+    padding: 40px 30px;
+    background: #ffffff;
+}
+
+.topic {
+    margin-bottom: 50px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.topic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, #3498db, #2980b9);
+}
+
+.topic h3 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3498db;
+    position: relative;
+    text-align: center;
+}
+
+.topic h3::before {
+    content: counter(topic-counter);
+    counter-increment: topic-counter;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Mathematical Content Boxes */
+.definition {
+    background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+    border-right: 5px solid #3498db;
+    padding: 20px 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.1);
+    position: relative;
+}
+
+.definition::before {
+    content: "הגדרה";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.theorem {
+    background: linear-gradient(135deg, #fdf2e9 0%, #fadbd2 100%);
+    border-right: 5px solid #e74c3c;
+    padding: 20px 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(231, 76, 60, 0.1);
+    position: relative;
+}
+
+.theorem::before {
+    content: "משפט";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.property {
+    background: linear-gradient(135deg, #f4f3ff 0%, #e8e5ff 100%);
+    border-right: 5px solid #9b59b6;
+    padding: 20px 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(155, 89, 182, 0.1);
+    position: relative;
+}
+
+.property::before {
+    content: "תכונה";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #9b59b6;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.notation {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-right: 5px solid #f39c12;
+    padding: 20px 25px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(243, 156, 18, 0.1);
+    position: relative;
+}
+
+.notation::before {
+    content: "סימון";
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #f39c12;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Typography */
+.definition strong,
+.theorem strong,
+.property strong,
+.notation strong {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Lists */
+ul {
+    margin: 15px 0;
+    padding-right: 25px;
+}
+
+li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    position: relative;
+}
+
+li::marker {
+    color: #3498db;
+    font-weight: bold;
+}
+
+/* Mathematical Expressions */
+.MathJax {
+    font-size: 1.1em !important;
+}
+
+/* Emphasis and Styling */
+em {
+    color: #7f8c8d;
+    font-style: italic;
+    font-weight: 500;
+    background: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border-right: 3px solid #bdc3c7;
+}
+
+/* Quiz Section */
+.quiz-section {
+    background: linear-gradient(135deg, #f0fff4 0%, #e8f5e8 100%);
+    border: 2px solid #27ae60;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.quiz-section::before {
+    content: "💡 בוחן";
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    background: #27ae60;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.quiz-section h2 {
+    color: #27ae60;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.quiz-question {
+    background: #ffffff;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border-right: 4px solid #27ae60;
+    box-shadow: 0 2px 8px rgba(39, 174, 96, 0.1);
+}
+
+/* FAQ Section */
+.faq-section {
+    background: linear-gradient(135deg, #faf0ff 0%, #f3e5f5 100%);
+    border: 2px solid #8e44ad;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.faq-section::before {
+    content: "❓ שאלות נפוצות";
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    background: #8e44ad;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.faq-item {
+    background: #ffffff;
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(142, 68, 173, 0.1);
+    border: 1px solid #e8e5ff;
+}
+
+.faq-question {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    padding: 15px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    transform: translateY(-1px);
+}
+
+.faq-answer {
+    padding: 20px;
+    background: #ffffff;
+    border-top: 1px solid #e8e5ff;
+}
+
+/* Dictionary Section */
+.dictionary-section {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+    border: 2px solid #f39c12;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.dictionary-section::before {
+    content: "📚 מילון מונחים";
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    background: #f39c12;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.dictionary-term {
+    background: #ffffff;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-right: 4px solid #f39c12;
+    box-shadow: 0 2px 8px rgba(243, 156, 18, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dictionary-term:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.2);
+}
+
+/* Counter Reset */
+body {
+    counter-reset: topic-counter;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    .container {
+        box-shadow: none;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .header {
+        background: #2c3e50 !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    
+    .topic {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        margin-bottom: 30px;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .definition, .theorem, .property, .notation {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+    
+    .content {
+        padding: 20px 15px;
+    }
+    
+    .topic {
+        padding: 20px 15px;
+        margin-bottom: 30px;
+    }
+    
+    .topic h3 {
+        font-size: 1.5rem;
+    }
+    
+    .toc {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .definition {
+        background: #ffffff;
+        border: 2px solid #3498db;
+    }
+    
+    .theorem {
+        background: #ffffff;
+        border: 2px solid #e74c3c;
+    }
+    
+    .property {
+        background: #ffffff;
+        border: 2px solid #9b59b6;
+    }
+    
+    .notation {
+        background: #ffffff;
+        border: 2px solid #f39c12;
+    }
+} 

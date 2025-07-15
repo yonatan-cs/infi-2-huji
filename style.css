@@ -7,24 +7,25 @@
     top: 20px;
     right: 20px;
     z-index: 1000;
-    background: #2c3e50;
+    background: #3498db;
     border: none;
-    border-radius: 8px;
-    width: 50px;
-    height: 50px;
+    border-radius: 12px;
+    width: 55px;
+    height: 55px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 6px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
     transition: all 0.3s ease;
 }
 
 .hamburger-btn:hover {
-    background: #34495e;
-    transform: scale(1.05);
+    background: #2980b9;
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
 }
 
 .hamburger-btn span {
@@ -45,6 +46,11 @@
 
 .hamburger-btn.active span:nth-child(3) {
     transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.hamburger-btn.active {
+    background: #e74c3c;
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
 }
 
 /* Floating Table of Contents */
@@ -181,22 +187,14 @@
     padding-right: 17px;
 }
 
-/* Hide original navigation on small screens and when hamburger is active */
-@media (max-width: 768px) {
-    .nav-section {
-        display: none;
-    }
+/* Hide original navigation completely - replaced by floating TOC */
+.nav-section {
+    display: none;
 }
 
-/* Large screens - show both but make hamburger less prominent */
-@media (min-width: 769px) {
-    .hamburger-btn {
-        opacity: 0.7;
-    }
-    
-    .hamburger-btn:hover {
-        opacity: 1;
-    }
+/* Ensure hamburger button is always visible */
+.hamburger-btn {
+    opacity: 1;
 }
 
 /* Reset and Base Styles */

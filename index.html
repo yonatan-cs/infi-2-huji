@@ -93,8 +93,8 @@
     <div class="container">
         <header class="header">
             <h1>אינפי 2 - מדריך לימוד מקיף לסטודנטים</h1>
-            <p>הכנתי את האתר הזה לטובת הסטודנטים באוניברסיטה העברית כדי שננצח את המבחן הארור הזה ונעבור את הקורס!</p>
-            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">© כל הזכויות שמורות - Yonatan Rotem</p>
+            <p> האתר נוצר לטובת כלל הסטודנטים באוניברסיטה העברית כדי שננצח את המבחן הארור הזה ונעבור את הקורס!</p>
+            <p style="font-size: 0.9rem; margin-top: 10px; opacity: 0.8;">© Yonatan Rotem</p>
         </header>
 
         <nav class="nav-section">
@@ -453,7 +453,7 @@
                     </div>
                 </div>
                     </div><div class="topic" id="uniform-continuity">
-                    <h3>שבוע 7.5: רציפות במידה שווה (Uniform Continuity)</h3>
+                    <h3> :רציפות במידה שווה (Uniform Continuity)</h3>
                     <div class="topic-content">
 <div class="definition">
                         <strong>הגדרה:</strong> תהי $D \subseteq \mathbb{R}$ ותהי $f : D \to \mathbb{R}$ פונקציה נתונה. נאמר ש-$f$ רציפה במובן שווה ב-$D$ אם ורק אם $\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D \; |x_2 - x_1| < \delta \Rightarrow |f(x_2) - f(x_1)| < \varepsilon$.
@@ -2487,48 +2487,7 @@
                 });
             });
 
-            // Content accordion functionality for topics
-            const topics = document.querySelectorAll('.topic');
-            
-            topics.forEach(function(topic) {
-                const header = topic.querySelector('h3');
-                const content = topic.querySelector('.topic-content');
-                
-                if (header && content) {
-                    // Make header clickable
-                    header.style.cursor = 'pointer';
-                    header.style.userSelect = 'none';
-                    header.style.position = 'relative';
-                    
-                    // Add toggle icon
-                    const toggleIcon = document.createElement('span');
-                    toggleIcon.className = 'topic-toggle';
-                    toggleIcon.innerHTML = '▼';
-                    toggleIcon.style.position = 'absolute';
-                    toggleIcon.style.left = '20px';
-                    toggleIcon.style.fontSize = '1.2rem';
-                    toggleIcon.style.transition = 'transform 0.3s ease';
-                    header.appendChild(toggleIcon);
-                    
-                    // Initially collapse content
-                    content.style.display = 'none';
-                    
-                    // Add click event
-                    header.addEventListener('click', function() {
-                        const isCollapsed = content.style.display === 'none';
-                        
-                        if (isCollapsed) {
-                            content.style.display = 'block';
-                            toggleIcon.style.transform = 'rotate(180deg)';
-                            topic.classList.add('topic-expanded');
-                        } else {
-                            content.style.display = 'none';
-                            toggleIcon.style.transform = 'rotate(0deg)';
-                            topic.classList.remove('topic-expanded');
-                        }
-                    });
-                }
-            });
+            // Topics are now always open - no accordion functionality needed
 
             // Close floating TOC when clicking on main content
             document.addEventListener('click', function(e) {
@@ -2544,22 +2503,6 @@
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
-                        // If target is inside a collapsed topic, expand it first
-                        const parentTopic = target.closest('.topic');
-                        if (parentTopic) {
-                            const content = parentTopic.querySelector('.topic-content');
-                            const header = parentTopic.querySelector('h3');
-                            const toggleIcon = header.querySelector('.topic-toggle');
-                            
-                            if (content && content.style.display === 'none') {
-                                content.style.display = 'block';
-                                if (toggleIcon) {
-                                    toggleIcon.style.transform = 'rotate(180deg)';
-                                }
-                                parentTopic.classList.add('topic-expanded');
-                            }
-                        }
-                        
                         target.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'

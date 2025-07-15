@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 למידת אינפיניטסימל 2: מדריך לימוד מקיף</title>
+    
+    <!-- MathJax for mathematical formulas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>למידת אינפיניטסימל 2: מדריך לימוד מקיף</h1>
+            <p>מדריך מקצועי ואקדמי ללימוד אינפיניטסימל 2 - כולל תיאוריה מפורטת, הגדרות מדויקות, משפטים מוכחים ובחינה עצמית מקיפה</p>
+        </header>
+
+        <nav class="nav-section">
+            <h2>תוכן עניינים</h2>
+            <ul class="toc">
+                <li><a href="#primitives">שבוע 1: פונקציות קדומות ואינטגרלים לא מסוימים</a></li>
+                <li><a href="#exponential">שבוע 2: הפונקציה האקספוננציאלית והלוגריתמית</a></li>
+                <li><a href="#lhopital">שבוע 3: כלל לופיטל</a></li>
+                <li><a href="#integration-methods">שבוע 4: שיטות אינטגרציה מתקדמות</a></li>
+                <li><a href="#taylor">שבוע 5: פולינומי טיילור ופיתוחי טיילור</a></li>
+                <li><a href="#taylor-series">שבוע 6: טורי טיילור</a></li>
+                <li><a href="#definite-integral">שבוע 7: האינטגרל המסוים (אינטגרל רימן/דרבו)</a></li>
+                <li><a href="#uniform-continuity">שבוע 7.5: רציפות במידה שווה</a></li>
+                <li><a href="#fundamental-theorem">שבוע 8: המשפט היסודי של החשבון האינפיניטסימלי</a></li>
+                <li><a href="#infinite-series">שבוע 9: טורים אינסופיים</a></li>
+                <li><a href="#non-positive-series">שבוע 10: טורים שאינם אי-שליליים</a></li>
+                <li><a href="#function-sequences">שבוע 11: התכנסות במ"ש של סדרות פונקציות</a></li>
+                <li><a href="#improper-integrals">שבוע 12: אינטגרלים לא אמיתיים</a></li>
+                <li><a href="#series-continuation">שבוע 13: טורים - המשך</a></li>
+                <li><a href="#infinite-products">שבוע 13.5: מכפלות אינסופיות</a></li>
+                <li><a href="#series-advanced">שבוע 14: טורים שאינם אי-שליליים - המשך</a></li>
+                <li><a href="#power-series">שבוע 15: טורי חזקות</a></li>
+                <li><a href="#limsup-liminf">נושא נוסף: גבול עליון וגבול תחתון של סדרות</a></li>
+                <li><a href="#old-series">נושא נוסף: טורים (סקירה כללית)</a></li>
+                <li><a href="#proofs">הוכחות חוזרות ומשפטים חשובים</a></li>
+                <li><a href="#quiz">בחינה עצמית</a></li>
+                <li><a href="#answers">פתרונות מפורטים</a></li>
+                <li><a href="#essay">שאלות חיבור אקדמיות</a></li>
+                <li><a href="#faq">שאלות נפוצות מתקדמות</a></li>
+                <li><a href="#dictionary">מילון מונחים מתמטיים</a></li>
+            </ul>
+        </nav>
+
+        <main class="content">
+            <section id="introduction">
+                <h2>מבוא אקדמי</h2>
+                <p>מדריך לימוד זה נועד לספק כלי מקצועי ומקיף ללימוד עצמי של קורס אינפיניטסימל 2. המדריך כולל תיאוריה מפורטת עם הגדרות מדויקות, משפטים מתקדמים, מבחני התכנסות וכלים פרקטיים להתמודדות עם חומר מורכב. המדריך בנוי על בסיס הטקסט המקורי ומורחב בפירוט רב לכל נושאי הקורס.</p>
+            </section>
+
+            <section id="summary">
+                <h2>תיאוריה מתמטית מקיפה</h2>
+                
+                <div class="topic" id="primitives">
+                    <h3>שבוע 1: פונקציות קדומות ואינטגרלים לא מסוימים</h3>
+                    <div class="definition">
+                        <strong>הגדרת פונקציה קדומה:</strong> תהי $f :D \to \mathbb{R}$ ויהי $I$ מקטע לא טריוויאלי (כלומר המכיל שתי נקודות שונות) המוכל בתחום ההגדרה של $f$. נאמר ש-$F$ פונקציה קדומה של $f$ במקטע $I$ אם ורק אם מתקיים $F'(x) = f(x)$ לכל $x \in I$, עם גזירה חד־צדדית בקצוות.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>אוסף הפונקציות הקדומות:</strong> אם $F$ היא פונקציה קדומה אחת של $f$ במקטע $I$, אזי אוסף כל הפונקציות הקדומות של $f$ במקטע $I$ הוא $\{F(x) + C | C \in \mathbb{R}\}$.
+                    </div>
+                    
+                    <div class="notation">
+                        <strong>סימון:</strong> $\int f(x) dx$ מסמן פונקציה קדומה שרירותית של $f$ במקטע $I$.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>שיטות חישוב מרכזיות:</strong>
+                        <br><strong>קריאה הפוכה של טבלת נגזרות ("מיידיות"):</strong> שימוש בנגזרות ידועות למציאת קדומות.
+                        <ul>
+                            <li>$\int x^n dx = \frac{x^{n+1}}{n+1} + C$ (עבור $n \in \mathbb{N} \cup \{0\}$)</li>
+                            <li>$\int \cos(x) dx = \sin(x) + C$</li>
+                            <li>$\int \exp(x) dx = \exp(x) + C$</li>
+                            <li>$\int \frac{1}{x} dx = \ln(x) + C$ (עבור $x \in (0,\infty)$)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>לינאריות האינטגרל:</strong> תהיינה $f$ ו-$g$ שתי פונקציות בעלות פונקציות קדומות במקטע $I$ ויהיו $\alpha, \beta \in \mathbb{R}$. אזי ל-$\alpha f + \beta g$ יש פונקציה קדומה ב-$I$ ומתקיים:
+                        $$\int (\alpha f(x) + \beta g(x)) dx = \alpha \int f(x) dx + \beta \int g(x) dx$$
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אינטגרציה בחלקים:</strong> אם $u$ ו-$v$ גזירות ב-$I$ ול-$u' \cdot v$ יש פונקציה קדומה ב-$I$, אז גם ל-$u \cdot v'$ יש פונקציה קדומה ב-$I$ ו-
+                        $$\int u(x)v'(x) dx = u(x)v(x) - \int u'(x)v(x) dx$$
+                        <em>הערה: שימושי במיוחד כאשר $u'$ פשוטה מ-$u$ ו-$v$ אינה הרבה יותר מסובכת מ-$v'$ (לדוגמה, עבור פולינום או ארקטנגנס).</em>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אינטגרציה בהצבה (שינוי משתנה):</strong> תהי $F$ פונקציה קדומה של $f$ במקטע $J$, כלומר $F'(y) = f(y)$ לכל $y \in J$. תהי $\phi : I \to J$ פונקציה גזירה במקטע $I$. אזי $F \circ \phi$ פונקציה קדומה של $(f \circ \phi)\phi'$ ב-$I$. במילים אחרות, אם $F' = f$, אז 
+                        $$\int f(\phi(x))\phi'(x) dx = F(\phi(x)) + C$$
+                        <em>מקרה פרטי שימושי: עבור $u = \phi(x) = ax + b$ ($a, b \in \mathbb{R}$, $a \neq 0$), נקבל $\int f(ax+b) dx = \frac{1}{a}F(ax+b) + C$.</em>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>פירוק לשברים חלקיים (לפונקציות רציונליות):</strong>
+                        <ul>
+                            <li><strong>שלב א':</strong> אם דרגת המונה $P(x)$ גדולה או שווה לדרגת המכנה $Q(x)$, יש לבצע חילוק פולינומים עם שארית: $\frac{P(x)}{Q(x)} = F(x) + \frac{S(x)}{Q(x)}$, כאשר $\deg(S) < \deg(Q)$.</li>
+                            <li><strong>שלב ב':</strong> אם $S(x) = kQ'(x)$ (המונה הוא כפולה של הנגזרת של המכנה), אזי $\int \frac{S(x)}{Q(x)} dx = k \ln|Q(x)| + C$.</li>
+                            <li><strong>שלב ג':</strong> אם $Q(x)$ ניתן לפירוק למכפלת גורמים זרים $Q(x) = Q_1(x)Q_2(x)$, ניתן לפרק את $\frac{S(x)}{Q(x)}$ לסכום $\frac{P_1(x)}{Q_1(x)} + \frac{P_2(x)}{Q_2(x)}$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>שיטות אינטגרציה ספציפיות - הרחבה מקיפה:</strong>
+                        
+                        <div class="definition">
+                            <strong>אינטגרציה בהצבה (Substitution Rule) - הרחבה מפורטת:</strong>
+                            <p><strong>מהות השיטה:</strong> שיטת אינטגרציה זו מבוססת על כלל השרשרת לגזירה. הרעיון הוא להפוך אינטגרל מסובך לאינטגרל פשוט יותר על ידי החלפת משתנים. אם $F$ היא פונקציה קדומה ל-$f$ בקטע $J$, ו-$\phi$ היא פונקציה גזירה בקטע $I$ כך ש-$\phi(I) \subseteq J$, אזי $F \circ \phi$ היא פונקציה קדומה ל-$(f \circ \phi) \phi'$ בקטע $I$. במילים אחרות, $\int f(\phi(x))\phi'(x) dx = F(\phi(x)) + C$ אם $F' = f$.</p>
+                            
+                            <p><strong>כתיב לייבניץ (Leibniz Notation):</strong> כתיב לייבניץ מספק דרך נוחה לזכור ולבצע אינטגרציה בהצבה, על ידי התייחסות ל-$du$ ול-$dx$ כאל "דיפרנציאלים" שניתן לתמרן אותם אלגברית, גם אם בקורס זה אין ל"דיפרנציאל" משמעות עצמית מעבר לסימון פורמלי לצורך זיכרון. אם נגדיר $u = \phi(x)$, אזי $\frac{du}{dx} = \phi'(x)$, ופורמלית ניתן לכתוב $du = \phi'(x)dx$. הצבה זו מאפשרת להחליף את האינטגרל בצורה $\int f(u) du = F(u) + C$.</p>
+                            
+                            <p><strong>דוגמה:</strong> לחישוב $\int x \cos(x^2) dx$ ניתן להציב $u=x^2$, ואז $\frac{du}{dx}=2x$, או $du=2xdx$. האינטגרל הופך ל-$\frac{1}{2}\int \cos(u) du = \frac{1}{2}\sin(u) + C = \frac{1}{2}\sin(x^2) + C$.</p>
+                        </div>
+                        
+                        <div class="definition">
+                            <strong>אינטגרציה בחלקי שברים (Partial Fraction Decomposition):</strong>
+                            <p><strong>מטרה:</strong> שיטה זו משמשת לחישוב אינטגרל של פונקציות רציונליות, המוגדרות כיחס בין שני פולינומים, $\frac{P(x)}{Q(x)}$.</p>
+                            
+                            <p><strong>רעיון:</strong> הרעיון המרכזי הוא לפרק את הפונקציה הרציונלית לסכום של "שברים חלקיים" שהם פונקציות רציונליות "פשוטות" יותר, שקל יחסית לחשב עבורן פונקציה קדומה.</p>
+                            
+                            <p><strong>דוגמה:</strong> עבור $\int \frac{2x+5}{x^2+4x+4}dx$, המכנה הוא $(x+2)^2$. הפירוק לשברים חלקיים הוא $\frac{2}{x+2} + \frac{1}{(x+2)^2}$. האינטגרל המתקבל הוא $2\ln|x+2| - \frac{1}{x+2} + C$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="exponential">
+                    <h3>שבוע 2: הפונקציה האקספוננציאלית והלוגריתמית</h3>
+                    <div class="definition">
+                        <strong>הפונקציה האקספוננציאלית (exp(x) או $e^x$):</strong>
+                        <br><strong>הגדרה:</strong> $e = \lim_{n\to\infty} (1 + \frac{1}{n})^n$.
+                        <br>$\exp(x) = \lim_{n\to\infty} (1 + \frac{x}{n})^n$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תכונות מרכזיות:</strong>
+                        <ul>
+                            <li>$\exp(-x) = \frac{1}{\exp(x)}$ לכל $x \in \mathbb{R}$.</li>
+                            <li>$\exp(x+y) = \exp(x)\exp(y)$ לכל $x,y \in \mathbb{R}$.</li>
+                            <li>$(\exp)'(x_0) = \exp(x_0)$ לכל $x_0 \in \mathbb{R}$.</li>
+                            <li>$\exp$ גזירה ברציפות ב-$\mathbb{R}$, ועולה מונוטונית ממש ($\exp(x) > 0$).</li>
+                            <li>$\lim_{x\to-\infty} \exp(x) = 0$ ו-$\lim_{x\to\infty} \exp(x) = \infty$.</li>
+                            <li>$\exp : \mathbb{R} \to (0,\infty)$ היא פונקציה חד-חד ערכית ו"על" (הפיכה).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>הפונקציה הלוגריתמית הטבעית (ln(y)):</strong>
+                        <br><strong>הגדרה:</strong> $\exp^{-1} : (0,\infty) \to \mathbb{R}$ נקראת פונקציית הלוגריתם הטבעי ומסומנת $\ln(y)$. כלומר, $\exp(\ln(y)) = y$ ו-$\ln(\exp(x)) = x$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תכונות מרכזיות:</strong>
+                        <ul>
+                            <li>$\ln$ עולה מונוטונית ממש ב-$(0, \infty)$.</li>
+                            <li>$\lim_{y\to 0^+} \ln(y) = -\infty$ ו-$\lim_{y\to\infty} \ln(y) = \infty$.</li>
+                            <li>$\ln(y_1 \cdot y_2) = \ln(y_1) + \ln(y_2)$ לכל $y_1, y_2 \in (0,\infty)$.</li>
+                            <li>$\ln'(y_0) = \frac{1}{y_0}$ לכל $y_0 \in (0,\infty)$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>הכללה: $a^x$ ו-$\log_a(y)$:</strong>
+                        <ul>
+                            <li><strong>הגדרה:</strong> לכל $x \in \mathbb{R}$, $e^x := \exp(x)$. זוהי הפעם הראשונה שמגדירים חזקה עם מעריך שיכול להיות לא רציונלי.</li>
+                            <li><strong>הגדרה:</strong> לכל $a \in (0,\infty)$, $a \neq 1$, הפונקציה $f : \mathbb{R} \to (0,\infty)$ המוגדרת על ידי $f(x) = a^x$ היא חד-חד ערכית ו"על" ועולה מונוטונית ממש אם $a > 1$, או יורדת מונוטונית ממש אם $0 < a < 1$.</li>
+                            <li><strong>הגדרה:</strong> הפונקציה ההפוכה $f^{-1} : (0,\infty) \to \mathbb{R}$ נקראת פונקציית הלוגריתם בבסיס $a$ ומסומנת $\log_a(y)$. כלומר, $y = a^x$ אם ורק אם $x = \log_a(y)$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>הערה:</strong> $\log_a(y) = \frac{\ln(y)}{\ln(a)}$.
+                    </div>
+                </div>
+
+                <div class="topic" id="lhopital">
+                    <h3>שבוע 3: כלל לופיטל</h3>
+                    <div class="theorem">
+                        <strong>כלל לופיטל (גרסת 0/0):</strong> יהיו $f$ ו-$g$ שתי פונקציות גזירות ב-$x_0$ (ובפרט מוגדרות בסביבה מלאה של $x_0$). אם $f(x_0) = g(x_0) = 0$ ו-$g'(x_0) \neq 0$, אזי הגבול $\lim_{x\to x_0} \frac{f(x)}{g(x)}$ קיים ומתקיים 
+                        $$\lim_{x\to x_0} \frac{f(x)}{g(x)} = \frac{f'(x_0)}{g'(x_0)}$$
+                        <em>הערה: גזירות ב-$x_0$ גוררת רציפות ב-$x_0$, ולכן הגבול $\lim_{x\to x_0} \frac{f(x)}{g(x)}$ הוא בצורת אי-ודאות $\frac{0}{0}$.</em>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>כלל לופיטל (הכללה):</strong> יהיו $a, b \in \mathbb{R}$ כך ש-$a < b$. יהיו $f$ ו-$g$ שתי פונקציות גזירות בקטע $(a, b]$.
+                        <br><strong>תנאים:</strong>
+                        <ul>
+                            <li>$\lim_{x\to a^+} f(x) = 0$ ו-$\lim_{x\to a^+} g(x) = 0$, או $\lim_{x\to a^+} f(x) = \pm\infty$ ו-$\lim_{x\to a^+} g(x) = \pm\infty$.</li>
+                            <li>לכל $x \in (a, b]$ מתקיים $g'(x) \neq 0$.</li>
+                            <li>הגבול $\lim_{x\to a^+} \frac{f'(x)}{g'(x)} = L$ קיים (במובן הרחב).</li>
+                        </ul>
+                        <strong>מסקנה:</strong> אזי הגבול $\lim_{x\to a^+} \frac{f(x)}{g(x)}$ קיים ושוה ל-$L$.
+                        
+                        <br><strong>הערות:</strong>
+                        <ul>
+                            <li>המשפט תקף גם לשאיפה משמאל ($x\to a^-$).</li>
+                            <li>המשפט תקף גם כאשר $x\to\infty$ (או $x\to-\infty$).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="integration-methods">
+                    <h3>שבוע 4: שיטות אינטגרציה מתקדמות</h3>
+                    <div class="definition">
+                        <strong>מבוא:</strong> שיטות מרכזיות לחישוב פונקציות קדומות מעבר לקדומות מיידיות ולינאריות האינטגרל.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>שיטות מרכזיות לחישוב פונקציות קדומות:</strong>
+                        <ul>
+                            <li><strong>קריאה "הפוכה" של טבלת נגזרות (קדומות מיידיות):</strong> שימוש בנגזרות ידועות למציאת קדומות.</li>
+                            <li><strong>לינאריות האינטגרל:</strong> אינטגרל של סכום הוא סכום אינטגרלים.</li>
+                            <li><strong>אינטגרציה בחלקים:</strong> $\int u(x)v'(x) dx = u(x)v(x) - \int u'(x)v(x) dx$</li>
+                            <li><strong>הצבת משתנים (אינטגרציה בהצבה):</strong> $\int f(\varphi(x))\varphi'(x) dx = F(\varphi(x)) + C$</li>
+                            <li><strong>מקרה פרטי:</strong> $\int f(ax+b) dx = \frac{1}{a}F(ax+b) + C$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>אינטגרציה של פונקציות רציונליות (פירוק לשברים חלקיים):</strong>
+                        <br><strong>שלב א':</strong> חילוק פולינומים אם דרגת המונה גדולה או שווה לדרגת המכנה.
+                        <br><strong>שלב ב':</strong> בדיקה האם המונה הוא כפולה קבועה של נגזרת המכנה.
+                        <br><strong>שלב ג':</strong> פירוק המכנה לגורמים אי-פריקים (לינאריים או ריבועיים).
+                        <br><strong>מקרה ד'1 (גורם לינארי בחזקה n):</strong> פירוק לסכום של $\frac{S(x)}{(\alpha x+\beta)^k}$.
+                        <br><strong>מקרה ד'2 (גורם ריבועי לא פריק):</strong> אינטגרל של $\frac{1}{ax^2+bx+c}$.
+                        <br><strong>מקרה ד'3 (גורם ריבועי לא פריק בחזקה n):</strong> יטופל בתרגול/שיעורי בית.
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות לאינטגרציה בחלקים:</strong>
+                        <ul>
+                            <li>$\int x e^x dx = xe^x - \int e^x dx = xe^x - e^x + C$</li>
+                            <li>$\int x \ln(x) dx$ - נבחר $u = \ln(x)$, $v' = x$</li>
+                            <li>$\int e^x \sin(x) dx$ - דרוש שימוש כפול באינטגרציה בחלקים</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות להצבת משתנים:</strong>
+                        <ul>
+                            <li>$\int \frac{x dx}{\sqrt{1-x^2}}$ - הצבה $u = 1-x^2$</li>
+                            <li>$\int \sin^3(x) \cos(x) dx$ - הצבה $u = \sin(x)$</li>
+                            <li>$\int \frac{dx}{x \ln(x)}$ - הצבה $u = \ln(x)$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שיטות נוספות לאינטגרציה:</strong>
+                        <ul>
+                            <li><strong>הצבות טריגונומטריות:</strong> לביטויים הכוללים $\sqrt{a^2-x^2}$, $\sqrt{x^2+a^2}$, $\sqrt{x^2-a^2}$</li>
+                            <li><strong>שבירה חלקית של פונקציות רציונליות:</strong> מתודה שיטתית לפירוק שברים</li>
+                            <li><strong>אינטגרציה של פונקציות אי-רציונליות מסוימות:</strong> באמצעות הצבות מתאימות</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="taylor">
+                    <h3>שבוע 5: פולינומי טיילור ופיתוחי טיילור</h3>
+                    <div class="definition">
+                        <strong>הגדרה:</strong> יהי $n \in \mathbb{N} \cup \{0\}$ ותהי $f$ פונקציה רציפה ב-$a$ וגזירה $n$ פעמים בנקודה $a$ (כלומר $f(a), f'(a), \ldots, f^{(n)}(a)$ קיימים). אזי הפולינום:
+                        $$P_{n,f,a}(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots + \frac{f^{(n)}(a)}{n!}(x-a)^n = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k$$
+                        נקרא פולינום טיילור מסדר $n$ של $f$ סביב $a$.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>משמעות גיאומטרית:</strong> פולינום טיילור הוא הקירוב הפולינומי הטוב ביותר לפונקציה $f$ בסביבת הנקודה $a$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>יחידות (משפט!):</strong> תהי $f$ גזירה $n$ פעמים ב-$a$ ויהי $Q(x)$ הוא פולינום ממעלה קטנה או שווה ל-$n$ המקיים: $\lim_{x\to a} \frac{f(x) - Q(x)}{(x-a)^n} = 0$. אזי $Q(x) = P_{n,f,a}(x)$ (פולינום טיילור הוא הפולינום הייחודי הטוב ביותר שמקרב את $f$).
+                        
+                        <em>מסקנה חשובה: משפט זה מאפשר לקבוע מתי פולינום נתון הוא פולינום טיילור של פונקציה מבלי לגזור את הפונקציה אפילו פעם אחת!</em>
+                        
+                        <br><strong>הרחבה על ייחודיות:</strong> $P_{n,f,a}(x)$ הוא הפולינום היחיד ממעלה קטנה או שווה ל-$n$ שמקיים את תנאי השארית. תכונה זו שימושית מאוד כדי לזהות פולינום טיילור של פונקציה מבלי לגזור אותה. לדוגמה, עבור $f(x) = \frac{1}{1-x}$, ניתן לזהות ישירות שהפולינום הטיילור סביב 0 הוא $\sum_{k=0}^n x^k$ מבלי לחשב נגזרות.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>שארית טיילור:</strong>
+                        <ul>
+                            <li><strong>הגדרה:</strong> $R_{n,f,a}(x) = f(x) - P_{n,f,a}(x)$ נקראת שארית פיתוח טיילור מסדר $n$ של $f$ סביב $a$.</li>
+                            <li><strong>משפט (!):</strong> תהי $f$ גזירה $n$ פעמים בנקודה $a$. אזי $\lim_{x\to a} \frac{R_{n,f,a}(x)}{(x-a)^n} = 0$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט טיילור (צורת לגראנז'):</strong> תהי $f$ פונקציה בעלת נגזרת $f^{(n)}$ מסדר $n$ רציפה בקטע $[a, b]$ (או $[b, a]$) ונגזרת $f^{(n+1)}$ ב-$(a, b)$ (או $(b, a)$). אזי קיימת נקודה $c \in (a, b)$ (או $c \in (b, a)$) אחת לפחות, כך ש-
+                        $$R_{n,f,a}(b) = f(b) - P_{n,f,a}(b) = \frac{f^{(n+1)}(c)}{(n+1)!}(b-a)^{n+1}$$
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט טיילור (צורת קושי):</strong> בתנאים זהים, קיימת נקודה $\hat{c} \in (a, b)$ (או $\hat{c} \in (b, a)$) אחת לפחות, כך ש-
+                        $$R_{n,f,a}(b) = f(b) - P_{n,f,a}(b) = \frac{f^{(n+1)}(\hat{c})}{n!}(b-\hat{c})^n(b-a)$$
+                        
+                        <strong>מסקנה:</strong> משפט טיילור הוא הכללה של משפט לגראנז' לפונקציות גזירות מספר פעמים.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט טיילור (צורת לגרנז'):</strong> בתנאים זהים, קיימת נקודה $c \in (a, b)$ (או $c \in (b, a)$) אחת לפחות, כך ש-
+                        $$R_{n,f,a}(b) = \frac{f^{(n+1)}(c)}{(n+1)!}(b-a)^{n+1}$$
+                        צורת לגרנז' מאפשרת אומדן מדויק של השגיאה בקירוב פולינום טיילור.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שארית טיילור - צורה אינטגרלית:</strong> בתנאים זהים, מתקיים:
+                        $$R_{n,f,a}(x) = \frac{1}{n!} \int_a^x f^{(n+1)}(t)(x-t)^n dt$$
+                        צורה זו מאפשרת להוכיח התכנסות של טור טיילור במקרים בהם אפשר לשלוט על הנגזרת ה-$(n+1)$ תחת האינטגרל.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מסקנה חשובה:</strong> כאשר רוצים לחשב קירובים לערך של פונקציה באמצעות פולינום טיילור, חשוב לבדוק מה קורה עם השארית המתאימה!
+                    </div>
+                </div>
+
+                <div class="topic" id="taylor-series">
+                    <h3>שבוע 6: טורי טיילור</h3>
+                    <div class="definition">
+                        <strong>הגדרת טור טיילור:</strong> יהי $f$ פונקציה הגזירה אינסוף פעמים בנקודה $a$. טור טיילור של $f$ סביב $a$ הוא הטור האינסופי:
+                        $$\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots$$
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>התכנסות טור טיילור:</strong> 
+                        <ul>
+                            <li><strong>הערה חשובה:</strong> טור טיילור של פונקציה $f$ לא בהכרח מתכנס, ואם הוא מתכנס - לא בהכרח מתכנס ל-$f$!</li>
+                            <li><strong>תנאי להתכנסות:</strong> אם טור טיילור מתכנס ל-$f$ בקטע, אז השארית $R_n(x) \to 0$ כאשר $n \to \infty$.</li>
+                            <li><strong>קריטריון:</strong> $f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n$ אם ורק אם $\lim_{n \to \infty} R_{n,f,a}(x) = 0$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות לטורי טיילור סביב $x_0 = 0$ (טורי מקלורן):</strong>
+                        <ul>
+                            <li>$e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \ldots$ (מתכנס לכל $x \in \mathbb{R}$)</li>
+                            <li>$\cos(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \ldots$ (מתכנס לכל $x \in \mathbb{R}$)</li>
+                            <li>$\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots$ (מתכנס לכל $x \in \mathbb{R}$)</li>
+                            <li>$\frac{1}{1-x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \ldots$ (מתכנס עבור $|x| < 1$)</li>
+                            <li>$\ln(1+x) = \sum_{n=1}^{\infty} \frac{(-1)^{n+1} x^n}{n} = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots$ (מתכנס עבור $|x| < 1$)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>פעולות על טורי טיילור:</strong>
+                        <ul>
+                            <li><strong>חיבור/חיסור:</strong> ניתן לחבר/לחסר טורי טיילור איבר-איבר בתחום ההתכנסות המשותף.</li>
+                            <li><strong>כפל:</strong> מכפלת שני טורי חזקות מתכנסים נותנת טור חזקות מתכנס (מכפלת קושי).</li>
+                            <li><strong>גזירה/אינטגרציה:</strong> ניתן לגזור ולאנטגר טורי טיילור איבר-איבר בתוך תחום ההתכנסות.</li>
+                            <li><strong>הצבה:</strong> אם $|g(x)| < R$ בתוך תחום ההתכנסות של $f$, אז ניתן להציב $g(x)$ בטור של $f$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>שימושים של טורי טיילור:</strong>
+                        <ul>
+                            <li><strong>קירוב ערכי פונקציות:</strong> חישוב $\cos(0.1)$, $e^{0.5}$ וכדומה.</li>
+                            <li><strong>חישוב גבולות:</strong> שימוש בפיתוחי טיילור לחישוב גבולות מורכבים.</li>
+                            <li><strong>פתרון משוואות דיפרנציאליות:</strong> פתרונות בטורי חזקות.</li>
+                            <li><strong>אינטגרלים מורכבים:</strong> אינטגרציה של פונקציות שאין להן קדומות אלמנטריות.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note">
+                        <strong>הערה על התכנסות:</strong> אפילו אם פונקציה גזירה אינסוף פעמים, טור טיילור שלה עלול לא להתכנס אליה. דוגמה קלאסית:
+                        $$f(x) = \begin{cases} e^{-1/x^2} & x \neq 0 \\ 0 & x = 0 \end{cases}$$
+                        פונקציה זו גזירה אינסוף פעמים ב-$x=0$ עם כל הנגזרות שוות 0, אך טור טיילור שלה (הטור האפס) מתכנס רק ב-$x=0$.
+                    </div>
+                </div>
+
+                <div class="topic" id="uniform-continuity">
+                    <h3>שבוע 7.5: רציפות במידה שווה (Uniform Continuity)</h3>
+                    <div class="definition">
+                        <strong>הגדרה:</strong> תהי $D \subseteq \mathbb{R}$ ותהי $f : D \to \mathbb{R}$ פונקציה נתונה. נאמר ש-$f$ רציפה במובן שווה ב-$D$ אם ורק אם $\forall \varepsilon > 0 \; \exists \delta > 0 \; \forall x_1, x_2 \in D \; |x_2 - x_1| < \delta \Rightarrow |f(x_2) - f(x_1)| < \varepsilon$.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>הערות:</strong>
+                        <ul>
+                            <li>בניגוד לרציפות רגילה, $\delta$ אינו תלוי בנקודה $x_0$ אלא רק ב-$\varepsilon$.</li>
+                            <li><strong>משפט קנטור:</strong> פונקציה רציפה על קטע סגור וחסום $[a, b]$ היא רציפה במובן שווה על קטע זה.</li>
+                            <li><strong>משפט:</strong> פונקציה רציפה ב-$(a, b)$ היא רציפה במובן שווה ב-$(a, b)$ אם ורק אם יש לה הרחבה רציפה לקטע הסגור $[a, b]$ (כלומר הגבולות החד-צדדיים ב-$a$ וב-$b$ קיימים וסופיים).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>פונקציית ליפשיץ:</strong> $f : D \to \mathbb{R}$ תיקרא ליפשיצית (או מקיימת תנאי ליפשיץ) ב-$D$ אם קיים $K > 0$ כך שלכל $x_1, x_2 \in D$ מתקיים $|f(x_1) - f(x_2)| \leq K |x_1 - x_2|$.
+                        
+                        <br><strong>משפט:</strong> כל פונקציה ליפשיצית ב-$D$ היא רציפה במובן שווה ב-$D$.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>דוגמאות ותכונות:</strong>
+                        <ul>
+                            <li>$f(x) = x^2$ אינה רציפה במידה שווה ב-$\mathbb{R}$ (מכיוון שהנגזרת אינה חסומה).</li>
+                            <li>$f(x) = \frac{1}{x}$ אינה רציפה במידה שווה ב-$(0,1)$ (מכיוון שהיא לא חסומה).</li>
+                            <li>פונקציות רציפות על קטע סגור וחסום הן רציפות במידה שווה (משפט קנטור).</li>
+                            <li>פונקציה רציפה ב-$(a, b)$ היא רציפה במידה שווה ב-$(a, b)$ אם ורק אם יש לה הרחבה רציפה לקטע הסגור $[a, b]$ (כלומר הגבולות החד-צדדיים ב-$a$ וב-$b$ קיימים וסופיים).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="definite-integral">
+                    <h3>שבוע 7: האינטגרל המסוים (אינטגרל רימן/דרבו)</h3>
+                    <div class="definition">
+                        <strong>הגדרה (חלוקה):</strong> תהיו $a, b \in \mathbb{R}$ כך ש-$a < b$. חלוקה (partition) של הקטע $[a, b]$ היא קבוצה סופית $P$ של נקודות מהקטע $[a, b]$ הכוללת גם את $a$ וגם את $b$. מקובל לסמן: $P = \{x_0, x_1, \ldots, x_n\}$ כך ש-$a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>סכומי דרבו:</strong>
+                        <br><strong>הגדרה (סכומי דרבו תחתונים ועליונים):</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה חסומה. תהי $P = \{x_0, x_1, \ldots, x_n\}$ חלוקה של $[a, b]$.
+                        <ul>
+                            <li>$m_i = \inf_{x_{i-1} \leq x \leq x_i} \{f(x)\}$</li>
+                            <li>$M_i = \sup_{x_{i-1} \leq x \leq x_i} \{f(x)\}$</li>
+                            <li>סכום דרבו תחתון: $L(f, P) = \sum_{i=1}^n m_i(x_i - x_{i-1})$</li>
+                            <li>סכום דרבו עליון: $U(f, P) = \sum_{i=1}^n M_i(x_i - x_{i-1})$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>סכום דרבו עליון ($U(f,P)$) ותחתון ($L(f,P)$):</strong> $U(f,P) = \sum_{i=1}^n M_i (x_i - x_{i-1})$, $L(f,P) = \sum_{i=1}^n m_i (x_i - x_{i-1})$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>אינטגרביליות דרבו:</strong> $f$ אינטגרבילית בקטע $[a,b]$ אם $\overline{\int_a^b} f(x) dx = \underline{\int_a^b} f(x) dx$. הערך המשותף מסומן $\int_a^b f(x) dx$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קריטריון דרבו:</strong> $f$ חסומה אינטגרבילית ב-$[a,b]$ אם ורק אם לכל $\varepsilon > 0$ קיימת חלוקה $P$ כך ש-$U(f,P) - L(f,P) < \varepsilon$. ($U(f,P) - L(f,P)$ מכונה תנודה $\omega(f,P)$).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תנאי דארבו:</strong> פונקציה $f$ אינטגרבילית בקטע $[a,b]$ אם ורק אם לכל $\varepsilon > 0$ קיימת חלוקה $P$ כך ש-$U(f,P) - L(f,P) < \varepsilon$. תנאי זה מאפשר לקבוע אינטגרביליות באמצעות בדיקת קירוב הסכומים העליונים והתחתונים.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>תנודה של פונקציה:</strong> בהינתן פונקציה $f$ בקטע $[a,b]$, התנודה של $f$ בקטע מוגדרת כ-$\omega_f([a,b]) = \sup_{x \in [a,b]} f(x) - \inf_{x \in [a,b]} f(x)$. התנודה מבטאת "כמה הפונקציה משתנה" בקטע הנתון. ההבדל $U(f,P) - L(f,P)$ שווה לסכום התנודות של $f$ בתת-הקטעים, מוכפל באורכי תת-הקטעים: $U(f,P) - L(f,P) = \sum_{i=1}^n \omega_f([x_{i-1}, x_i]) \cdot (x_i - x_{i-1})$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>סכום רימן ($S(f,P,P^*)$):</strong> עבור חלוקה $P$ ובחירת נקודות ביניים $P^* = \{c_1, \ldots, c_n\}$ ($c_i \in [x_{i-1}, x_i]$), $S(f,P,P^*) = \sum_{i=1}^n f(c_i)(x_i - x_{i-1})$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>אינטגרביליות רימן:</strong> $f$ אינטגרבילית רימן ב-$[a,b]$ אם קיים $I \in \mathbb{R}$ כך שלכל $\varepsilon > 0$ קיים $\delta > 0$ כך שלכל חלוקה $P$ עם $\Delta(P) < \delta$ ולכל בחירת נקודות ביניים $P^*$, מתקיים $|S(f,P,P^*) - I| < \varepsilon$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט:</strong> $f$ אינטגרבילית דרבו אם ורק אם $f$ אינטגרבילית רימן, ובמקרה זה האינטגרלים שווים.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>תכונות האינטגרל המסוים (חלקן):</strong> לינאריות, אי-שליליות ($f \ge 0 \Rightarrow \int f \ge 0$), השוואה ($f \le g \Rightarrow \int f \le \int g$), אינטגרביליות של מכפלה ומנה, אינטגרביליות של פונקציה מונוטונית, אינטגרביליות של פונקציה רציפה, אדיטיביות לפי קטע ($\int_a^b f = \int_a^c f + \int_c^b f$), אינווריאנטיות להזזה והומותטיה.
+                        
+                        <br><strong>דוגמה: פונקציית דיריכלה:</strong> פונקציית דיריכלה מוגדרת כ-$D(x) = \begin{cases} 1 & \text{if } x \in \mathbb{Q} \\ 0 & \text{if } x \notin \mathbb{Q} \end{cases}$. פונקציה זו אינה אינטגרבילית בכל קטע $[a,b]$ כי התנודה שלה בכל תת-קטע היא 1 (מכיוון שכל קטע מכיל מספרים רציונליים ואי-רציונליים). אם נשנה את הפונקציה כך שתחזיר 1 בנקודה בודדת ו-0 בכל מקום אחר, הפונקציה החדשה תהיה אינטגרבילית ואינטגרלה יהיה 0.
+                    </div>
+                </div>
+
+                <div class="topic" id="fundamental-theorem">
+                    <h3>שבוע 8: המשפט היסודי של החשבון האינפיניטסימלי</h3>
+                    <div class="theorem">
+                        <strong>המשפט היסודי של החשבון האינפיניטסימלי (חלק א'):</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית. תהי $\tilde{F}(x) = \int_a^x f(t) dt$ פונקציה צוברת.
+                        <ul>
+                            <li><strong>א.</strong> $\tilde{F}$ רציפה וליפשיצית בקטע $[a, b]$.</li>
+                            <li><strong>ב.</strong> אם $f$ בנוסף רציפה מימין בנקודה $x_0 \in [a, b)$, אזי $\tilde{F}$ גזירה מימין ב-$x_0$ ומתקיים $\tilde{F}'_+(x_0) = f(x_0)$.</li>
+                            <li><strong>ג.</strong> אם $f$ בנוסף רציפה משמאל בנקודה $x_0 \in (a, b]$, אזי $\tilde{F}$ גזירה משמאל ב-$x_0$ ומתקיים $\tilde{F}'_-(x_0) = f(x_0)$.</li>
+                        </ul>
+                        <strong>מסקנה:</strong> אם $f$ רציפה ב-$[a, b]$, אזי $\tilde{F}$ גזירה ב-$[a, b]$ ו-$\tilde{F}'(x) = f(x)$ לכל $x \in [a, b]$. במילים אחרות, $\tilde{F}$ היא פונקציה קדומה של $f$.
+                        
+                        <br><strong>הרחבה על הפונקציה הצוברת:</strong> הפונקציה הצוברת $\tilde{F}(x) = \int_a^x f(t) dt$ מהווה גשר חשוב בין האינטגרל למושג הנגזרת. אם $f$ אינטגרבילית ב-$[a,b]$, הפונקציה הצוברת היא תמיד רציפה בקטע, גם אם $f$ אינה רציפה. רציפות הפונקציה הצוברת היא תכונה חשובה המדגישה שהאינטגרל "מחליק" את הפונקציה. משמעות המשפט היא שאינטגרציה וגזירה הן פעולות הפוכות תחת תנאי רציפות.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>המשפט היסודי של החשבון האינפיניטסימלי (חלק ב'):</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית. תהי $F : [a, b] \to \mathbb{R}$ פונקציה קדומה של $f$ ב-$[a, b]$. אזי 
+                        $$\int_a^b f(x) dx = F(b) - F(a)$$
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט הערך הממוצע האינטגרלי:</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה רציפה. אזי קיימת נקודה $c \in [a, b]$ כך ש-
+                        $$\frac{1}{b-a}\int_a^b f(t) dt = f(c)$$
+                        <strong>חיזוק (לגרנז' האינטגרלי):</strong> אם $f$ רציפה בקטע $[a, b]$, אזי קיימת נקודה $c \in (a, b)$ (קטע פתוח) המקיימת את המשפט.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אינטגרציה בחלקים (עבור אינטגרל מסוים):</strong> יהיו $u$ ו-$v$ פונקציות גזירות ב-$[a, b]$ כך ש-$u'$ ו-$v'$ אינטגרביליות ב-$[a, b]$. אזי $u \cdot v'$ ו-$u' \cdot v$ אינטגרביליות ב-$[a, b]$ ו-
+                        $$\int_a^b u(x)v'(x) dx = u(b)v(b) - u(a)v(a) - \int_a^b u'(x)v(x) dx$$
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אינטגרציה בהצבה (שינוי משתנה עבור אינטגרל מסוים):</strong> תהי $f : [a, b] \to \mathbb{R}$ פונקציה רציפה, ותהי $F$ פונקציה קדומה של $f$ ב-$[a, b]$ ($F' = f$). תהי $\phi : [\alpha, \beta] \to [a, b]$ פונקציה גזירה ב-$[\alpha, \beta]$ כך ש-$\phi'$ אינטגרבילית ב-$[\alpha, \beta]$. אזי 
+                        $$\int_\alpha^\beta f(\phi(x))\phi'(x) dx = \int_{\phi(\alpha)}^{\phi(\beta)} f(u) du = F(\phi(\beta)) - F(\phi(\alpha))$$
+                    </div>
+                    
+                    <div class="property">
+                        <strong>תכונות נוספות של האינטגרל המסוים - הרחבה מקיפה:</strong>
+                        
+                        <div class="theorem">
+                            <strong>אדיטיביות האינטגרל (Additivity of the Integral):</strong>
+                            <p><strong>מהות:</strong> אם $f$ ו-$g$ הן פונקציות חסומות ואינטגרביליות בקטע $[a,b]$, אזי גם סכומן $f+g$ אינטגרבילית בקטע זה, ומתקיים $\int_a^b (f(x)+g(x)) dx = \int_a^b f(x) dx + \int_a^b g(x) dx$. ההוכחה מתבססת על סכומי דרבו ועל אי-שוויונים בין סופרמומים ואינפימומים של פונקציות.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>משפט ערך הממוצע האינטגרלי (Mean Value Theorem for Integrals):</strong>
+                            <p><strong>מהות:</strong> אם $f$ פונקציה רציפה בקטע $[a,b]$ ו-$g$ פונקציה אינטגרבילית ואי-שלילית בקטע זה, אז קיימת נקודה $c \in [a,b]$ כך ש-$\int_a^b f(t)g(t)dt = f(c)\int_a^b g(t)dt$. במקרה פרטי שבו $g(t)=1$, המשפט קובע שקיים $c \in [a,b]$ כך ש-$\int_a^b f(t)dt = f(c)(b-a)$.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>אי-רגישות האינטגרל לשינוי נקודתי בערכי הפונקציה:</strong>
+                            <p><strong>מהות:</strong> אם משנים את הערך של פונקציה אינטגרבילית במספר סופי של נקודות, הפונקציה נשארת אינטגרבילית וערך האינטגרל אינו משתנה. דוגמאות כמו פונקציית דיריכלה מראות שניתן לשנות פונקציה אינטגרבילית על קבוצה אינסופית של נקודות אי-רציפות כך שהאינטגרביליות תשתנה או לא.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>נגזרת של אינטגרל עם גבולות משתנים (Leibniz Rule):</strong>
+                            <p><strong>מהות:</strong> אם $f$ פונקציה רציפה בקטע $[a,b]$, ו-$\phi, \psi$ הן פונקציות גזירות בקטע $[\alpha, \beta]$ עם טווח ב-$[a,b]$, ו-$G(x) = \int_{\phi(x)}^{\psi(x)} f(t) dt$, אזי $G$ גזירה בקטע $[\alpha, \beta]$ ומתקיים $G'(x) = f(\psi(x)) \cdot \psi'(x) - f(\phi(x)) \cdot \phi'(x)$. זה נובע ישירות מהמשפט היסודי של החשבון האינטגרלי וכלל השרשרת.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>אינטגרביליות של פונקציות מונוטוניות ורציפות:</strong>
+                            <p><strong>פונקציות מונוטוניות:</strong> פונקציה מונוטונית בקטע סגור וחסום היא אינטגרבילית.</p>
+                            <p><strong>פונקציות רציפות:</strong> פונקציה רציפה בקטע סגור וחסום היא אינטגרבילית.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="improper-integrals">
+                    <h3>שבוע 12: אינטגרלים לא אמיתיים (Improper Integrals)</h3>
+                    
+                    <div class="definition">
+                        <strong>סוג 1: תחום אינטגרציה אינסופי:</strong> תהי $f : [a, \infty) \to \mathbb{R}$ פונקציה אינטגרבילית בכל קטע סגור וחסום $[a, N]$. נאמר שהאינטגרל הלא אמיתי $\int_a^\infty f(x) dx$ מתכנס אם הגבול $\lim_{N\to\infty} \int_a^N f(x) dx$ קיים במובן הצר. במקרה זה, ערך האינטגרל שווה לגבול.
+                        
+                        <br><em>הערה: אם הגבול אינו קיים במובן הצר, האינטגרל "מתבדר".</em>
+                        
+                        <br><strong>הגדרה (אינטגרל מ-$-\infty$ עד $\infty$):</strong> $\int_{-\infty}^\infty f(x) dx$ מתכנס אם ורק אם האינטגרלים הלא אמיתיים $\int_{-\infty}^{x_0} f(x) dx$ ו-$\int_{x_0}^\infty f(x) dx$ (מסוג 1) מתכנסים עבור $x_0 \in \mathbb{R}$ כלשהו. במקרה זה, $\int_{-\infty}^\infty f(x) dx = \int_{-\infty}^{x_0} f(x) dx + \int_{x_0}^\infty f(x) dx$. (הגדרה זו אינה תלויה בבחירת $x_0$).
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>סוג 2: פונקציה לא חסומה בקטע סופי:</strong> תהי $f : [a, b) \to \mathbb{R}$ פונקציה אינטגרבילית בכל קטע $[a, b-\delta]$ עבור $0 < \delta < b-a$. נאמר שהאינטגרל הלא אמיתי $\int_a^b f(x) dx$ מתכנס אם הגבול $\lim_{\delta\to 0^+} \int_a^{b-\delta} f(x) dx$ קיים במובן הצר.
+                        
+                        <br><strong>הגדרה:</strong> אם $f$ לא חסומה בשני הקצוות של קטע $(a,b)$, נאמר שהאינטגרל $\int_a^b f(x) dx$ מתכנס אם ורק אם קיימת נקודה $x_0 \in (a, b)$ כך שהאינטגרלים $\int_a^{x_0} f(x) dx$ ו-$\int_{x_0}^b f(x) dx$ (מסוג 2) מתכנסים. (הגדרה זו אינה תלויה בבחירת $x_0$).
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>אינטגרלים משולבים:</strong> במקרים בהם יש מספר נקודות בעייתיות (קצוות לא חסומים וגם נקודות שבהן הפונקציה לא חסומה), מפצלים את האינטגרל לסכום של אינטגרלים עם בעיה אחת בלבד. האינטגרל מתכנס אם ורק אם כל האינטגרלים המפוצלים מתכנסים. דוגמה: $\int_0^\infty \frac{1}{x} dx$ מחולק ל- $\int_0^1 \frac{1}{x} dx + \int_1^\infty \frac{1}{x} dx$, כאשר הראשון מסוג 2 (לא חסום ב-0) והשני מסוג 1 (תחום אינסופי).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחני התכנסות לאינטגרלים לא אמיתיים:</strong>
+                        
+                        <br><strong>מבחן ההשוואה (לפונקציות אי-שליליות):</strong> תהיינה $f, g : [a, \infty) \to \mathbb{R}$ פונקציות כך שלכל $x \geq c$ (עבור $c \in [a, \infty)$ כלשהו) מתקיים $0 \leq f(x) \leq g(x)$.
+                        <ul>
+                            <li><strong>א.</strong> אם $\int_a^\infty g(x) dx$ מתכנס, אזי $\int_a^\infty f(x) dx$ גם מתכנס.</li>
+                            <li><strong>ב.</strong> אם $\int_a^\infty f(x) dx$ מתבדר, אזי $\int_a^\infty g(x) dx$ גם מתבדר.</li>
+                        </ul>
+                        (קיימת גרסה מקבילה לסוג 2).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן ההשוואה הגבולי (לפונקציות אי-שליליות):</strong> תהיינה $f, g : [a, \infty) \to \mathbb{R}$ פונקציות אינטגרביליות בכל $[a, N]$. נניח שקיים $c \in [a, \infty)$ כך שלכל $x \geq c$ מתקיים $0 < f(x)$ ו-$0 < g(x)$. אם הגבול $\lim_{x\to\infty} \frac{f(x)}{g(x)} = L$ קיים במובן הצר ושונה מ-0, אזי האינטגרלים $\int_a^\infty f(x) dx$ ו-$\int_a^\infty g(x) dx$ מתכנסים או מתבדרים יחדיו.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות בהחלט:</strong> נאמר שהאינטגרל הלא אמיתי $\int_a^\infty f(x) dx$ מתכנס בהחלט אם האינטגרל $\int_a^\infty |f(x)| dx$ מתכנס.
+                        
+                        <br><strong>משפט:</strong> אם אינטגרל לא אמיתי מתכנס בהחלט, אזי הוא מתכנס.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קריטריון קושי (לאינטגרלים לא אמיתיים):</strong> האינטגרל $\int_a^\infty f(x) dx$ מתכנס אם ורק אם לכל $\varepsilon > 0$ קיים $N > a$ כך שלכל $d > c > N$ מתקיים $|\int_c^d f(x) dx| < \varepsilon$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן דיריכלה (לאינטגרלים לא אמיתיים):</strong> יהיו $f, g : [a, \infty) \to \mathbb{R}$. נניח ש-$f$ גזירה ויורדת ב-$[a, \infty)$ ו-$\lim_{x\to\infty} f(x) = 0$. נניח של-$g$ יש פונקציה קדומה $G : [a, \infty) \to \mathbb{R}$ חסומה. כמו כן, נניח ש-$f$ ו-$g'$ אינטגרביליות בכל $[a, N]$ עבור $N > a$ כלשהו. אזי האינטגרל $\int_a^\infty f(x)g(x) dx$ מתכנס.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט:</strong> אם אינטגרל מתכנס בהחלט, אז הוא מתכנס.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן דיריכלה לאינטגרלים לא אמיתיים:</strong> אם $f$ מונוטונית ויורדת ל-0 ב- $[a,\infty)$, ו-$g$ בעלת קדומה חסומה ב-$[a,\infty)$, אז $\int_a^\infty f(x)g(x) dx$ מתכנס.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>התכנסות בהחלט של אינטגרלים לא אמיתיים:</strong>
+                        
+                        <p><strong>הגדרה:</strong> האינטגרל $\int_a^\infty f(x) dx$ מתכנס בהחלט אם האינטגרל $\int_a^\infty |f(x)| dx$ מתכנס.</p>
+                        
+                        <p><strong>תכונות:</strong> התכנסות בהחלט גוררת התכנסות. אם $\int_a^\infty f(x) dx$ מתכנס בהחלט, אזי $|\int_a^\infty f(x) dx| \leq \int_a^\infty |f(x)| dx$.</p>
+                        
+                        <p><strong>מבחן השוואה לאינטגרלים:</strong> אם $|f(x)| \leq g(x)$ ו-$\int_a^\infty g(x) dx$ מתכנס, אזי $\int_a^\infty f(x) dx$ מתכנס בהחלט.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחני התכנסות לאינטגרלים לא אמיתיים - הרחבה מקיפה:</strong>
+                        
+                        <div class="definition">
+                            <strong>הגדרה של אינטגרלים לא אמיתיים:</strong>
+                            <p><strong>סוג 1 (Type 1):</strong> אינטגרל על קטע לא חסום (למשל, $[a, \infty)$ או $(-\infty, b]$ או $(-\infty, \infty)$). האינטגרל $\int_a^\infty f(x) dx$ מוגדר כ- $\lim_{N \to \infty} \int_a^N f(x) dx$ אם הגבול קיים במובן הצר.</p>
+                            
+                            <p><strong>סוג 2 (Type 2):</strong> אינטגרל של פונקציה לא חסומה בקטע חסום (למשל, כאשר הפונקציה לא חסומה ב-$a$ או ב-$b$ בקטע $[a,b]$). האינטגרל $\int_a^b f(x) dx$ מוגדר כ- $\lim_{\delta \to 0^+} \int_{a+\delta}^b f(x) dx$ אם הגבול קיים במובן הצר.</p>
+                            
+                            <p><strong>אינטגרלים עם מספר בעיות:</strong> אם יש מספר נקודות בעייתיות (גם קצוות לא חסומים וגם פונקציה לא חסומה), מפצלים את האינטגרל לסכום של אינטגרלים עם בעיה אחת בלבד. האינטגרל מתכנס אם ורק אם כל האינטגרלים המפוצלים מתכנסים.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>מבחני השוואה:</strong>
+                            <p><strong>עבור פונקציות אי-שליליות:</strong> יהיו $f, g: [a, \infty) \to \mathbb{R}$ פונקציות אינטגרביליות על כל קטע $[a,N]$ לכל $N > a$. אם לכל $x$ מספיק גדול $0 \leq f(x) \leq g(x)$, אזי אם $\int_a^\infty g(x) dx$ מתכנס, אז גם $\int_a^\infty f(x) dx$ מתכנס. אם $\int_a^\infty f(x) dx$ מתבדר, אז גם $\int_a^\infty g(x) dx$ מתבדר.</p>
+                            
+                            <p><strong>מבחן השוואה גבולי:</strong> יהיו $f, g: [a, \infty) \to \mathbb{R}$ פונקציות אי-שליליות. אם $\lim_{x \to \infty} \frac{f(x)}{g(x)} = L$ כאשר $0 < L < \infty$, אזי $\int_a^\infty f(x) dx$ מתכנס אם ורק אם $\int_a^\infty g(x) dx$ מתכנס.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>התכנסות בהחלט:</strong>
+                            <p><strong>הגדרה:</strong> אינטגרל לא אמיתי $\int_a^\infty f(x) dx$ נאמר שמתכנס בהחלט אם האינטגרל $\int_a^\infty |f(x)| dx$ מתכנס.</p>
+                            
+                            <p><strong>קשר להתכנסות:</strong> התכנסות בהחלט של אינטגרל לא אמיתי גוררת התכנסות (רגילה) של האינטגרל.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>מבחן דיריכלה לאינטגרלים לא אמיתיים:</strong>
+                            <p><strong>תנאי:</strong> יהיו $f, g: [a, \infty) \to \mathbb{R}$. אם $f$ גזירה ויורדת מונוטונית ב-$[a, \infty)$ ו-$\lim_{x \to \infty} f(x) = 0$, ול-$g$ יש פונקציה קדומה חסומה ב-$[a, \infty)$ (כלומר, $G(x) = \int_a^x g(t) dt$ חסומה), וכן $f'$ ו-$g$ אינטגרביליות בכל קטע $[a,N]$ לכל $N>a$, אזי האינטגרל $\int_a^\infty f(x)g(x)dx$ מתכנס.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="limsup-liminf">
+                    <h3>נושא נוסף: גבול עליון וגבול תחתון של סדרות</h3>
+                    
+                    <div class="definition">
+                        <strong>הגדרה עבור סדרה חסומה:</strong> לכל סדרה חסומה $(a_n)_{n=1}^\infty$:
+                        <p><strong>סדרת הסופרמומים:</strong> נבנה את סדרת הסופרמומים: $u_n = \sup\{a_n, a_{n+1}, a_{n+2}, \ldots\}$.</p>
+                        
+                        <p><strong>סדרת האינפימומים:</strong> נבנה את סדרת האינפימומים: $\ell_n = \inf\{a_n, a_{n+1}, a_{n+2}, \ldots\}$.</p>
+                        
+                        <p><strong>גבול עליון:</strong> הסדרה $(u_n)_{n=1}^\infty$ היא מונוטונית יורדת וחסומה מלעיל ומלרע, ולכן מתכנסת. **הגבול העליון** של $(a_n)_{n=1}^\infty$, המסומן $\limsup_{n \to \infty} a_n$ (או $\overline{\lim} a_n$), מוגדר כ- $\lim_{n \to \infty} u_n$.</p>
+                        
+                        <p><strong>גבול תחתון:</strong> הסדרה $(\ell_n)_{n=1}^\infty$ היא מונוטונית עולה וחסומה מלעיל ומלרע, ולכן מתכנסת. **הגבול התחתון** של $(a_n)_{n=1}^\infty$, המסומן $\liminf_{n \to \infty} a_n$ (או $\underline{\lim} a_n$), מוגדר כ- $\lim_{n \to \infty} \ell_n$.</p>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>הגדרה במובן הרחב:</strong> ההגדרות ניתנות להרחבה גם לסדרות לא חסומות, בהן הגבול העליון יכול להיות $\infty$ והתחתון $-\infty$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תכונות גבול עליון וגבול תחתון:</strong>
+                        
+                        <div class="property">
+                            <strong>גבולות חלקיים:</strong>
+                            <p>הגבול העליון הוא הגבול החלקי הגדול ביותר של הסדרה, והגבול התחתון הוא הגבול החלקי הקטן ביותר של הסדרה.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>קשר להתכנסות:</strong>
+                            <p>סדרה חסומה $(a_n)_{n=1}^\infty$ מתכנסת אם ורק אם גבולה העליון והתחתון שווים, ובמקרה זה $\lim_{n \to \infty} a_n = \limsup_{n \to \infty} a_n = \liminf_{n \to \infty} a_n$.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>אפיון בעזרת סביבות:</strong>
+                            <p>$\limsup_{n \to \infty} a_n = \lambda$ אם ורק אם לכל $\varepsilon > 0$ מתקיים תמיד כמעט $a_n < \lambda + \varepsilon$ וגם מתקיים שכיח באופן $a_n > \lambda - \varepsilon$. אפיון דומה קיים עבור הגבול התחתון.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="infinite-series">
+                    <h3>שבוע 9: טורים אינסופיים</h3>
+                    <div class="definition">
+                        <strong>הגדרה (סדרה של סכומים חלקיים):</strong> תהי $(a_n)_{n=1}^\infty$ סדרה ממשית נתונה. נגדיר סדרה חדשה $(S_k)_{k=1}^\infty$, הנקראת סדרת הסכומים החלקיים של $(a_n)_{n=1}^\infty$, על ידי $S_k = \sum_{n=1}^k a_n = a_1 + \ldots + a_k$.
+                        
+                        <br><strong>טור:</strong> הביטוי $\sum_n a_n$ נקרא טור של הסדרה $(a_n)_{n=1}^\infty$.
+                        
+                        <br><strong>התכנסות טור:</strong> נאמר שהטור $\sum_n a_n$ מתכנס (במובן הצר) אם לסדרת הסכומים החלקיים $(S_k)_{k=1}^\infty$ יש גבול במובן הצר. במקרה זה, מסמנים $\sum_{n=1}^\infty a_n = L$ כאשר $L = \lim_{k\to\infty} S_k$.
+                        
+                        <br><strong>התבדרות טור:</strong> אם הגבול אינו קיים במובן הצר, הטור מתבדר. אם $\lim_{k\to\infty} S_k = \infty$ (או $-\infty$), הטור מתבדר ל-$\infty$ (או $-\infty$).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תנאי הכרחי להתכנסות טור:</strong> אם הטור $\sum_n a_n$ מתכנס, אזי $\lim_{n\to\infty} a_n = 0$.
+                        
+                        <br><em>הערה חשובה: ההיפך אינו נכון! (דוגמה: הטור ההרמוני $\sum_n \frac{1}{n}$ מתבדר, למרות ש-$\lim_{n\to\infty} \frac{1}{n} = 0$).</em>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אריתמטיקה של טורים מתכנסים:</strong>
+                        <ul>
+                            <li>$\sum_n (c a_n) = c \sum_n a_n$ (הומוגניות).</li>
+                            <li>$\sum_n (a_n + b_n) = \sum_n a_n + \sum_n b_n$ (אדיטיביות).</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קריטריון קושי לטורים:</strong> הטור $\sum_n a_n$ מתכנס אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $k > N$ ו-$p \in \mathbb{N}$ מתקיים $|\sum_{n=k+1}^{k+p} a_n| < \varepsilon$.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>טור זנב:</strong> טור הזנב ה-$N$ של $(a_n)_{n=1}^\infty$ הוא הטור $\sum_n a_{n+N}$.
+                        
+                        <br><strong>טענה:</strong> הטור $\sum_n a_n$ מתכנס אם ורק אם טור הזנב ה-$N$ שלו, $\sum_n a_{n+N}$, מתכנס. במקרה זה, $\sum_{n=1}^\infty a_{n+N} = \sum_{n=1}^\infty a_n - \sum_{n=1}^N a_n$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>טורים אי-שליליים:</strong> הטור $\sum_n a_n$ ייקרא אי-שלילי (חיובי) אם ורק אם $a_n \geq 0$ לכל $n \in \mathbb{N}$ ($a_n > 0$ לכל $n \in \mathbb{N}$).
+                        
+                        <br><strong>טענה:</strong> אם $\sum_n a_n$ טור אי-שלילי, אזי סדרת הסכומים החלקיים $(S_k)_{k=1}^\infty$ היא סדרה מונוטונית עולה.
+                        
+                        <br><strong>מסקנה:</strong> טור אי-שלילי מתכנס אם ורק אם סדרת הסכומים החלקיים שלו חסומה מלעיל.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחני השוואה (לטורים אי-שליליים):</strong>
+                        
+                        <br><strong>מבחן ההשוואה (מנה):</strong> יהיו $\sum_n a_n$ ו-$\sum_n b_n$ טורים אי-שליליים. אם $a_n \leq v b_n$ לכל $n$ כמעט תמיד עבור $v > 0$, אזי אם $\sum_n b_n$ מתכנס, אז $\sum_n a_n$ גם מתכנס.
+                        
+                        <br><strong>מבחן ההשוואה הגבולי:</strong> יהיו $\sum_n a_n$ ו-$\sum_n b_n$ טורים אי-שליליים (עם $a_n, b_n \neq 0$ כמעט תמיד). אם $\lim_{n\to\infty} \frac{a_n}{b_n} = L$ כך ש-$0 < L \in \mathbb{R}$, אזי $\sum_n a_n$ מתכנס אם ורק אם $\sum_n b_n$ מתכנס.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן המנה (ד'אלמבר):</strong> יהי $\sum_n a_n$ טור אי-שלילי (עם $a_n \neq 0$ כמעט תמיד).
+                        <ul>
+                            <li><strong>א.</strong> אם $\frac{a_{n+1}}{a_n} \leq q$ כמעט תמיד עבור קבוע $0 < q < 1$, אזי $\sum_n a_n$ מתכנס.</li>
+                            <li><strong>ב.</strong> אם $\frac{a_{n+1}}{a_n} \geq q$ כמעט תמיד עבור קבוע $q \geq 1$, אזי $\sum_n a_n$ מתבדר.</li>
+                        </ul>
+                        
+                        <br><strong>מבחן המנה הגבולי:</strong> יהי $\sum_n a_n$ טור אי-שלילי (עם $a_n \neq 0$ כמעט תמיד). אם $\lim_{n\to\infty} \frac{a_{n+1}}{a_n} = L$ (במובן הרחב).
+                        <ul>
+                            <li><strong>א.</strong> אם $0 \leq L < 1$, אזי $\sum_n a_n$ מתכנס.</li>
+                            <li><strong>ב.</strong> אם $1 < L \leq \infty$, אזי $\sum_n a_n$ מתבדר.</li>
+                            <li><strong>ג.</strong> אם $L = 1$, לא ניתן להסיק מסקנה על התכנסות/התבדרות הטור.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן השורש (קושי):</strong> יהי $\sum_n a_n$ טור אי-שלילי.
+                        <ul>
+                            <li><strong>א.</strong> אם $\sqrt[n]{a_n} \leq q$ כמעט תמיד עבור קבוע $0 < q < 1$, אזי $\sum_n a_n$ מתכנס.</li>
+                            <li><strong>ב.</strong> אם $\sqrt[n]{a_n} \geq 1$ כמעט תמיד, אזי $\sum_n a_n$ מתבדר.</li>
+                        </ul>
+                        
+                        <br><strong>מבחן השורש הגבולי:</strong> יהי $\sum_n a_n$ טור אי-שלילי. אם $\limsup_{n\to\infty} \sqrt[n]{a_n} = L$ (במובן הרחב).
+                        <ul>
+                            <li><strong>א.</strong> אם $0 \leq L < 1$, אזי $\sum_n a_n$ מתכנס.</li>
+                            <li><strong>ב.</strong> אם $1 < L \leq \infty$, אזי $\sum_n a_n$ מתבדר.</li>
+                            <li><strong>ג.</strong> אם $L = 1$, לא ניתן להסיק מסקנה.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן האינטגרל (לטורים חיוביים):</strong> תהי $f : [1, \infty) \to \mathbb{R}$ פונקציה חיובית ומונוטונית יורדת. אזי האינטגרל $\int_1^\infty f(x) dx$ מתכנס אם ורק אם הטור $\sum_n f(n)$ מתכנס. במקרה זה, $\sum_{n=2}^\infty f(n) \leq \int_1^\infty f(x) dx \leq \sum_{n=1}^\infty f(n)$.
+                        
+                        <br><strong>מסקנה ($p$-טור):</strong> הטור $\sum_n \frac{1}{n^p}$ מתכנס אם ורק אם $p > 1$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות בהחלט והתכנסות בתנאי:</strong>
+                        <ul>
+                            <li><strong>הגדרה:</strong> נאמר שהטור $\sum_n a_n$ מתכנס בהחלט אם הטור $\sum_n |a_n|$ מתכנס.</li>
+                            <li><strong>הגדרה:</strong> נאמר שהטור $\sum_n a_n$ מתכנס בתנאי אם הטור $\sum_n a_n$ מתכנס, אבל הטור $\sum_n |a_n|$ אינו מתכנס.</li>
+                            <li><strong>משפט:</strong> אם טור מתכנס בהחלט, אזי הוא מתכנס.</li>
+                        </ul>
+                        
+                        <br><strong>פירוק להפרש של טורים אי-שליליים:</strong> הטור $\sum_n a_n$ מתכנס בהחלט אם ורק אם הטורים האי-שליליים $\sum_n a_n^+$ ו-$\sum_n a_n^-$ מתכנסים. במקרה זה, $\sum_n a_n = \sum_n a_n^+ - \sum_n a_n^-$.
+                        
+                        <br><strong>טענה:</strong> אם הטור $\sum_n a_n$ מתכנס בתנאי, אזי $\sum_n a_n^+ = \infty$ ו-$\sum_n a_n^- = \infty$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>טור לייבניץ:</strong> אם $(a_n)_{n=1}^\infty$ סדרה יורדת, אי-שלילית ואפסה, אזי הטור $\sum_n (-1)^{n+1} a_n = a_1 - a_2 + a_3 - a_4 + \ldots$ נקרא טור לייבניץ.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט לייבניץ (לטורים מתחלפים):</strong> יהי $\sum_n (-1)^{n+1} a_n$ טור לייבניץ.
+                        <ul>
+                            <li><strong>א.</strong> הטור $\sum_n (-1)^{n+1} a_n$ מתכנס.</li>
+                            <li><strong>ב.</strong> נסמן $L = \sum_n (-1)^{n+1} a_n \in \mathbb{R}$. אזי $0 \leq a_1 - a_2 \leq L \leq a_1$.</li>
+                            <li><strong>ג.</strong> יהי $r_N = \sum_{n=N+1}^\infty (-1)^{n+1} a_n$ סכום טור הזנב ה-$N$ של $\sum_n (-1)^{n+1} a_n$. אזי $|r_N| \leq a_{N+1}$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שינוי סדר איברים (Re-arrangement):</strong>
+                        
+                        <br><strong>הגדרה:</strong> טור $\sum_k b_k$ מתקבל מטור $\sum_n a_n$ על ידי הכנסת סוגריים כאשר קיימת סדרה $(n_k)_{k=0}^\infty$ מונוטונית ממש עולה של מספרים טבעיים כך שלכל $k \in \mathbb{N}$ מתקיים $b_k = a_{n_{k-1}+1} + \ldots + a_{n_k}$.
+                        
+                        <br><strong>טענה:</strong> אם $\sum_n a_n$ מתכנס ל-$S$, ו-$\sum_k b_k$ מתקבל מ-$\sum_n a_n$ על ידי הכנסת סוגריים, אזי $\sum_k b_k$ מתכנס ל-$S$.
+                        
+                        <br><strong>משפט (לטורים אי-שליליים):</strong> אם $\sum_n a_n$ טור אי-שלילי מתכנס, ו-$\sum_n b_n$ הוא שינוי סדר של $\sum_n a_n$, אזי $\sum_n b_n$ מתכנס אף הוא ולאותו סכום.
+                        
+                        <br><strong>משפט (התכנסות בהחלט):</strong> אם הטור $\sum_n a_n$ מתכנס בהחלט, אזי כל שינוי סדר שלו מתכנס (ולמעשה מתכנס בהחלט) לאותו סכום.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט רימן (Riemann Re-arrangement Theorem):</strong> יהי $\sum_n a_n$ טור המתכנס בתנאי. אזי:
+                        <ul>
+                            <li><strong>א.</strong> לכל $\lambda \in \mathbb{R}$ קיים שינוי סדר של הטור $\sum_n a_n$ המתכנס ל-$\lambda$.</li>
+                            <li><strong>ב.</strong> קיים שינוי סדר של הטור $\sum_n a_n$ המתבדר ל-$\infty$ (וכן ל-$-\infty$).</li>
+                            <li><strong>ג.</strong> קיים שינוי סדר של הטור $\sum_n a_n$ המתבדר במובן הרחב (לא ל-$\infty$ ולא ל-$-\infty$).</li>
+                        </ul>
+                        
+                        <br><em>הערה: משפט זה מדגיש את החשיבות של התכנסות בהחלט. עבור טורים מתכנסים בתנאי, סכום הטור תלוי בסדר האיברים!</em>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחני התכנסות לטורים אינסופיים - הרחבה מקיפה:</strong>
+                        
+                        <div class="property">
+                            <strong>קריטריון קושי להתכנסות טורים:</strong>
+                            <p>טור $\sum a_n$ מתכנס אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $k > N$ ולכל $p \in \mathbb{N}$ מתקיים $\left| \sum_{n=k+1}^{k+p} a_n \right| < \varepsilon$. זהו ביטוי לכך שסדרת הסכומים החלקיים היא סדרת קושי.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>מבחן המנה המורחב:</strong>
+                            <p>יהי $\sum a_n$ טור אי-שלילי כך שלכל $n$ מספיק גדול $a_n \neq 0$. אם קיים קבוע $0 < q < 1$ כך שלכל $n$ מספיק גדול מתקיים $\frac{a_{n+1}}{a_n} \leq q$, אזי הטור מתכנס. אם קיים קבוע $q \geq 1$ כך שלכל $n$ מספיק גדול מתקיים $\frac{a_{n+1}}{a_n} \geq q$, אזי הטור מתבדר.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>מבחן השורש המורחב:</strong>
+                            <p>יהי $\sum a_n$ טור אי-שלילי. אם קיים קבוע $0 < q < 1$ כך שלכל $n$ מספיק גדול מתקיים $\sqrt[n]{a_n} \leq q$, אזי הטור מתכנס. אם לכל $n$ מספיק גדול מתקיים $\sqrt[n]{a_n} \geq 1$, אזי הטור מתבדר.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>מבחני דיריכלה ואבל לטורים:</strong>
+                            <p><strong>מבחן דיריכלה לטורים:</strong> אם $\sum b_n$ הוא טור חסום (כלומר, סדרת הסכומים החלקיים שלו חסומה) ו-$(a_n)_{n=1}^\infty$ היא סדרה מונוטונית השואפת לאפס, אזי הטור $\sum a_n b_n$ מתכנס. מבחן זה מכליל את משפט לייבניץ לטורים מתחלפים.</p>
+                            <p><strong>מבחן אבל לטורים:</strong> אם $\sum b_n$ הוא טור מתכנס ו-$(a_n)_{n=1}^\infty$ היא סדרה מונוטונית וחסומה, אזי הטור $\sum a_n b_n$ מתכנס.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>קריטריון קושי והרחבות נוספות:</strong>
+                            <p><strong>קריטריון קושי להתכנסות טורים:</strong> טור $\sum a_n$ מתכנס אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n > m \geq N$ מתקיים $|\sum_{k=m+1}^n a_k| < \varepsilon$.</p>
+                            <p><strong>הוספת והסרת סוגריים בטורים:</strong> אם טור $\sum a_n$ מתכנס, אזי ניתן להוסיף סוגריים (לקבץ איברים) והטור החדש יתכנס לאותו סכום. אם טור $\sum a_n$ מתכנס בהחלט, אזי גם ניתן להסיר סוגריים והטור החדש יתכנס לאותו סכום.</p>
+                            <p><strong>פתיחת סוגריים:</strong> הסרת סוגריים (פתיחה) יכולה לשנות את התכנסות הטור. אם פותחים סוגריים בטור, הטור החדש לא בהכרח מתכנס, או יכול להתכנס לסכום אחר. במקרים מסוימים, כמו טור עם איברים שווי סימן בתוך הסוגריים ואורך סוגריים חסום, והאיבר הכללי שואף ל-0, פתיחת סוגריים שומרת על ההתכנסות ועל הסכום.</p>
+                            <p><strong>משפטי ירושה:</strong> אם טור $\sum a_n$ מתכנס, אז כל תת-סדרה של האיברים יוצרת טור מתכנס לערך בגבול.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>ארגון מחדש וסדר סכימה בטורים - הרחבה מקיפה:</strong>
+                        
+                        <div class="property">
+                            <strong>הכנסת והוצאת סוגריים בטורים:</strong>
+                            <p><strong>הגדרה:</strong> טור $\sum b_k$ מתקבל מטור $\sum a_n$ על ידי הכנסת סוגריים, אם קיימת סדרה מונוטונית ממש עולה של מספרים טבעיים $(n_k)_{k=0}^\infty$ עם $n_0=0$, כך שלכל $k \in \mathbb{N}$, $b_k = a_{n_{k-1}+1} + a_{n_{k-1}+2} + \ldots + a_{n_k}$.</p>
+                            
+                            <p><strong>משפטי ירושה:</strong> אם $\sum a_n$ מתכנס ל-$S$, אז כל טור המתקבל ממנו על ידי הכנסת סוגריים גם מתכנס ל-$S$. אם $\sum a_n$ מתבדר ל-$\pm \infty$, אז כל טור המתקבל ממנו על ידי הכנסת סוגריים גם מתבדר ל-$\pm \infty$.</p>
+                            
+                            <p><strong>תנאים לשימור התכנסות:</strong> עבור טורים אי-שליליים, אם $\sum a_n$ הוא טור אי-שלילי, ו-$\sum b_k$ מתקבל ממנו על ידי הכנסת סוגריים והוא מתכנס, אזי גם $\sum a_n$ מתכנס ולאותו סכום.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>שינוי סדר סכימה ומשפט רימן:</strong>
+                            <p><strong>טורים אי-שליליים:</strong> אם $\sum a_n$ הוא טור אי-שלילי מתכנס, ו-$\sum b_n$ הוא שינוי סדר שלו, אז $\sum b_n$ גם מתכנס ולאותו סכום.</p>
+                            
+                            <p><strong>טורים מתכנסים בהחלט:</strong> אם $\sum a_n$ מתכנס בהחלט, אזי כל שינוי סדר שלו מתכנס (ולמעשה בהחלט) ולאותו סכום.</p>
+                            
+                            <p><strong>משפט רימן:</strong> אם $\sum a_n$ הוא טור מתכנס בתנאי, אזי לכל $\lambda \in \mathbb{R}$ קיים שינוי סדר של הטור שמתכנס ל-$\lambda$. כמו כן, קיימים שינויי סדר של הטור המתבדרים ל-$\infty$ או ל-$-\infty$. משמעות הדבר היא שעבור טורים המתכנסים בתנאי, ניתן לשנות את סדר הסכימה ולקבל כל סכום ממשי רצוי.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="non-positive-series">
+                    <h3>שבוע 10: טורים שאינם אי-שליליים</h3>
+                    <div class="definition">
+                        <strong>טורים עם איברים חיוביים ושליליים:</strong> עד כה עסקנו בעיקר בטורים אי-שליליים. כעת נלמד על טורים שעשויים להכיל איברים שליליים וחיוביים.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>טור לייבניץ:</strong> טור מתחלף $\sum_{n=1}^{\infty} (-1)^{n+1}a_n$, כאשר $(a_n)$ סדרה אי-שלילית, יורדת ואפסה.
+                        <br><strong>משפט לייבניץ (להתכנסות טורים מתחלפים):</strong> אם $\sum_{n=1}^{\infty} (-1)^{n+1}a_n$ הוא טור לייבניץ, אז הוא מתכנס.
+                        <br><strong>הערכת סכום הטור ושארית לייבניץ:</strong> $|r_N| \leq a_{N+1}$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות בהחלט והתכנסות בתנאי:</strong>
+                        <ul>
+                            <li><strong>הגדרה:</strong> טור $\sum a_n$ מתכנס בהחלט אם טור הערכים המוחלטים $\sum |a_n|$ מתכנס.</li>
+                            <li><strong>טור $\sum a_n$ מתכנס בתנאי</strong> אם הוא מתכנס אך אינו מתכנס בהחלט.</li>
+                            <li><strong>משפט (התכנסות בהחלט גוררת התכנסות):</strong> אם טור מתכנס בהחלט, אז הוא מתכנס.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>פירוק לחיובים ושליליים:</strong> $a_n = a_n^+ - a_n^-$ כאשר:
+                        <ul>
+                            <li>$a_n^+ = \max\{a_n, 0\}$ (החלק החיובי)</li>
+                            <li>$a_n^- = \max\{-a_n, 0\}$ (החלק השלילי)</li>
+                        </ul>
+                        <strong>טענה:</strong> טור מתכנס בהחלט אם ורק אם סכומי החיוביים והשליליים מתכנסים שניהם.
+                        <br><strong>טענה:</strong> אם טור מתכנס בתנאי, אז $\sum a_n^+ = \infty$ ו-$\sum a_n^- = \infty$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שינוי סדר איברים (דוגמת הטור ההרמוני המתחלף):</strong>
+                        <br><strong>הכנסת סוגריים לטור:</strong> יצירת טור חדש $\sum b_k$ מ-$\sum a_n$.
+                        <br><strong>טענה:</strong> סדרת הסכומים החלקיים של הטור החדש היא תת-סדרה של סדרת הסכומים החלקיים של הטור המקורי.
+                        <br><strong>משפטי ירושה (להכנסת סוגריים):</strong> אם $\sum a_n$ מתכנס/מתבדר, אז הטור המתקבל מהכנסת סוגריים גם הוא מתכנס/מתבדר לאותו גבול. (הכיוון ההפוך לא נכון בטורים כלליים, אלא אם יש תנאים נוספים, כמו "חסום באורך" של הסוגריים).
+                        <br><strong>משפט רימן (לטור מתכנס בתנאי):</strong> ניתן לסדר מחדש טור מתכנס בתנאי כך שיתכנס לכל ערך ממשי $\lambda$, או יתבדר ל-$\infty$ או ל-$-\infty$.
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות חשובות:</strong>
+                        <ul>
+                            <li><strong>הטור ההרמוני המתחלף:</strong> $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \ldots$ מתכנס בתנאי ל-$\ln(2)$.</li>
+                            <li><strong>$\sum_{n=1}^{\infty} \frac{\sin(n)}{n^2}$</strong> מתכנס בהחלט (מבחן ההשוואה עם $\sum \frac{1}{n^2}$).</li>
+                            <li><strong>$\sum_{n=1}^{\infty} \frac{(-1)^n}{n^p}$</strong> מתכנס בהחלט עבור $p > 1$, מתכנס בתנאי עבור $0 < p \leq 1$, מתבדר עבור $p \leq 0$.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחני התכנסות לטורים כלליים:</strong>
+                        <ul>
+                            <li><strong>מבחן דיריכלה:</strong> אם $(a_n)$ מונוטונית ואפסה, ו-$\sum b_n$ חסום, אז $\sum a_n b_n$ מתכנס.</li>
+                            <li><strong>מבחן אבל:</strong> אם $(a_n)$ מונוטונית וחסומה, ו-$\sum b_n$ מתכנס, אז $\sum a_n b_n$ מתכנס.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="function-sequences">
+                    <h3>שבוע 11: התכנסות במ"ש של סדרות פונקציות</h3>
+                    <div class="definition">
+                        <strong>הגדרה (סדרת פונקציות):</strong> יהי $D \subseteq \mathbb{R}$. אם לכל $n \in \mathbb{N}$ נתונה פונקציה $f_n : D \to \mathbb{R}$, אזי $(f_n)_{n=1}^\infty$ נקראת סדרת פונקציות (ממשיות) ב-$D$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות נקודתית:</strong> נאמר שסדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת נקודתית לפונקציה $f : D \to \mathbb{R}$ בתחום $A \subseteq D$ (נסמן $f_n \xrightarrow{n\to\infty} f$ על $A$) אם לכל $x_0 \in A$ סדרת המספרים $(f_n(x_0))_{n=1}^\infty$ מתכנסת ל-$f(x_0)$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>טור פונקציות:</strong> תהי $(f_n)_{n=1}^\infty$ סדרת פונקציות ב-$D \subseteq \mathbb{R}$. נגדיר לכל $n \in \mathbb{N}$ את הפונקציה $s_n = \sum_{k=1}^n f_k$. סדרת הפונקציות $(s_n)_{n=1}^\infty$ נקראת סדרת הסכומים החלקיים של $(f_n)_{n=1}^\infty$.
+                        
+                        <br>נאמר שטור הפונקציות $\sum_n f_n$ מתכנס נקודתית לפונקציה $g$ ב-$A \subseteq D$ אם סדרת הסכומים החלקיים $(s_n)_{n=1}^\infty$ מתכנסת נקודתית ל-$g$ ב-$A$. הדבר שקול לכך שלכל $x_0 \in A$ טור המספרים $\sum_n f_n(x_0)$ מתכנס ל-$g(x_0)$.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות בהחלט (לטורי פונקציות):</strong> נאמר שטור הפונקציות $\sum_n f_n$ מתכנס בהחלט ב-$A \subseteq D$ אם סדרת הסכומים החלקיים של הסדרה $(|f_n|)_{n=1}^\infty$ מתכנסת נקודתית ב-$A$. הדבר שקול לכך שלכל $x_0 \in A$ טור המספרים $\sum_n |f_n(x_0)|$ מתכנס בהחלט.
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>התכנסות במובן שווה (Uniform Convergence):</strong> נאמר שסדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה (במ"ש) לפונקציה $f$ בתחום $D$ (מסמנים $f_n \xrightarrow{n\to\infty} f$ במ"ש ב-$D$) אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $x \in D$ מתקיים $|f_n(x) - f(x)| < \varepsilon$.
+                        
+                        <br><em>הערה: התכנסות במ"ש ב-$D$ גוררת התכנסות נקודתית ב-$D$. ההיפך אינו נכון.</em>
+                        
+                        <br><strong>הבדל מהותי:</strong> בהתכנסות נקודתית, עבור כל $x$ קיים $N$ שתלוי ב-$x$ (כלומר, $N(x)$). בהתכנסות במ"ש, ה-$N$ אינו תלוי ב-$x$ - קיים $N$ אחיד לכל $x$ בתחום. משמעות גיאומטרית: בהתכנסות במ"ש, עבור כל $\varepsilon > 0$, קיימת נקודה מסוימת בסדרה שממנה והלאה כל הפונקציות נמצאות ב"שרוול" ברוחב $2\varepsilon$ סביב פונקציית הגבול.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קריטריון קושי להתכנסות במ"ש:</strong> סדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת במ"ש ב-$A \subseteq D$ אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n, m > N$ ולכל $x \in A$ מתקיים $|f_n(x) - f_m(x)| < \varepsilon$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תנאי קושי להתכנסות במובן שווה:</strong>
+                        <p><strong>הגדרה מדויקת:</strong> סדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה (במ"ש) בקבוצה $A$ אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n, m > N$ ולכל $x \in A$ מתקיים $|f_n(x) - f_m(x)| < \varepsilon$.</p>
+                        
+                        <p><strong>שימור המשכיות:</strong> אם סדרת פונקציות רציפות מתכנסת במ"ש, אזי פונקציית הגבול רציפה.</p>
+                        
+                        <p><strong>שימור אינטגרביליות:</strong> אם סדרת פונקציות אינטגרביליות מתכנסת במ"ש, אזי ניתן להחליף סדר האינטגרציה והגבול.</p>
+                        
+                        <p><strong>שימור גזירות:</strong> תחת תנאים מסוימים, אם סדרת פונקציות גזירות מתכנסת במ"ש וגם סדרת הנגזרות מתכנסת במ"ש, אזי ניתן להחליף סדר הגזירה והגבול.</p>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן M של ויירשטראס (Weierstrass M-test):</strong> יהי $\sum_n f_n$ טור פונקציות. נניח שקיימת סדרה $(M_n)_{n=1}^\infty$ של מספרים חיוביים כך שלכל $n \in \mathbb{N}$ ולכל $x \in A$ מתקיים $|f_n(x)| \leq M_n$. אם הטור $\sum_n M_n$ מתכנס, אזי טור הפונקציות $\sum_n f_n$ מתכנס בהחלט במ"ש ב-$A$.
+                        
+                        <br><strong>מסקנה:</strong> אם $\sum_n f_n$ מתכנס בהחלט במ"ש, אזי הוא מתכנס במ"ש.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שימור תכונות בהתכנסות במ"ש:</strong>
+                        
+                        <br><strong>משפט (שימור רציפות):</strong> אם סדרת פונקציות רציפות $(f_n)_{n=1}^\infty$ מתכנסת במ"ש לפונקציה $f$ בקטע $I$, אזי $f$ רציפה ב-$I$.
+                        
+                        <br><strong>מסקנה (לטורי פונקציות):</strong> אם $\sum_n f_n$ מתכנס במ"ש לפונקציה $g$ בקטע $I$, ולכל $n \in \mathbb{N}$ הפונקציה $f_n$ רציפה ב-$I$, אזי $g$ רציפה ב-$I$.
+                        
+                        <br><strong>טענה (שימור חסימות):</strong> אם סדרת פונקציות חסומות $(f_n)_{n=1}^\infty$ מתכנסת במ"ש לפונקציה $f$ בתת-קבוצה $A$ של $D$, אזי $f$ חסומה ב-$A$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט (שימור אינטגרביליות):</strong> אם סדרת פונקציות אינטגרביליות $(f_n)_{n=1}^\infty$ מתכנסת במ"ש לפונקציה $f$ בקטע $[a, b]$, אזי $f$ אינטגרבילית ב-$[a, b]$.
+                        
+                        <br>בנוסף: $\lim_{n\to\infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx$. (כלומר, ניתן להחליף את סדר פעולות הגבול והאינטגרציה).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט (גזירה של פונקציה גבולית - המקרה הכללי):</strong> תהי $(f_n)_{n=1}^\infty$ סדרה של פונקציות גזירות ב-$[a, b]$. נתון שקיימת פונקציה $g : [a, b] \to \mathbb{R}$ כך ש-$f'_n \xrightarrow{n\to\infty} g$ במ"ש ב-$[a, b]$, ושקיים $u \in [a, b]$ כך ש-$f_n(u) \xrightarrow{n\to\infty} L \in \mathbb{R}$. אזי קיימת פונקציה $f : [a, b] \to \mathbb{R}$ המקיימת:
+                        <ul>
+                            <li><strong>(i)</strong> $f_n \xrightarrow{n\to\infty} f$ במ"ש ב-$[a, b]$ (ובפרט $f(u) = L$).</li>
+                            <li><strong>(ii)</strong> $f$ גזירה ב-$[a, b]$.</li>
+                            <li><strong>(iii)</strong> $f' = g$.</li>
+                        </ul>
+                        
+                        <br><strong>מסקנה (גזירה איבר-איבר של טורי פונקציות):</strong> אם $\sum_k f_k$ טור פונקציות גזירות ב-$[a,b]$ שטור הנגזרות $\sum_k f'_k$ מתכנס במ"ש לפונקציה $g$ ב-$[a,b]$, וקיים $u \in [a,b]$ כך ש-$\sum_k f_k(u)$ מתכנס, אזי טור הפונקציות $\sum_k f_k$ מתכנס לפונקציה $f$ ב-$[a,b]$, $f$ גזירה ב-$[a,b]$ ו-$f' = g$. (כלומר ניתן לגזור איבר-איבר).
+                    </div>
+                </div>
+
+                <div class="topic" id="series-advanced">
+                    <h3>שבוע 14: טורים שאינם אי-שליליים - המשך</h3>
+                    <div class="definition">
+                        <strong>דוגמאות נוספות לטורים שאינם אי-שליליים:</strong>
+                        <ul>
+                            <li><strong>התכנסות בהחלט:</strong> $\sum \frac{\sin(n)}{n^2}$ מתכנס בהחלט</li>
+                            <li><strong>טור לייבניץ:</strong> $\sum \frac{(-1)^{n+1}}{(n+1)\sqrt{n+1}\ln(n+1)}$ מתכנס</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>הערכת קירוב סכום טור לייבניץ:</strong> שימוש ב-$|r_N| \leq a_{N+1}$ לחישוב דיוק הקירוב.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שינוי סדר איברים - המשך:</strong>
+                        <ul>
+                            <li><strong>משפט רימן (לטור מתכנס בתנאי):</strong> ניתן לסדר מחדש טור מתכנס בתנאי כך שיתכנס לכל מספר ממשי, או יתבדר. דוגמה עם הטור ההרמוני המתחלף.</li>
+                            <li><strong>דוגמאות מעשיות לשינוי סדר איברים</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="definition">
+                        <strong>סדרות וטורי פונקציות - מבוא:</strong>
+                        <ul>
+                            <li><strong>הגדרה:</strong> סדרת פונקציות $(f_n)_{n=1}^{\infty}$ על תחום $D$</li>
+                            <li><strong>התכנסות נקודתית:</strong> $f_n$ מתכנסת נקודתית ל-$f$ אם לכל $x_0 \in D$, סדרת המספרים $(f_n(x_0))$ מתכנסת ל-$f(x_0)$</li>
+                            <li><strong>טור פונקציות:</strong> טור $\sum f_n$ הוא טור פונקציות אם סדרת סכומיו החלקיים $(s_n)$ מתכנסת נקודתית לפונקציה $g$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות לטורי פונקציות:</strong>
+                        <ul>
+                            <li>$\sum_{n=0}^{\infty} x^n$ - טור הנדסי (מתכנס עבור $|x| < 1$)</li>
+                            <li>$\sum_{n=1}^{\infty} \frac{\sin(nx)}{n}$ - טור פורייה חלקי</li>
+                            <li>$\sum_{n=1}^{\infty} \frac{x^n}{n!}$ - קשור לפונקציה האקספוננציאלית</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>התכנסות במ"ש לעומת התכנסות בהחלט:</strong>
+                        <ul>
+                            <li><strong>דוגמה:</strong> טור $\sum \frac{(-1)^{n-1}x}{(1+x)^n}$ מתכנס במ"ש על $[0,\infty)$</li>
+                            <li><strong>הבחנה:</strong> אך מתכנס בהחלט לפונקציה לא רציפה במקרים מסוימים</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="power-series">
+                    <h3>שבוע 15: טורי חזקות (Power Series)</h3>
+                    <div class="definition">
+                        <strong>הגדרה:</strong> תהי $(a_k)_{k=0}^\infty$ סדרה ממשית ו-$x_0 \in \mathbb{R}$. לכל $k \in \mathbb{N} \cup \{0\}$ נגדיר את הפונקציה $f_k : \mathbb{R} \to \mathbb{R}$ על ידי $f_k(x) = a_k(x-x_0)^k$. טור הפונקציות $\sum_{k=0}^\infty f_k(x) = \sum_{k=0}^\infty a_k(x-x_0)^k$ נקרא טור חזקות ב-$x$ סביב $x_0$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>רדיוס התכנסות ($R$):</strong> לכל טור חזקות $\sum_{k=0}^\infty a_k(x-x_0)^k$ קיים $R \in [0, \infty]$ (יחיד) כך ש:
+                        <ul>
+                            <li><strong>א.</strong> הטור מתכנס בהחלט לכל $x$ המקיים $|x-x_0| < R$.</li>
+                            <li><strong>ב.</strong> הטור מתבדר לכל $x$ המקיים $|x-x_0| > R$.</li>
+                        </ul>
+                        $R$ נקרא רדיוס ההתכנסות של טור החזקות.
+                        
+                        <br><strong>נוסחת קושי-הדאמר (Cauchy-Hadamard formula):</strong> $R = \frac{1}{\limsup_{k\to\infty} \sqrt[k]{|a_k|}}$ (כאשר $\frac{1}{0} = \infty$ ו-$\frac{1}{\infty} = 0$).
+                        
+                        <br><em>הערה: בקצוות הקטע $x = x_0 \pm R$ (אם $R \in (0, \infty)$) הטור יכול להתכנס או להתבדר, וזה דורש בדיקה נפרדת.</em>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>התכנסות במ"ש של טורי חזקות:</strong>
+                        <br><strong>משפט:</strong> טור חזקות מתכנס במ"ש על כל קטע סגור $[x_0 - r, x_0 + r]$ המוכל בקטע ההתכנסות הפתוח $(x_0 - R, x_0 + R)$, כלומר עבור $0 < r < R$.
+                        
+                        <br><em>הערה: הטור לא חייב להתכנס במ"ש על כל קטע ההתכנסות הפתוח $(x_0 - R, x_0 + R)$.</em>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תכונות סכום טור חזקות:</strong>
+                        
+                        <br><strong>רציפות:</strong> סכום של טור חזקות הוא פונקציה רציפה בתוך קטע ההתכנסות הפתוח $(x_0 - R, x_0 + R)$.
+                        
+                        <br><em>הערה: אם הטור מתכנס בקצה של קטע ההתכנסות, סכום הטור רציף גם בנקודה זו (משפט אבל).</em>
+                        
+                        <br><strong>אינטגרביליות איבר-איבר:</strong> אם $f(x) = \sum_{n=0}^\infty a_n(x-x_0)^n$ הוא סכום טור חזקות, אזי ניתן לבצע אינטגרציה איבר-איבר בתוך קטע ההתכנסות הפתוח.
+                        $$\int_{x_0}^x f(t) dt = \sum_{n=0}^\infty \frac{a_n}{n+1} (x-x_0)^{n+1}$$
+                        לטור המתקבל יש אותו רדיוס התכנסות $R$.
+                        
+                        <br><strong>גזירה איבר-איבר:</strong> אם $f(x) = \sum_{n=0}^\infty a_n(x-x_0)^n$ הוא סכום טור חזקות, אזי ניתן לגזור איבר-איבר בתוך קטע ההתכנסות הפתוח.
+                        $$f'(x) = \sum_{n=1}^\infty n a_n(x-x_0)^{n-1} = \sum_{n=0}^\infty (n+1) a_{n+1}(x-x_0)^n$$
+                        לטור הנגזרות יש אותו רדיוס התכנסות $R$.
+                        
+                        <br><strong>מסקנה:</strong> סכום של טור חזקות הוא פונקציה גזירה אינסוף פעמים בתוך קטע ההתכנסות הפתוח.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תכונות התכנסות במובן שווה של סדרות וטורי פונקציות - הרחבה מקיפה:</strong>
+                        
+                        <div class="definition">
+                            <strong>הגדרה של התכנסות נקודתית ובמובן שווה:</strong>
+                            <p><strong>סדרת פונקציות:</strong> נתונה סדרת פונקציות $(f_n)_{n=1}^\infty$ המוגדרות על תחום $D \subseteq \mathbb{R}$.</p>
+                            
+                            <p><strong>התכנסות נקודתית:</strong> נאמר שסדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת נקודתית לפונקציה $f$ בתת-קבוצה $A \subseteq D$ אם לכל $x \in A$ קיים הגבול $\lim_{n \to \infty} f_n(x)$, ו-$f(x) = \lim_{n \to \infty} f_n(x)$. בביטוי כמותי: לכל $x \in A$ ולכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ (שתלוי ב-$x$ וב-$\varepsilon$) כך שלכל $n > N$ מתקיים $|f_n(x) - f(x)| < \varepsilon$.</p>
+                            
+                            <p><strong>התכנסות במובן שווה:</strong> נאמר ש-$f$ היא הגבול במובן שווה של סדרת פונקציות $(f_n)_{n=1}^\infty$ ב-$A \subseteq D$ אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ (שאינו תלוי ב-$x$) כך שלכל $x \in A$ ולכל $n > N$ מתקיים $|f_n(x) - f(x)| < \varepsilon$. הגדרה שקולה היא ש-$\lim_{n \to \infty} \sup_{x \in A} |f_n(x) - f(x)| = 0$. התכנסות במובן שווה גוררת התכנסות נקודתית.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>קריטריון קושי להתכנסות במובן שווה:</strong>
+                            <p><strong>סדרות פונקציות:</strong> סדרת פונקציות $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה ב-$A \subseteq D$ אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n,m > N$ ולכל $x \in A$ מתקיים $|f_n(x) - f_m(x)| < \varepsilon$.</p>
+                            
+                            <p><strong>טורי פונקציות:</strong> טור פונקציות $\sum f_n$ מתכנס במובן שווה ב-$A \subseteq D$ אם ורק אם לכל $\varepsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $p \in \mathbb{N}$ ולכל $x \in A$ מתקיים $\left| \sum_{k=n+1}^{n+p} f_k(x) \right| < \varepsilon$.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>שימור רציפות, אינטגרביליות וגזירות:</strong>
+                            <p><strong>שימור רציפות:</strong> אם סדרת פונקציות רציפות $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה לפונקציה $f$ בקטע $I$, אזי $f$ רציפה ב-$I$. במקרה זה ניתן להחליף את סדר הגבולות: $\lim_{x \to x_0} (\lim_{n \to \infty} f_n(x)) = \lim_{n \to \infty} (\lim_{x \to x_0} f_n(x))$. מסקנה חשובה היא שאם טור של פונקציות רציפות מתכנס במובן שווה, אז סכום הטור הוא פונקציה רציפה.</p>
+                            
+                            <p><strong>שימור אינטגרביליות:</strong> אם סדרת פונקציות אינטגרביליות $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה לפונקציה $f$ בקטע $[a,b]$, אזי $f$ אינטגרבילית בקטע זה.</p>
+                            
+                            <p><strong>שימור גזירות:</strong> התכנסות נקודתית (ואפילו במובן שווה) אינה מבטיחה שימור גזירות. עם זאת, אם סדרת פונקציות $(f_n)_{n=1}^\infty$ גזירות ברציפות בקטע $[a,b]$, וקיימת נקודה $u \in [a,b]$ בה סדרת הערכים $(f_n(u))_{n=1}^\infty$ מתכנסת, וסדרת הנגזרות $(f_n')_{n=1}^\infty$ מתכנסת במובן שווה לפונקציה $g$ בקטע $[a,b]$, אזי קיימת פונקציה $f$ כך ש- $(f_n)_{n=1}^\infty$ מתכנסת במובן שווה ל-$f$, ו-$f$ גזירה בקטע $[a,b]$ ו-$f'=g$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topic" id="taylor-series">
+                    <h3>טורי טיילור</h3>
+                    <div class="definition">
+                        <strong>הגדרה:</strong> תהי $f : (x_0 - \delta, x_0 + \delta) \to \mathbb{R}$ פונקציה מוגדרת בסביבת הנקודה $x_0$ וגזירה אינסוף פעמים בנקודה $x_0$. טור החזקות 
+                        $$T_{f,x_0}(x) = \sum_{n=0}^\infty \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n$$
+                        מוגדר להיות טור טיילור של $f$ בנקודה $x_0$.
+                        
+                        <br><em>הערה: לא כל פונקציה גזירה אינסוף פעמים שווה לטור טיילור שלה, גם אם טור טיילור מתכנס.</em>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט:</strong> טור טיילור של $f$ סביב $x_0$ שווה ל-$f$ ב-$x$ אם ורק אם $\lim_{n\to\infty} R_{n,f,x_0}(x) = 0$ (שארית טיילור שואפת ל-0).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>משפט (יחידות של טור חזקות כטור טיילור):</strong> אם פונקציה $f(x)$ שווה לטור חזקות $\sum_{n=0}^\infty a_n(x-x_0)^n$ על קטע כלשהו המכיל את $x_0$, אזי טור החזקות הזה הוא בהכרח טור טיילור של $f$ סביב $x_0$, כלומר $a_n = \frac{f^{(n)}(x_0)}{n!}$ לכל $n \in \mathbb{N} \cup \{0\}$.
+                    </div>
+                </div>
+
+                <div class="topic" id="series-continuation">
+                    <h3>שבוע 13: טורים - המשך</h3>
+                    <div class="definition">
+                        <strong>דוגמאות להתכנסות טורים:</strong> שימוש מתקדם במבחנים שנלמדו, כולל מבחני ההשוואה, מבחן המנה (ד'אלמבר), מבחן השורש (קושי), מבחן האינטגרל.
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות מתקדמות לטורים אי-שליליים:</strong>
+                        <ul>
+                            <li>טורים עם $a_n = \frac{n!}{n^n}$ - שימוש בנוסחת שטירלינג</li>
+                            <li>טורים עם פונקציות טריגונומטריות - $\sum \frac{\sin^2(n)}{n^2}$</li>
+                            <li>טורים עם לוגריתמים - $\sum \frac{1}{n(\ln n)^p}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>מבחן לייבניץ - המשך:</strong>
+                        <ul>
+                            <li><strong>דוגמאות ושימוש להערכת שארית:</strong> $\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n+1}\sqrt{n+1}\ln(n+1)$</li>
+                            <li><strong>שימוש במבחן לייבניץ עבור טורים מורכבים יותר</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>פתיחה/הוספת סוגריים לטור:</strong>
+                        <ul>
+                            <li><strong>הגדרה פורמלית של הכנסת סוגריים</strong></li>
+                            <li><strong>טענה:</strong> הטור המתקבל מהכנסת סוגריים הוא תת-סדרה של הטור המקורי</li>
+                            <li><strong>משפטי ירושה:</strong> אם הטור המקורי מתכנס/מתבדר, הטור עם הסוגריים יורש את התכונה</li>
+                            <li><strong>מסקנה (חסום באורך):</strong> אם הכנסת הסוגריים חסומה באורך, אז התכנסות הטור החדש שקולה להתכנסות הטור המקורי</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <strong>דוגמאות לטורים חסומים:</strong>
+                        <ul>
+                            <li>$\sum \sin(n\theta)$ - טור חסום לכל $\theta$ שאינו כפולה שלמה של $2\pi$</li>
+                            <li>$\sum \cos(n\theta)$ - טור חסום לכל $\theta$ שאינו כפולה שלמה של $2\pi$</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="topic" id="infinite-products">
+                    <h3>שבוע 13.5: מכפלות אינסופיות</h3>
+                    <div class="definition">
+                        <strong>הגדרה:</strong> תהי $(a_n)_{n=1}^\infty$ סדרה נתונה של מספרים ממשיים חיוביים (כלומר $a_n > 0$ לכל $n \in \mathbb{N}$). נגדיר סדרה חדשה $(P_k)_{k=1}^\infty$, הנקראת סדרת המכפלות החלקיות של $(a_n)_{n=1}^\infty$, על ידי $P_k = \prod_{n=1}^k a_n = a_1 \cdot \ldots \cdot a_k$.
+                        
+                        <br>הביטוי $\prod_n a_n$ נקרא מכפלה אינסופית.
+                        
+                        <br><strong>התכנסות:</strong> נאמר שהמכפלה האינסופית $\prod_n a_n$ מתכנסת למספר ממשי חיובי $L \in \mathbb{R}$ ($L > 0$) אם סדרת המכפלות החלקיות $(P_k)_{k=1}^\infty$ מתכנסת ל-$L$. מסמנים $\prod_{n=1}^\infty a_n = L$.
+                        
+                        <br><strong>התבדרות ל-0:</strong> אם $\lim_{k\to\infty} P_k = 0$.
+                        
+                        <br><strong>התבדרות ל-$\infty$:</strong> אם $\lim_{k\to\infty} P_k = \infty$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תנאי הכרחי להתכנסות מכפלה אינסופית:</strong> תהי $(a_n)_{n=1}^\infty$ סדרה של מספרים ממשיים חיוביים. אם $\prod_n a_n$ מתכנסת, אזי $\lim_{n\to\infty} a_n = 1$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קשר בין התכנסות טור להתכנסות מכפלה אינסופית:</strong> תהי $(a_n)_{n=1}^\infty$ סדרה של מספרים ממשיים המקיימת $a_n > 0$ לכל $n$ כמעט תמיד. אזי המכפלה האינסופית $\prod_n (1 + a_n)$ מתכנסת אם ורק אם הטור $\sum_n a_n$ מתכנס. (קיימת גם גרסה עבור $\prod_n (1 - a_n)$).
+                    </div>
+                </div>
+
+                <div class="topic" id="old-series">
+                    <h3>נושא נוסף: טורים (סקירה כללית)</h3>
+                    <p><em>חזרה על המושגים הבסיסיים ביותר של טורים, להשלמת הידע ולחיזוק הבנת היסודות:</em></p>
+                    
+                    <div class="definition">
+                        <strong>טור ($\sum a_n$):</strong> סדרה של סכומים חלקיים $S_k = \sum_{n=1}^k a_n$. הטור מתכנס אם סדרת הסכומים החלקיים מתכנסת.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>טורים הנדסיים:</strong> $\sum a_1 q^{n-1}$ מתכנס אם ורק אם $|q|<1$ (למעט $a_1=0$). סכומו הוא $\frac{a_1}{1-q}$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>טורים טלסקופיים:</strong> $\sum (b_n - b_{n+1})$ מתכנס אם סדרת $b_n$ מתכנסת.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>תנאי הכרחי להתכנסות טור:</strong> אם $\sum a_n$ מתכנס, אז $\lim_{n\to\infty} a_n = 0$. (ההפך אינו נכון, כדוגמת הטור ההרמוני).
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>טור הרמוני:</strong> $\sum \frac{1}{n}$ מתבדר.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>אריתמטיקה של טורים מתכנסים:</strong> לינאריות $\sum (c a_n + d b_n) = c \sum a_n + d \sum b_n$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>קריטריון קושי לטורים:</strong> טור מתכנס אם ורק אם לכל $\varepsilon > 0$ קיים $N$ כך שלכל $k>N$ ולכל $p \in \mathbb{N}$ מתקיים $|\sum_{n=k+1}^{k+p} a_n| < \varepsilon$.
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>זנב של טור:</strong> הטור $\sum_{n=N+1}^\infty a_n$ מתכנס אם ורק אם הטור המקורי מתכנס.
+                    </div>
+                    
+                    <div class="property">
+                        <strong>טורים אי-שליליים:</strong>
+                        <ul>
+                            <li><strong>מבחן ההשוואה:</strong> אם $0 \le a_n \le b_n$, אז אם $\sum b_n$ מתכנס, $\sum a_n$ מתכנס. אם $\sum a_n$ מתבדר, $\sum b_n$ מתבדר.</li>
+                            <li><strong>מבחן ההשוואה הגבולי:</strong> אם $\lim_{n\to\infty} \frac{a_n}{b_n} = L \in (0, \infty)$, אז $\sum a_n$ ו-$\sum b_n$ מתכנסים או מתבדרים יחדיו.</li>
+                            <li><strong>מבחן המנה (ד'אלמבר):</strong> אם $\lim_{n\to\infty} \frac{a_{n+1}}{a_n} = L$: אם $L<1$ מתכנס, אם $L>1$ מתבדר, אם $L=1$ לא מכריע.</li>
+                            <li><strong>מבחן השורש (קושי):</strong> אם $\lim_{n\to\infty} \sqrt[n]{a_n} = L$: אם $L<1$ מתכנס, אם $L>1$ מתבדר, אם $L=1$ לא מכריע.</li>
+                            <li><strong>מבחן האינטגרל:</strong> אם $f:[1,\infty) \to \mathbb{R}$ חיובית ומונוטונית יורדת, אז $\sum f(n)$ מתכנס אם ורק אם $\int_1^\infty f(x) dx$ מתכנס.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="property">
+                        <strong>טורים עם סימנים מתחלפים (טור לייבניץ):</strong>
+                        <ul>
+                            <li><strong>טור לייבניץ:</strong> אם $a_n$ סדרה אי-שלילית, מונוטונית יורדת ואפסית, אז הטור $\sum (-1)^{n+1} a_n$ מתכנס.</li>
+                            <li><strong>הערכת השארית:</strong> $|r_N| = |\sum_{n=N+1}^\infty (-1)^{n+1} a_n| \le a_{N+1}$.</li>
+                            <li><strong>התכנסות בהחלט:</strong> טור $\sum a_n$ מתכנס בהחלט אם $\sum |a_n|$ מתכנס.</li>
+                            <li><strong>משפט:</strong> אם טור מתכנס בהחלט, אז הוא מתכנס.</li>
+                            <li><strong>התכנסות בתנאי:</strong> טור מתכנס בתנאי אם הוא מתכנס אך אינו מתכנס בהחלט.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שינוי סדר בטורים:</strong>
+                        <ul>
+                            <li><strong>אם טור מתכנס בהחלט:</strong> אז כל שינוי סדר מתכנס לאותו סכום.</li>
+                            <li><strong>משפט רימן:</strong> אם טור מתכנס בתנאי, אז ניתן לשנות את סדר סכומו כך שיתכנס לכל מספר ממשי, יתבדר לאינסוף/מינוס אינסוף, או יתבדר באופן לא מוגדר.</li>
+                        </ul>
+                    </div>
+            </section>
+
+            <section id="quiz" class="quiz-section">
+                <h2>בחינה עצמית מקיפה</h2>
+                <div class="quiz-questions">
+                    <div class="quiz-question">
+                        <strong>1. פונקציה קדומה:</strong> הגדר פונקציה קדומה של $f: D \to \mathbb{R}$ בקטע $I \subseteq D$. מה היחס בין שתי פונקציות קדומות שונות של אותה פונקציה באותו קטע?
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>2. פונקציה אקספוננציאלית:</strong> כיצד מוגדרת הפונקציה האקספוננציאלית $\exp(x)$ באמצעות גבול של סדרה? ציין שתי תכונות מרכזיות של פונקציה זו.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>3. כלל לופיטל:</strong> ציין את התנאים העיקריים להפעלת כלל לופיטל עבור גבול מהצורה "0/0" בנקודה סופית.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>4. פולינום טיילור:</strong> מהו פולינום טיילור מסדר $n$ של פונקציה $f$ סביב נקודה $a$? איזה תכונה ייחודית מבטיחה את חשיבותו של פולינום זה?
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>5. אינטגרביליות דרבו:</strong> הסבר בקצרה את המושגים סכום דרבו עליון ותחתון, וכיצד הם מגדירים אינטגרביליות של פונקציה חסומה.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>6. המשפט היסודי של החשבון הדיפרנציאלי והאינטגרלי (חלק ב'):</strong> נסח את חלק ב' של המשפט היסודי. מה חשיבותו בחישוב אינטגרלים מסוימים?
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>7. אינטגרל לא אמיתי סוג ראשון:</strong> הגדר התכנסות של אינטגרל לא אמיתי מסוג ראשון, $\int_a^\infty f(x) dx$. מתי נאמר שהוא מתכנס?
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>8. תנאי הכרחי להתכנסות טור:</strong> מהו התנאי ההכרחי להתכנסות טור אינסופי $\sum a_n$? האם תנאי זה גם מספיק? הסבר בקצרה.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>9. התכנסות במ"ש:</strong> מהו ההבדל המהותי בין התכנסות נקודתית להתכנסות במ"ש של סדרת פונקציות $f_n(x)$? תאר את ההבדל באופן גאומטרי.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>10. רדיוס התכנסות של טור חזקות:</strong> הגדר את רדיוס ההתכנסות של טור חזקות $\sum_{k=0}^\infty a_k(x-x_0)^k$. מה קורה לטור מחוץ לרדיוס התכנסות זה?
+                    </div>
+                </div>
+            </section>
+
+            <section id="answers" class="quiz-section">
+                <h2>פתרונות מפורטים</h2>
+                <div class="answers">
+                    <div class="quiz-question">
+                        <strong>1. פונקציה קדומה:</strong> פונקציה $F: I \to \mathbb{R}$ היא קדומה של $f: D \to \mathbb{R}$ בקטע $I \subseteq D$ אם $F$ גזירה ב-$I$ ומתקיים $F'(x) = f(x)$ לכל $x \in I$. היחס בין שתי פונקציות קדומות שונות של אותה פונקציה באותו קטע הוא קבוע חיבורי: אם $F_1, F_2$ קדומות של $f$ ב-$I$, אז קיים $C \in \mathbb{R}$ כך ש-$F_2(x) = F_1(x) + C$.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>2. פונקציה אקספוננציאלית:</strong> הפונקציה האקספוננציאלית $\exp(x)$ מוגדרת כ-$\exp(x) = \lim_{n\to\infty} (1 + \frac{x}{n})^n$. שתי תכונות מרכזיות הן: 1) $\exp(x+y) = \exp(x)\exp(y)$ (תכונת הכפל) ו- 2) $(\exp)'(x) = \exp(x)$ (הנגזרת שלה היא עצמה).
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>3. כלל לופיטל:</strong> התנאים העיקריים להפעלת כלל לופיטל עבור גבול מהצורה "0/0" בנקודה $x_0$ הם: 1) הפונקציות $f(x)$ ו-$g(x)$ גזירות בסביבה מנוקבת של $x_0$ (וגם ב-$x_0$ אם הנגזרות מחושבות ב-$x_0$), 2) $\lim_{x\to x_0} f(x) = \lim_{x\to x_0} g(x) = 0$, ו- 3) $g'(x) \ne 0$ בסביבה מנוקבת של $x_0$. אם הגבול $\lim_{x\to x_0} \frac{f'(x)}{g'(x)}$ קיים, אז גם $\lim_{x\to x_0} \frac{f(x)}{g(x)}$ קיים ושווה לו.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>4. פולינום טיילור:</strong> פולינום טיילור מסדר $n$ של פונקציה $f$ סביב נקודה $a$ הוא $P_{n,f,a}(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k$. תכונתו הייחודית היא שהוא הפולינום הייחיד ממעלה לכל היותר $n$ אשר מקרב את הפונקציה $f$ בצורה הטובה ביותר בנקודה $a$ במובן ש-$\lim_{x\to a} \frac{f(x)-P_{n,f,a}(x)}{(x-a)^n} = 0$.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>5. אינטגרביליות דרבו:</strong> סכום דרבו עליון ($U(f,P)$) הוא סכום שטחי המלבנים החוסמים את הפונקציה מלמעלה עבור חלוקה $P$ של הקטע. סכום דרבו תחתון ($L(f,P)$) הוא סכום שטחי המלבנים החסומים על ידי הפונקציה מלמטה. פונקציה חסומה אינטגרבילית דרבו אם האינפימום של כל הסכומים העליונים שווה לסופרמום של כל הסכומים התחתונים.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>6. המשפט היסודי של החשבון הדיפרנציאלי והאינטגרלי (חלק ב'):</strong> אם $f$ אינטגרבילית בקטע $[a,b]$ ו-$F$ היא פונקציה קדומה כלשהי של $f$ בקטע זה, אז $\int_a^b f(x) dx = F(b) - F(a)$. חשיבותו היא בכך שהוא מאפשר לחשב אינטגרלים מסוימים באמצעות מציאת פונקציה קדומה, במקום לחשב גבולות של סכומי רימן.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>7. אינטגרל לא אמיתי סוג ראשון:</strong> אינטגרל לא אמיתי מסוג ראשון $\int_a^\infty f(x) dx$ מוגדר כגבול $\lim_{N\to\infty} \int_a^N f(x) dx$. נאמר שהוא מתכנס אם גבול זה קיים וסופי.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>8. תנאי הכרחי להתכנסות טור:</strong> התנאי ההכרחי להתכנסות טור אינסופי $\sum a_n$ הוא ש-$\lim_{n\to\infty} a_n = 0$. תנאי זה אינו מספיק; לדוגמה, הטור ההרמוני $\sum \frac{1}{n}$ מתבדר למרות ש-$\lim_{n\to\infty} \frac{1}{n} = 0$.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>9. התכנסות במ"ש:</strong> התכנסות נקודתית דורשת שלכל $x_0$ בנפרד, $f_n(x_0)$ תתקרב ל-$f(x_0)$ ככל ש-$n$ יגדל, כאשר ה-$N$ יכול להיות תלוי ב-$x_0$. התכנסות במ"ש דורשת שקיים $N$ אחיד לכל $x$ בתחום, כך שלכל $n > N$, $f_n(x)$ תהיה "קרובה באותה מידה" ל-$f(x)$ לכל $x$ בתחום. גאומטרית, בהתכנסות במ"ש, גרף הפונקציה $f_n(x)$ כולו נכנס לתוך "רצועת אפסילון" סביב גרף פונקציית הגבול $f(x)$ עבור $n$ גדול מספיק, ללא תלות ב-$x$.
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <strong>10. רדיוס התכנסות של טור חזקות:</strong> רדיוס ההתכנסות $R$ של טור חזקות $\sum_{k=0}^\infty a_k(x-x_0)^k$ הוא מספר אי-שלילי (שיכול להיות גם אינסוף), כך שהטור מתכנס בהחלט לכל $x$ המקיים $|x-x_0| < R$ ומתבדר לכל $x$ המקיים $|x-x_0| > R$. מחוץ לרדיוס התכנסות זה, הטור מתבדר.
+                    </div>
+                </div>
+            </section>
+
+            <section id="essays">
+                <h2>שאלות בסגנון חיבור</h2>
+                <div class="essay-questions">
+                    <div class="quiz-question">
+                        <div class="faq-question">1. קשר בין התכנסויות:</div>
+                        <p><strong>א.</strong> הגדר התכנסות בהחלט והתכנסות בתנאי עבור טור אינסופי.</p>
+                        <p><strong>ב.</strong> הוכח שאם טור מתכנס בהחלט, אז הוא מתכנס.</p>
+                        <p><strong>ג.</strong> בסס על דוגמאות מהחומר את משפט רימן לגבי שינוי סדר בטורים, והסבר את משמעותו המעשית עבור טורים המתכנסים בתנאי לעומת אלו המתכנסים בהחלט.</p>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <div class="faq-question">2. תכונות האינטגרל ושימושיו:</div>
+                        <p><strong>א.</strong> נסח והוכח את תכונת הלינאריות של האינטגרל המסוים (הומוגניות ואדיטיביות), תוך שימוש בהגדרת סכומי דרבו או רימן.</p>
+                        <p><strong>ב.</strong> השתמש בתכונות האינטגרל כדי להוכיח שאם פונקציה $f$ אי-שלילית ורציפה בקטע $[a,b]$ ובנקודה $x_0 \in [a,b]$ מתקיים $f(x_0) > 0$, אז $\int_a^b f(x) dx > 0$.</p>
+                        <p><strong>ג.</strong> הסבר כיצד המשפט היסודי של החשבון הדיפרנציאלי והאינטגרלי מקשר בין הפונקציה האקספוננציאלית לפונקציה הלוגריתמית הטבעית.</p>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <div class="faq-question">3. השוואת קירוב לפונקציה:</div>
+                        <p><strong>א.</strong> הגדר פולינום טיילור סביב נקודה $a$, ונסח את משפט טיילור עם שארית בצורת לגראנז'.</p>
+                        <p><strong>ב.</strong> באמצעות פולינומי טיילור, הסבר והדגם כיצד ניתן לקרב את ערכן של פונקציות מסוימות, תוך הערכת שגיאת הקירוב. התייחס לדוגמה של קירוב $\cos(1)$ תוך דרישה לדיוק מסוים.</p>
+                        <p><strong>ג.</strong> נתון כי פולינום טיילור הוא הקירוב הפולינומי הטוב ביותר של פונקציה בנקודה נתונה. הסבר כיצד זה מתבטא בצורה פורמלית.</p>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <div class="faq-question">4. מבחני התכנסות לטורים:</div>
+                        <p><strong>א.</strong> בחר שני מבחני התכנסות שונים לטורים אי-שליליים (לדוגמה, מבחן המנה ומבחן השורש), נסח אותם והסבר את עקרון הפעולה שלהם.</p>
+                        <p><strong>ב.</strong> תאר מצבים בהם מבחנים אלו אינם מכריעים, והצע דרכים חלופיות להתמודדות עם מצבים אלו (לדוגמה, מבחן ההשוואה הגבולי או מבחן האינטגרל).</p>
+                        <p><strong>ג.</strong> באמצעות דוגמאות מפורטות, הדגם כיצד מבחנים אלו מאפשרים לקבוע התכנסות/התבדרות של טורים שונים.</p>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <div class="faq-question">5. התכנסות במ"ש וטורי פונקציות:</div>
+                        <p><strong>א.</strong> הגדר התכנסות במ"ש של סדרת פונקציות, והסבר את קריטריון קושי להתכנסות במ"ש.</p>
+                        <p><strong>ב.</strong> נסח את משפטי שמירת הרציפות והאינטגרביליות עבור התכנסות במ"ש של סדרות פונקציות.</p>
+                        <p><strong>ג.</strong> הסבר והדגם כיצד ניתן לגזור או לבצע אינטגרציה איבר-איבר בטורי חזקות, תוך התייחסות לרדיוס ותחום ההתכנסות.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dictionary" class="dictionary-section">
+                <h2>מילון מונחים מתמטיים</h2>
+                <div class="dictionary">
+                    <div class="dictionary-term">
+                        <strong>פונקציה קדומה (Antiderivative):</strong> פונקציה $F$ שנגזרתה היא פונקציה נתונה $f$.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרל לא מסוים (Indefinite Integral):</strong> אוסף כל הפונקציות הקדומות של פונקציה נתונה, המסומן $\int f(x) dx$.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרציה בחלקים (Integration by Parts):</strong> שיטה למציאת אינטגרל של מכפלת פונקציות: $\int u v' dx = uv - \int u' v dx$.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרציה בהצבה (Integration by Substitution):</strong> שיטה למציאת אינטגרל באמצעות שינוי משתנה.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>פונקציה אקספוננציאלית (Exponential Function):</strong> פונקציה המוגדרת כ-$e^x$ או $\exp(x)$, שנגזרתה היא עצמה.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>לוגריתם טבעי (Natural Logarithm):</strong> הפונקציה ההפוכה לפונקציה האקספוננציאלית, המסומנת $\ln x$.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>כלל לופיטל (L'Hôpital's Rule):</strong> כלל לחישוב גבולות של שברים שצורתם "0/0" או "$\infty/\infty$" על ידי גזירת המונה והמכנה בנפרד.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>פולינום טיילור (Taylor Polynomial):</strong> פולינום המקרב פונקציה בסביבת נקודה מסוימת, על בסיס ערכי הפונקציה ונגזרותיה בנקודה זו.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>שארית טיילור (Taylor Remainder):</strong> ההפרש בין ערך הפונקציה לבין ערך פולינום טיילור המקרב אותה.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>משפט טיילור (Taylor's Theorem):</strong> משפט המציג נוסחה לשארית טיילור, המאפשרת להעריך את שגיאת הקירוב.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>סכום דרבו (Darboux Sum):</strong> סכומים עליונים ותחתונים המשמשים להגדרת האינטגרל המסוים.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרל דרבו (Darboux Integral):</strong> הגדרה פורמלית של האינטגרל המסוים על בסיס סכומי דרבו.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>סכום רימן (Riemann Sum):</strong> סכום שטחי מלבנים המקרבים את השטח מתחת לעקומת פונקציה, המשמש להגדרת אינטגרל רימן.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרל רימן (Riemann Integral):</strong> הגדרה פורמלית של האינטגרל המסוים על בסיס גבול של סכומי רימן.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>המשפט היסודי של החשבון הדיפרנציאלי והאינטגרלי (Fundamental Theorem of Calculus):</strong> משפט המקשר בין אינטגרציה לגזירה, ומאפשר לחשב אינטגרלים מסוימים באמצעות פונקציות קדומות.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>אינטגרל לא אמיתי (Improper Integral):</strong> אינטגרל שבו תחום האינטגרציה אינסופי או שהפונקציה אינה חסומה בתחום האינטגרציה.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>טור אינסופי (Infinite Series):</strong> סכום של איברים של סדרה אינסופית, המוגדר כגבול של סדרת הסכומים החלקיים.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>התכנסות טור (Convergence of Series):</strong> מצב שבו סדרת הסכומים החלקיים של טור מתכנסת לגבול סופי.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>תנאי הכרחי להתכנסות טור (Necessary Condition for Convergence):</strong> דרישה ש-$\lim_{n\to\infty} a_n = 0$ עבור טור מתכנס.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>טור הרמוני (Harmonic Series):</strong> הטור $\sum \frac{1}{n}$, הידוע כמתבדר.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>מבחני השוואה (Comparison Tests):</strong> מבחנים לקביעת התכנסות/התבדרות של טורים אי-שליליים באמצעות השוואה לטורים אחרים.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>מבחן המנה (Ratio Test/D'Alembert's Test):</strong> מבחן התכנסות לטורים אי-שליליים המבוסס על גבול מנת איברים עוקבים.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>מבחן השורש (Root Test/Cauchy's Root Test):</strong> מבחן התכנסות לטורים אי-שליליים המבוסס על גבול השורש ה-$n$-י של האיבר ה-$n$-י.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>מבחן האינטגרל (Integral Test):</strong> מבחן המקשר בין התכנסות טור להתכנסות אינטגרל לא אמיתי עבור פונקציה מונוטונית יורדת.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>טור לייבניץ (Leibniz Series):</strong> טור עם סימנים מתחלפים שאיבריו מונוטוניים יורדים לאפס.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>התכנסות בהחלט (Absolute Convergence):</strong> מצב שבו טור מתכנס גם כשלוקחים את הערך המוחלט של איבריו.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>התכנסות בתנאי (Conditional Convergence):</strong> מצב שבו טור מתכנס אך אינו מתכנס בהחלט.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>משפט רימן (Riemann's Rearrangement Theorem):</strong> משפט הקובע שניתן לשנות את סדר האיברים בטור המתכנס בתנאי כך שיתכנס לכל ערך, יתבדר, או יתבדר באופן לא מוגדר.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>התכנסות נקודתית (Pointwise Convergence):</strong> מצב שבו סדרת פונקציות מתכנסת בנפרד בכל נקודה בתחום.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>התכנסות במ"ש (Uniform Convergence):</strong> מצב שבו סדרת פונקציות מתכנסת לפונקציית הגבול "באותה מידה" בכל נקודות התחום.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>M-test של ויירשטראס (Weierstrass M-Test):</strong> מבחן לקביעת התכנסות במ"ש של טורי פונקציות.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>טור חזקות (Power Series):</strong> טור מהצורה $\sum a_k (x-x_0)^k$.
+                    </div>
+                    
+                    <div class="dictionary-term">
+                        <strong>רדיוס התכנסות (Radius of Convergence):</strong> הערך $R$ המגדיר את תחום ההתכנסות של טור חזקות.
+                    </div>
+                </div>
+            </section>
+
+            <section id="proofs" class="quiz-section">
+                <h2>הוכחות חוזרות ומשפטים חשובים</h2>
+                <p><em>הוכחות שחוזרות על עצמן במחברות ובחינות - כדאי להכיר ולשנן אותן (ולהבין!):</em></p>
+                
+                <div class="theorem">
+                    <h3>התכנסות במ"ש שומרת על רציפות</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $(f_n)_{n=1}^\infty$ סדרת פונקציות ב- $D \subseteq \mathbb{R}$ המתכנסות במ"ש לפונקציה $f$ במקטע $I \subseteq D$. יהי $x_0 \in I$. אם $f_n$ רציפה (מימין, משמאל) ב- $x_0$ לכל $n \in \mathbb{N}$, אז גם $f$ רציפה (מימין, משמאל) ב- $x_0$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        צריך להראות שלכל $\varepsilon > 0$ קיים $\delta > 0$ כך שלכל $x \in I$ המקיים $|x-x_0| < \delta$ מתקיים $|f(x)-f(x_0)| < \varepsilon$.<br><br>
+                        יהי $\varepsilon > 0$.<br>
+                        בגלל ההתכנסות במ"ש של $(f_n)_{n=1}^\infty$ ל- $f$ ב-$I$, קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $x \in I$ מתקיים $|f(x)-f_n(x)| < \frac{\varepsilon}{3}$.<br>
+                        נקבע $n_0 \in \mathbb{N}$ כך ש- $n_0 > N$.<br>
+                        ולכן $f_{n_0}$ רציפה ב- $x_0$, קיים $\delta > 0$ כך שלכל $x \in I$ המקיים $|x-x_0| < \delta$ מתקיים $|f_{n_0}(x)-f_{n_0}(x_0)| < \frac{\varepsilon}{3}$.<br><br>
+                        כעת, אם $x \in I$ מקיים $|x-x_0| < \delta$, אז מתקיים:<br>
+                        $|f(x) - f(x_0)| = |f(x) - f_{n_0}(x) + f_{n_0}(x) - f_{n_0}(x_0) + f_{n_0}(x_0) - f(x_0)|$<br>
+                        $\leqslant |f(x) - f_{n_0}(x)| + |f_{n_0}(x) - f_{n_0}(x_0)| + |f_{n_0}(x_0) - f(x_0)|$<br>
+                        $< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon$<br>
+                        כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>המשפט היסודי - גזירות של הפונקציה הצוברת</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $f: (x_0-R, x_0+R) \rightarrow \mathbb{R}$ המוגדרת על ידי טור חזקות $f(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ בעל רדיוס התכנסות $R > 0$.<br>
+                        אזי $f$ <strong>גזירה</strong> ב- $(x_0-R, x_0+R)$ ומתקיים:<br>
+                        $\forall x \in (x_0-R, x_0+R) \quad f'(x) = \sum_{n=1}^\infty n a_n (x-x_0)^{n-1} = \sum_{n=0}^\infty (n+1) a_{n+1} (x-x_0)^n$
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        נסמן $f_n(x) = a_n (x-x_0)^n$ לכל $n \in \mathbb{N} \cup \{0\}$.<br>
+                        אזי $f_n'(x) = n a_n (x-x_0)^{n-1}$ (גם עבור $n=0$!) לכל $x \in \mathbb{R}$.<br>
+                        לפי הטענה הקודמת, רדיוס ההתכנסות של טור הנגזרות $\sum_{n=0}^\infty f_n'(x) = \sum_{n=1}^\infty n a_n (x-x_0)^{n-1}$ שווה גם הוא ל-$R$.<br><br>
+                        לכל $x \in (x_0-R, x_0+R)$ מתקיים $\sum_{n=0}^\infty f_n'(x) = \sum_{n=1}^\infty f_n'(x)$ כי $f_0'(x) = 0$ לכל $x \in \mathbb{R}$.<br><br>
+                        כדי להוכיח את המשפט, די שנראה ש-$f$ גזירה ב-$x_1$ ומקיימת $f'(x_1) = \sum_{n=1}^\infty n a_n (x_1-x_0)^n$.<br>
+                        יהי $x_1 \in (x_0-R, x_0+R)$.<br>
+                        נבחר $0 < r \in \mathbb{R}$ כך ש- $|x_1-x_0| < r < R$.<br>
+                        בקטע $[x_0-r, x_0+r]$ טורים $f(x) = \sum_{n=0}^\infty f_n(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ ו-$ \sum_{n=0}^\infty f_n'(x) = \sum_{n=1}^\infty n a_n (x-x_0)^n$ <strong>מתכנסים במ"ש</strong>.<br><br>
+                        בקטע $[x_0-r, x_0+r]$ מתקיימים תנאי המשפט על גזירה איבר-איבר של טורי פונקציות עבור $x_1 \in (x_0-r, x_0+r)$.<br>
+                        לכן $f$ גזירה ב-$x_1$ ומתקיים $f'(x_1) = \sum_{n=0}^\infty f_n'(x_1) = \sum_{n=1}^\infty n a_n (x_1-x_0)^n$.<br>
+                        כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>מונוטוניות גוררת אינטגרביליות</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה מונוטונית. אזי $f$ אינטגרבילית ב- $[a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה (רעיון):</strong><br>
+                        ההוכחה מבוססת על תנאי דרבו לאינטגרביליות, לפיו יש להראות שלכל $\varepsilon > 0$ קיימת חלוקה $P$ של $[a,b]$ כך ש-$U(f,P) - L(f,P) < \varepsilon$.<br><br>
+                        עבור פונקציה מונוטונית עולה, $m_i = f(x_{i-1})$ ו-$M_i = f(x_i)$. אם הפונקציה מונוטונית יורדת, $m_i = f(x_i)$ ו-$M_i = f(x_{i-1})$.<br><br>
+                        עבור חלוקה שווה של הקטע $[a,b]$ ל-$n$ תת-קטעים באורך $\Delta x = \frac{b-a}{n}$ (כלומר $x_i - x_{i-1} = \frac{b-a}{n}$ לכל $i$), נקבל:<br>
+                        $U(f,P) - L(f,P) = \sum_{i=1}^n (M_i - m_i)(x_i - x_{i-1}) = \frac{b-a}{n} \sum_{i=1}^n (M_i - m_i)$<br><br>
+                        אם $f$ מונוטונית עולה, אז $M_i - m_i = f(x_i) - f(x_{i-1})$. לכן, סכום זה הוא טלסקופי:<br>
+                        $\sum_{i=1}^n (f(x_i) - f(x_{i-1})) = f(x_n) - f(x_0) = f(b) - f(a)$<br><br>
+                        ולכן $U(f,P) - L(f,P) = \frac{b-a}{n} (f(b) - f(a))$.<br>
+                        ניתן לבחור $n$ גדול מספיק כך שביטוי זה יהיה קטן מכל $\varepsilon > 0$. לדוגמה, נבחר $n > \frac{(b-a)(f(b)-f(a))}{\varepsilon}$. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>רציפות גוררת אינטגרביליות</h3>
+                    <div class="definition">
+                        <strong>מסקנה:</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה חסומה. אם $f$ רציפה ב- $(a,b)$, אזי $f$ אינטגרבילית ב- $[a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        יהי $\varepsilon > 0$. נרצה להראות שקיים $\delta > 0$ כך שאם $\Delta(P) < \delta$ אז $U(f,P) - L(f,P) < \varepsilon$.<br><br>
+                        הפונקציה רציפה ב- $(a,b)$ וחסומה ב- $[a,b]$. מכאן נובע שהיא רציפה במידה שווה על כל תת-קטע סגור (זהו משפט קנטור).<br><br>
+                        תהי $f: [a,b] \rightarrow \mathbb{R}$ רציפה. אזי לכל $\varepsilon_1 > 0$ קיים $\delta > 0$ כך שלכל $t_1, t_2 \in [a,b]$ המקיימים $|t_1-t_2| < \delta$ מתקיים $|f(t_1)-f(t_2)| < \varepsilon_1$.<br><br>
+                        נקבע חלוקה $P = \{x_0, \ldots, x_n\}$ של $[a,b]$ עם $\Delta(P) < \delta$.<br>
+                        מכיוון ש-$f$ רציפה בקטע $[x_{i-1}, x_i]$, קיימים $c_i, d_i \in [x_{i-1}, x_i]$ כך ש-$f(c_i) = m_i$ ו-$f(d_i) = M_i$.<br>
+                        מכיוון ש-$|d_i - c_i| \le x_i - x_{i-1} \le \Delta(P) < \delta$, מתקיים $M_i - m_i = |f(d_i) - f(c_i)| < \varepsilon_1$.<br><br>
+                        ואז $U(f,P) - L(f,P) = \sum_{i=1}^n (M_i - m_i)(x_i - x_{i-1}) < \sum_{i=1}^n \varepsilon_1 (x_i - x_{i-1}) = \varepsilon_1 (b-a)$<br><br>
+                        לבסוף, נבחר $\varepsilon_1 = \frac{\varepsilon}{b-a}$ כדי לקבל $U(f,P) - L(f,P) < \varepsilon$. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>התכנסות במ"ש שומרת על אינטגרביליות</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $(f_n)_{n=1}^\infty$ סדרת פונקציות אינטגרביליות ב- $[a,b]$ המתכנסות במ"ש לפונקציה $f$ ב- $[a,b]$. אזי $f$ אינטגרבילית ב- $[a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        לכל $n \in \mathbb{N}$, הפונקציה $f_n$ אינטגרבילית ב- $[a,b]$ ולכן חסומה ב- $[a,b]$.<br>
+                        לפי טענה קודמת (התכנסות במ"ש שומרת על חסימות), נובע ש-$f$ גם היא חסומה ב- $[a,b]$.<br><br>
+                        יהי $\varepsilon > 0$. נראה ש-$f$ מקיימת את תנאי דרבו לאינטגרביליות ב- $[a,b]$.<br>
+                        מתוך ההתכנסות במ"ש של $(f_n)_{n=1}^\infty$, קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $x \in [a,b]$ מתקיים $|f_n(x)-f(x)| < \frac{\varepsilon}{4(b-a)}$.<br><br>
+                        נקבע $n_0 \in \mathbb{N}$ כך ש- $n_0 > N$.<br>
+                        הפונקציה $f_{n_0}$ אינטגרבילית ב- $[a,b]$ ולכן מקיימת את תנאי דרבו לאינטגרביליות. כלומר, קיימת חלוקה $P = \{x_0=a < \ldots < x_k=b\}$ כך ש- $U(f_{n_0},P) - L(f_{n_0},P) < \frac{\varepsilon}{2}$.<br><br>
+                        לכל $u, v \in [x_{i-1}, x_i]$ נשים לב ש-:<br>
+                        $|f(u)-f(v)| \leqslant |f(u)-f_{n_0}(u)| + |f_{n_0}(u)-f_{n_0}(v)| + |f_{n_0}(v)-f(v)|$<br>
+                        $< \frac{\varepsilon}{2(b-a)} + \omega_i(f_{n_0})$<br><br>
+                        מכאן: $\omega_i(f) = \sup_{u,v \in [x_{i-1},x_i]} |f(u)-f(v)| \leqslant \frac{\varepsilon}{2(b-a)} + \omega_i(f_{n_0})$<br><br>
+                        כעת נחשב:<br>
+                        $U(f,P) - L(f,P) = \sum_{i=1}^k \omega_i(f)(x_i - x_{i-1})$<br>
+                        $\leqslant \sum_{i=1}^k \left(\frac{\varepsilon}{2(b-a)} + \omega_i(f_{n_0})\right)(x_i - x_{i-1})$<br>
+                        $= \frac{\varepsilon}{2(b-a)}\sum_{i=1}^k (x_i - x_{i-1}) + \sum_{i=1}^k \omega_i(f_{n_0})(x_i - x_{i-1})$<br>
+                        $< \frac{\varepsilon}{2(b-a)}(b-a) + \frac{\varepsilon}{2} = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$<br><br>
+                        לכן $f$ אינטגרבילית ב- $[a,b]$ כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>מבחן ה-M של ויירשטראס</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $(f_n)_{n=1}^\infty$ סדרת פונקציות ב- $D \subseteq \mathbb{R}$ ותהי $A \subseteq D$. נניח שקיים טור מתכנס של מספרים חיוביים $\sum_{n} M_n$ כך שלכל $n \in \mathbb{N}$ ולכל $x \in A$ מתקיים $|f_n(x)| \leqslant M_n$.<br>
+                        אזי טור הפונקציות $\sum_{n} f_n$ מתכנס בהחלט במ"ש ב- $A$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        יהי $\varepsilon > 0$.<br>
+                        לפי תנאי קושי להתכנסות טור מספרים, קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $p \in \mathbb{N}$ מתקיים $\sum_{k=n+1}^{n+p} M_k < \varepsilon$.<br><br>
+                        יהיו $n > N$ ו-$p \in \mathbb{N}$ ו-$x \in A$.<br>
+                        $\left|\sum_{k=n+1}^{n+p} f_k(x)\right| \leqslant \sum_{k=n+1}^{n+p} |f_k(x)| \leqslant \sum_{k=n+1}^{n+p} M_k < \varepsilon$<br><br>
+                        ולכן לפי תנאי קושי להתכנסות במ"ש של טורי פונקציות, טור הפונקציות $\sum_{n} |f_n|$ מתכנס במידה שווה ב- $A$.<br>
+                        כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>טור חזקות מתכנס בסביבה סימטרית</h3>
+                    <div class="definition">
+                        <strong>משפט (הדאמר - קושי):</strong> תהי $(a_k)_{k=0}^\infty$ סדרת מספרים ממשיים. נסמן ב- $L$ את הגבול העליון במובן הרחב: $L = \limsup_{k \to \infty} \sqrt[k]{|a_k|}$.<br>
+                        א) אם $L=0$, אזי טור החזקות $\sum_{k=0}^\infty a_k (x-x_0)^k$ מתכנס בהחלט לכל $x$ ממשי.<br>
+                        ב) אם $L=\infty$, אזי טור החזקות $\sum_{k=0}^\infty a_k (x-x_0)^k$ מתבדר לכל $x \ne x_0$.<br>
+                        ג) אם $0 < L \in \mathbb{R}$, אזי טור החזקות $\sum_{k=0}^\infty a_k (x-x_0)^k$ מתכנס בהחלט לכל $x$ שעבורו $|x-x_0| < \frac{1}{L}$ ומתבדר לכל $x$ שעבורו $|x-x_0| > \frac{1}{L}$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        עבור $x=x_0$ טור החזקות $\sum_{k=0}^\infty a_k (x-x_0)^k$ מתכנס לבטח.<br>
+                        יהי $x \in \mathbb{R}$ ו- $x \ne x_0$. נסמן $b_k = a_k (x-x_0)^k$ לכל $k \in \mathbb{N} \cup \{0\}$.<br><br>
+                        כעת מתקיים לכל $k \in \mathbb{N}$:<br>
+                        $\sqrt[k]{|b_k|} = \sqrt[k]{|a_k (x-x_0)^k|} = \sqrt[k]{|a_k|} \sqrt[k]{|(x-x_0)^k|} = \sqrt[k]{|a_k|} |x-x_0|$<br><br>
+                        מכאן: $\limsup_{k \to \infty} \sqrt[k]{|b_k|} = \limsup_{k \to \infty} (\sqrt[k]{|a_k|} |x-x_0|) = |x-x_0| \limsup_{k \to \infty} \sqrt[k]{|a_k|} = L |x-x_0|$<br><br>
+                        נבחין בין שלושה מקרים:<br>
+                        א) אם $L=0$: אזי $L |x-x_0| = 0 < 1$. לכן, לפי מבחן השורש הגבולי של קושי עבור טורים אי-שליליים, הטור $\sum_{k=0}^\infty |b_k|$ מתכנס.<br><br>
+                        ב) אם $L=\infty$: אזי $L |x-x_0| = \infty$. לכן, לפי מבחן השורש הגבולי של קושי עבור טורים אי-שליליים, הטור $\sum_{k=0}^\infty |b_k|$ מתבדר.<br><br>
+                        ג) אם $0 < L \in \mathbb{R}$:<br>
+                        אם $|x-x_0| < \frac{1}{L}$, אזי $L |x-x_0| < 1$. לכן, לפי מבחן השורש הגבולי של קושי, הטור $\sum_{k=0}^\infty |b_k|$ מתכנס, וטור החזקות מתכנס בהחלט.<br>
+                        אם $|x-x_0| > \frac{1}{L}$, אזי $L |x-x_0| > 1$. לכן, לפי מבחן השורש הגבולי של קושי, הטור $\sum_{k=0}^\infty |b_k|$ מתבדר.<br>
+                        $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>טור חזקות בעל רדיוס התכנסות R, מתכנס במידה שווה ברדיוס r</h3>
+                    <div class="definition">
+                        <strong>למה (קירוב לטור חזקות):</strong> יהי טור חזקות $f(x) = \sum_{k=0}^\infty a_k (x-x_0)^k$ בעל רדיוס התכנסות $R > 0$. ויהי $0 < r < R$.<br>
+                        אזי לכל $\varepsilon > 0$ קיים $N$ כך שלכל $n \ge N$ ולכל $x \in [x_0-r, x_0+r]$ מתקיים $|f(x)-f_n(x)| \leqslant \varepsilon$ (כאשר $f_n(x) = \sum_{k=0}^n a_k (x-x_0)^k$).
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        מכיוון ש-$0 < r < R$, נובע ממשפט קושי-הדאמר שהטור $\sum_{k=0}^\infty |a_k| r^k$ מתכנס.<br>
+                        לכן, בהינתן $\varepsilon > 0$, קיים $N \in \mathbb{N}$ כך ש- $\sum_{k=N+1}^\infty |a_k| r^k \leqslant \varepsilon$.<br><br>
+                        כעת מתקיים לכל $x \in [x_0-r, x_0+r]$ וכל $n \ge N$:<br>
+                        $|f(x)-f_n(x)| = \left|\sum_{k=n+1}^\infty a_k(x-x_0)^k\right|$<br>
+                        $\leqslant \sum_{k=n+1}^\infty |a_k(x-x_0)^k|$<br>
+                        $= \sum_{k=n+1}^\infty |a_k| |x-x_0|^k$<br>
+                        $\leqslant \sum_{k=n+1}^\infty |a_k| r^k \leqslant \sum_{k=N+1}^\infty |a_k| r^k \leqslant \varepsilon$<br>
+                        $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>התכנסות במ"ש שומרת על חסימות</h3>
+                    <div class="definition">
+                        <strong>טענה:</strong> תהי $(f_n)_{n=1}^\infty$ סדרת פונקציות ב- $D \subseteq \mathbb{R}$ המתכנסות במ"ש לפונקציה $f$ בתת-הקבוצה $A$ של $D$. אם $f_n$ חסומה ב- $A$ לכל $n \in \mathbb{N}$, אז גם $f$ חסומה ב- $A$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        נתון שלכל $n \in \mathbb{N}$ קיים $K_n \in \mathbb{R}_{>0}$ כך שלכל $x \in A$ מתקיים $|f_n(x)| \leqslant K_n$.<br>
+                        בגלל ההתכנסות במ"ש של $(f_n)_{n=1}^\infty$ ל- $f$ ב- $A$, קיים $N \in \mathbb{N}$ כך שלכל $n > N$ ולכל $x \in A$ מתקיים $|f_n(x)-f(x)| < 1$.<br><br>
+                        כעת מתקיים לכל $x \in A$:<br>
+                        $|f(x)| = |f(x)-f_{N+1}(x) + f_{N+1}(x)| \leqslant |f(x)-f_{N+1}(x)| + |f_{N+1}(x)| < 1 + K_{N+1}$<br><br>
+                        לכן $f$ חסומה ב- $A$ כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>גזירות איבר איבר של טורים</h3>
+                    <div class="definition">
+                        <strong>משפט (גזירה איבר-איבר של טורים):</strong> תהי $(f_k)_{k=1}^\infty$ סדרה של פונקציות גזירות ב- $[a,b]$. נניח שקיים $u \in [a,b]$ כך שהטור $\sum_{k=1}^\infty f_k(u)$ מתכנס ל-$L \in \mathbb{R}$. ונניח שקיים פונקציה $g: [a,b] \rightarrow \mathbb{R}$ כך שהטור $\sum_{k=1}^\infty f_k'$ מתכנס במ"ש ל-$g$ ב- $[a,b]$.<br><br>
+                        אזי קיימת פונקציה $f: [a,b] \rightarrow \mathbb{R}$ המקיימת:<br>
+                        (i) הטור $\sum_{k=1}^\infty f_k$ מתכנס במ"ש ל-$f$ ב- $[a,b]$ (ובפרט $f(u)=L$).<br>
+                        (ii) $f$ גזירה ב- $[a,b]$.<br>
+                        (iii) $f' = g$ (פירושו שלכל $x \in [a,b]$ מתקיים $\left(\sum_{k=1}^\infty f_k\right)'(x) = \sum_{k=1}^\infty f_k'(x)$).
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        נסמן $s_n = \sum_{k=1}^n f_k$ לכל $n \in \mathbb{N}$.<br>
+                        הסדרה $(s_n)_{n=1}^\infty$ מקיימת את כל התנאים של המשפט הקודם (על גבול פונקציה גזירה), והמסקנות של המשפט הקודם הן המסקנות לגבי $(s_n)_{n=1}^\infty$ הנוכחי.<br>
+                        $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>אם אינטגרל של פונקציה רציפה וחיובית הוא אפס אז הפונקציה היא זהותית אפס</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה רציפה. אם $f(x) \ge 0$ לכל $x \in [a,b]$ ו- $\int_a^b f(x) dx = 0$, אזי $f(x) = 0$ לכל $x \in [a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        נניח בשלילה שקיים $x_0 \in [a,b]$ כך ש- $f(x_0) > 0$.<br>
+                        מכיוון ש-$f$ רציפה ב- $x_0$ ו-$f(x_0) > 0$, קיים $\delta > 0$ כך שלכל $x \in (x_0-\delta, x_0+\delta) \cap [a,b]$ מתקיים $f(x) > \frac{f(x_0)}{2}$.<br><br>
+                        ללא הגבלת הכלליות, נניח ש-$x_0$ היא נקודה פנימית בקטע $(a,b)$. (אם $x_0=a$ או $x_0=b$, נבחר סביבה חד-צדדית).<br>
+                        נבחר קטע $[\alpha, \beta]$ המוכל ב- $(x_0-\delta, x_0+\delta) \cap [a,b]$ כך ש- $\beta-\alpha > 0$. לדוגמה, $[\max(a, x_0-\delta/2), \min(b, x_0+\delta/2)]$.<br><br>
+                        אזי:<br>
+                        $\int_a^b f(x) dx = \int_a^\alpha f(x) dx + \int_\alpha^\beta f(x) dx + \int_\beta^b f(x) dx$<br><br>
+                        מכיוון ש-$f(x) \ge 0$ לכל $x \in [a,b]$, האינטגרלים $\int_a^\alpha f(x) dx$ ו-$\int_\beta^b f(x) dx$ הם אי-שליליים.<br>
+                        לכן $\int_a^b f(x) dx \ge \int_\alpha^\beta f(x) dx$.<br><br>
+                        בקטע $[\alpha, \beta]$ מתקיים $f(x) > \frac{f(x_0)}{2}$.<br>
+                        לכן $\int_\alpha^\beta f(x) dx \ge \int_\alpha^\beta \frac{f(x_0)}{2} dx = \frac{f(x_0)}{2}(\beta-\alpha) > 0$.<br><br>
+                        מכאן נובע ש-$\int_a^b f(x) dx > 0$, בסתירה להנחה ש-$\int_a^b f(x) dx = 0$.<br>
+                        לכן ההנחה שקיים $x_0 \in [a,b]$ כך ש-$f(x_0) > 0$ אינה נכונה, ומכאן ש-$f(x) = 0$ לכל $x \in [a,b]$. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>תנאי דרבו לאינטגרביליות</h3>
+                    <div class="definition">
+                        <strong>הגדרה (סכומי דרבו):</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה חסומה בקטע הסגור $[a,b]$. תהי $P = \{x_0, x_1, \ldots, x_n\}$ חלוקה של $[a,b]$.<br>
+                        נסמן לכל $i \in \{1, 2, \ldots, n\}$: $m_i = \inf_{x_{i-1} \le x \le x_i} f(x)$, $M_i = \sup_{x_{i-1} \le x \le x_i} f(x)$.<br>
+                        נגדיר את סכום דרבו התחתון של $f$ ביחס לחלוקה $P$ על ידי: $L(f,P) = \sum_{i=1}^n m_i (x_i - x_{i-1})$.<br>
+                        נגדיר את סכום דרבו העליון של $f$ ביחס לחלוקה $P$ על ידי: $U(f,P) = \sum_{i=1}^n M_i (x_i - x_{i-1})$.
+                    </div>
+                    <div class="definition">
+                        <strong>הגדרה (אינטגרביליות לפי דרבו):</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה חסומה. נאמר ש-$f$ אינטגרבילית ב- $[a,b]$ אם מתקיים השוויון: $\int_a^b f(x) dx = \overline{\int_a^b} f(x) dx$.<br>
+                        (כאשר האינטגרל התחתון של דרבו הוא $\sup_P L(f,P)$ והאינטגרל העליון של דרבו הוא $\inf_P U(f,P)$).
+                    </div>
+                    <div class="definition">
+                        <strong>משפט (תנאי דרבו לאינטגרביליות):</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה חסומה. $f$ אינטגרבילית ב- $[a,b]$ אם ורק אם לכל $\varepsilon > 0$ קיימת חלוקה $P$ של $[a,b]$ כך ש- $U(f,P) - L(f,P) < \varepsilon$.
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>אינטגרל לפי רימן</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> $f$ אינטגרבילית לפי רימן ב- $[a,b]$ אם ורק אם $f$ אינטגרבילית לפי דרבו ב- $[a,b]$. ואז האינטגרלים שווים.
+                    </div>
+                    <div class="note">
+                        <strong>הערה:</strong> ההגדרה הישירה של אינטגרל רימן כוללת סכומי רימן וגבול שלהם. המקור מסתמך על שקילות זו, ולכן לא מציג את ההגדרה המלאה של סכומי רימן.
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>טענה: טור חזקות מאיבר כללי n בעל אותו רדיוס התכנסות כמו טור החזקות מאיבר כללי n+1</h3>
+                    <div class="definition">
+                        <strong>טענה:</strong> לטור החזקות $\sum_{n=0}^\infty a_n (x-x_0)^n$ ולטור החזקות $\sum_{n=0}^\infty \frac{a_n}{n+1} (x-x_0)^{n+1}$ (ולטור החזקות $\sum_{n=1}^\infty n a_n (x-x_0)^{n-1}$) <strong>אותו רדיוס התכנסות</strong>.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        ראינו בתרגיל הבית שאם $\lim_{n \to \infty} c_n = 1$ אז $\limsup_{n \to \infty} (b_n c_n) = \limsup_{n \to \infty} b_n$.<br>
+                        מכיוון ש- $\lim_{n \to \infty} \sqrt[n]{n+1} = 1$ (או $\lim_{n \to \infty} \sqrt[n]{n} = 1$):<br>
+                        $\limsup_{n \to \infty} \sqrt[n]{\left|\frac{a_{n-1}}{n}\right|} = \limsup_{n \to \infty} \left(\sqrt[n]{|a_{n-1}|} \frac{1}{\sqrt[n]{n}}\right) = \limsup_{n \to \infty} \sqrt[n]{|a_{n-1}|} = \limsup_{n \to \infty} \sqrt[n]{|a_n|}$<br><br>
+                        מכאן, רדיוס ההתכנסות של שני הטורים שווה (שהוא $1$ חלקי הגבול העליון). $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>אינטגרביליות לפי רימן גורר חסימות</h3>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        הגדרה בסיסית של פונקציה אינטגרבילית (לפי רימן או דרבו) מניחה שהפונקציה חסומה בקטע האינטגרציה. אם פונקציה אינה חסומה, סכומי דרבו שלה (העליונים או התחתונים, או שניהם) יהיו אינסופיים, ולכן היא לא יכולה להיות אינטגרבילית.<br><br>
+                        כפי שמופיע במקור, ההגדרות של סכומי דרבו ושל אינטגרביליות דרבו (השקולה לאינטגרביליות רימן) מוגדרות עבור פונקציה <strong>חסומה</strong>.<br>
+                        מכאן, תנאי מוקדם לאינטגרביליות (רימן או דרבו) הוא שהפונקציה תהיה חסומה.
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>משפט הערך הממוצע האינטגרלי</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ פונקציה רציפה ותהי $g: [a,b] \rightarrow \mathbb{R}$ פונקציה אינטגרבילית כך שלכל $x \in [a,b]$ מתקיים $g(x) > 0$. אזי קיים $c \in [a,b]$ כך ש- $\frac{\int_a^b f(t)g(t) dt}{\int_a^b g(t) dt} = f(c)$.
+                    </div>
+                    <div class="note">
+                        <strong>הערה:</strong> המשפט הכללי יותר של הערך הממוצע האינטגרלי קובע כי: אם $f$ רציפה ב- $[a,b]$, אז קיים $c \in [a,b]$ כך ש- $\int_a^b f(x) dx = f(c)(b-a)$.
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>מבחן דיריכלה להתכנסות טורים</h3>
+                    <div class="definition">
+                        <strong>משפט (מבחן דיריכלה להתכנסות טורים):</strong> תהי $(a_n)_{n=1}^\infty$ סדרה השואפת מונוטונית לאפס. ויהי $\sum b_n$ טור חסום.<br>
+                        אזי הטור $\sum a_n b_n$ מתכנס.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה (הטרנספורמציה של אבל):</strong><br>
+                        תהי $(B_k)_{k=1}^\infty$ סדרת הסכומים החלקיים של $(b_n)_{n=1}^\infty$, כלומר $B_k = \sum_{n=1}^k b_n$ לכל $k \in \mathbb{N}$.<br>
+                        נסמן $B_0 = 0$.<br>
+                        נתון ש- $\sum b_n$ טור חסום, ולכן קיים $M \in \mathbb{R}_{>0}$ כך שלכל $k \in \mathbb{N} \cup \{0\}$ מתקיים $|B_k| \leqslant M$.<br><br>
+                        לפי הטרנספורמציה של אבל, לכל $N \in \mathbb{N}$ מתקיים:<br>
+                        $\sum_{n=1}^N a_n b_n = a_N B_N - \sum_{n=1}^{N-1} B_n (a_{n+1} - a_n)$<br><br>
+                        נתבונן במונומי $(a_N B_N)$: מכיוון ש- $(a_n)_{n=1}^\infty$ שואפת לאפס ו- $(B_n)_{n=1}^\infty$ חסומה, נובע ש- $\lim_{N \to \infty} a_N B_N = 0$.<br><br>
+                        כעת נתבונן בטור $\sum_{n=1}^\infty B_n (a_{n+1} - a_n)$.<br>
+                        מכיוון ש- $(a_n)_{n=1}^\infty$ מונוטונית, $a_{n+1} - a_n$ בעל סימן קבוע (או 0). לכן $\sum_{n=1}^{N-1} |a_{n+1} - a_n| = |a_N - a_1|$ (סכום טלסקופי).<br><br>
+                        לכן:<br>
+                        $\sum_{n=1}^{N-1} |B_n (a_{n+1} - a_n)| = \sum_{n=1}^{N-1} |B_n| |a_{n+1} - a_n|$<br>
+                        $\leqslant \sum_{n=1}^{N-1} M |a_{n+1} - a_n| = M \sum_{n=1}^{N-1} |a_{n+1} - a_n| = M |a_N - a_1|$<br><br>
+                        מכיוון ש- $a_N \to 0$, הטור $\sum_{n=1}^\infty |B_n (a_{n+1} - a_n)|$ מתכנס בהחלט לפי מבחן ההשוואה.<br>
+                        לכן הוא מתכנס.<br>
+                        מכאן, לגבול של אגף ימין בטרנספורמציה של אבל קיים גבול סופי, ולכן $\sum_{n=1}^N a_n b_n$ מתכנס כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>רציפות הפונקציה הצוברת</h3>
+                    <div class="definition">
+                        <strong>משפט (חלק מהמשפט היסודי של החשבון האינפיניטסימלי):</strong> תהי $f: [a,b] \rightarrow \mathbb{R}$ אינטגרבילית בקטע $[a,b]$.<br>
+                        נגדיר פונקציה צוברת $F(x) = \int_a^x f(t) dt$.<br>
+                        אזי $F$ רציפה בקטע $[a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        האינטגרביליות של $f$ מבטיחה את קיום האינטגרל $F(x) = \int_a^x f(t) dt$.<br>
+                        מכיוון ש-$f$ אינטגרבילית בקטע, היא חסומה באותו קטע. נניח ש- $|f(x)| \le M$ לכל $x \in [a,b]$.<br><br>
+                        לכל $x, y \in [a,b]$:<br>
+                        $|F(x) - F(y)| = \left|\int_a^x f(t) dt - \int_a^y f(t) dt\right| = \left|\int_y^x f(t) dt\right|$<br>
+                        $\le \int_y^x |f(t)| dt \le \int_y^x M dt = M|x-y|$<br><br>
+                        כדי להוכיח רציפות בנקודה $x_0$, לכל $\varepsilon > 0$, נבחר $\delta = \frac{\varepsilon}{M}$ (אם $M=0$, אז $f=0$ והפונקציה הצוברת היא קבועה ולכן רציפה).<br>
+                        אזי אם $|x-x_0| < \delta$, אז $|F(x) - F(x_0)| \le M|x-x_0| < M\delta = M\frac{\varepsilon}{M} = \varepsilon$.<br><br>
+                        לכן $F(x)$ רציפה ב- $[a,b]$. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>משפט טיילור</h3>
+                    <div class="definition">
+                        <strong>משפט טיילור (עם שארית לגרנז'):</strong> יהי $n$ מספר שלם אי-שלילי. יהיו $a, b \in \mathbb{R}$ כך ש- $a < b$ (או $b < a$). תהי $f$ פונקציה בעלת נגזרת $f^{(n)}$ רציפה בקטע $[a,b]$ (או $[b,a]$), ונגזרת $f^{(n+1)}$ בקטע $(a,b)$ (או $(b,a)$).<br>
+                        אזי קיימת לפחות נקודה אחת $c \in (a,b)$ (או $c \in (b,a)$) כך ש- $R_{n,f,a}(b) = f(b) - P_{n,f,a}(b) = \frac{f^{(n+1)}(c)}{(n+1)!} (b-a)^{n+1}$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה (באינדוקציה על $n$):</strong><br>
+                        עבור $n=0$: $P_{0,f,a}(x) = f(a)$.<br>
+                        עלינו להראות ש- $\lim_{x \to a} (f(x)-f(a)) = 0$. וזה נכון מכיוון שלפי ההנחה $f$ גזירה 0 פעמים ב- $a$, כלומר $f$ רציפה ב- $a$.<br><br>
+                        עבור $n=1$: $P_{1,f,a}(x) = f(a) + f'(a)(x-a)$.<br>
+                        עלינו להראות ש- $\lim_{x \to a} \frac{f(x)-P_{1,f,a}(x)}{x-a} = 0$.<br>
+                        $\lim_{x \to a} \frac{f(x) - (f(a) + f'(a)(x-a))}{x-a} = \lim_{x \to a} \left(\frac{f(x)-f(a)}{x-a} - f'(a)\right) = 0$<br>
+                        כנדרש.<br><br>
+                        נניח נכונות המשפט עבור כל הפונקציות העומדות בתנאי המשפט עד סדר $n$. ונסיק נכונות עבור $n+1$.<br>
+                        תהי $f$ גזירה $n+1$ פעמים ב- $a$. עלינו להראות ש- $\lim_{x \to a} \frac{f(x)-P_{n+1,f,a}(x)}{(x-a)^{n+1}} = 0$.<br><br>
+                        מתקיים $\lim_{x \to a} (f(x)-P_{n+1,f,a}(x)) = f(a)-f(a) = 0$ (כי $f$ ו-$P_{n+1,f,a}$ רציפות ב- $a$).<br>
+                        וגם $\lim_{x \to a} (x-a)^{n+1} = 0$.<br><br>
+                        גם המונה וגם המכנה של $\frac{f(x)-P_{n+1,f,a}(x)}{(x-a)^{n+1}}$ גזירים בסביבה מנוקבת של $a$ (כי $n+1 \ge 2$). והנגזרת של המכנה, $(n+1)(x-a)^n$, אינה מתאפסת בסביבה מנוקבת של $a$.<br><br>
+                        לכן שלושה מתוך ארבעת תנאי כלל לופיטל מתקיימים.<br>
+                        נגזור את $P_{n+1,f,a}$ לפי כללי הגזירה. נגזרת המונה היא $(f-P_{n+1,f,a})' = f'-(P_{n+1,f,a})'$.<br>
+                        $(P_{n+1,f,a})'(x) = \sum_{k=1}^{n+1} \frac{f^{(k)}(a)}{k!} k(x-a)^{k-1} = \sum_{k=1}^{n+1} \frac{f^{(k)}(a)}{(k-1)!} (x-a)^{k-1}$<br>
+                        $= \sum_{j=0}^n \frac{f^{(j+1)}(a)}{j!} (x-a)^j = P_{n,f',a}(x)$<br><br>
+                        כעת:<br>
+                        $\lim_{x \to a} \frac{f(x)-P_{n+1,f,a}(x)}{(x-a)^{n+1}} \underset{l'H}{=} \lim_{x \to a} \frac{f'(x)-(P_{n+1,f,a})'(x)}{(n+1)(x-a)^n}$<br>
+                        $= \frac{1}{n+1} \lim_{x \to a} \frac{f'(x)-P_{n,f',a}(x)}{(x-a)^n}$<br><br>
+                        לפי הנחת האינדוקציה עבור $f'$ וסדר $n$, מתקיים $\lim_{x \to a} \frac{f'(x)-P_{n,f',a}(x)}{(x-a)^n} = 0$.<br>
+                        לכן כל תנאי כלל לופיטל מתקיימים. וכן $\lim_{x \to a} \frac{f(x)-P_{n+1,f,a}(x)}{(x-a)^{n+1}} = 0$ כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>הנוסחה היסודית</h3>
+                    <div class="definition">
+                        <strong>הנוסחה היסודית של החשבון האינטגרלי (גרסת ניוטון-לייבניץ):</strong><br>
+                        תהי $f: [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית בקטע $[a, b]$, ותהי $F$ פונקציה קדומה שרירותית של $f$ בקטע זה.<br>
+                        אז מתקיים: $\int_a^b f(x) dx = F(b) - F(a)$.<br>
+                        זה מסומן גם כ- $F(x) \Big|_a^b$.
+                    </div>
+                    <div class="definition">
+                        <strong>הנוסחה היסודית עבור אינטגרציה בהצבה (שינוי משתנה):</strong><br>
+                        תהי $f: [a, b] \to \mathbb{R}$ פונקציה רציפה בקטע $[a, b]$, ותהי $F$ פונקציה קדומה של $f$ (כלומר, $F' = f$).<br>
+                        תהי $\varphi: [\alpha, \beta] \to [a, b]$ פונקציה גזירה ב-$[\alpha, \beta]$ כך ש-$\varphi'$ אינטגרבילית ב-$[\alpha, \beta]$.<br>
+                        אז מתקיים: $\int_\alpha^\beta f(\varphi(x))\varphi'(x) dx = \int_{\varphi(\alpha)}^{\varphi(\beta)} f(u) du = F(\varphi(\beta)) - F(\varphi(\alpha))$.<br>
+                        זה שווה גם ל- $(F \circ \varphi)(x) \Big|_\alpha^\beta$.<br>
+                        ההוכחה לכך מסתמכת על כלל השרשרת לגזירה ועל הנוסחה היסודית עצמה.
+                    </div>
+                </div>
+            </section>
+
+            <section id="essay" class="quiz-section">
+                <h2>שאלות חיבור אקדמיות</h2>
+                <p><em>שאלות מתקדמות לפיתוח הבנה עמוקה של התיאוריה המתמטית:</em></p>
+                
+                <div class="quiz-question">
+                                    <strong>1. התכנסות במידה שווה וההשפעה על רציפות:</strong>
+                הסבר את הקשר בין התכנסות במידה שווה של סדרת פונקציות רציפות לבין רציפות הפונקציה הגבולית. הוכח את משפט וירשטראס על שמירת רציפות וצרף דוגמא נגדית להתכנסות שאינה במידה שווה.
+                </div>
+                
+                <div class="quiz-question">
+                    <strong>2. אינטגרלים לא אמיתיים והתכנסותם:</strong>
+                    נתח את ההבדלים בין מבחני השוואה, מבחן דיריכלה ומבחן אבל עבור התכנסות אינטגרלים לא אמיתיים. הדגם בדוגמאות מתי כל מבחן הוא הכלי המתאים ביותר.
+                </div>
+                
+                <div class="quiz-question">
+                    <strong>3. טורי חזקות ורדיוס התכנסות:</strong>
+                    פתח את נוסחת קושי-אדמאר לרדיוס התכנסות של טור חזקות. הסבר מתי ניתן להשתמש במבחן היחס ומתי יש צורך במבחן השורש, וכיצד התכנסות בקצוות הקטע משפיעה על הפיתוח.
+                </div>
+                
+                <div class="quiz-question">
+                    <strong>4. כלל לופיטל ויישומיו המתקדמים:</strong>
+                    דון בתנאים בהם ניתן ליישם את כלל לופיטל עבור צורות אי-וודאות מסוג ∞/∞ ו-0/0. הצג דוגמאות מורכבות הכוללות פונקציות טריגונומטריות, אקספוננציאליות ולוגריתמיות.
+                </div>
+                
+                <div class="quiz-question">
+                    <strong>5. משפט טיילור ושגיאת קירוב:</strong>
+                    הוכח את משפט טיילור עם שארית לגראנז' ודון בחשיבותו לקירוב פונקציות. כיצד ניתן להעריך את שגיאת הקירוב ומה ההבדל בין פיתוח טיילור לטור טיילור?
+                </div>
+                
+                <div class="essay-answers">
+                    <h3>תשובות מפורטות לשאלות החיבור:</h3>
+                    
+                    <div class="essay-answer">
+                        <h4>1. קשר בין התכנסויות:</h4>
+                        
+                        <div class="definition">
+                            <strong>א. הגדר התכנסות בהחלט והתכנסות בתנאי עבור טור אינסופי.</strong>
+                            
+                            <p><strong>התכנסות בהחלט</strong> של טור אינסופי $\sum a_n$ פירושה שהטור של הערכים המוחלטים של איבריו, כלומר $\sum |a_n|$, <strong>מתכנס</strong>. במילים אחרות, אם סדרת הסכומים החלקיים של $\sum |a_n|$ מתכנסת לגבול סופי, הטור $\sum a_n$ מתכנס בהחלט.</p>
+                            
+                            <p><strong>התכנסות בתנאי</strong> של טור אינסופי $\sum a_n$ פירושה שהטור $\sum a_n$ <strong>מתכנס</strong>, אך הטור של הערכים המוחלטים של איבריו, $\sum |a_n|$, <strong>אינו מתכנס</strong>. כלומר, הטור עצמו מתכנס לגבול סופי, אך אם ניקח את הערך המוחלט של כל איבר, הטור החדש יתבדר.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>ב. הוכח שאם טור מתכנס בהחלט, אז הוא מתכנס.</strong>
+                            
+                            <p><strong>הוכחה:</strong> נתון שהטור $\sum a_n$ מתכנס בהחלט, כלומר הטור $\sum |a_n|$ מתכנס. נגדיר שתי סדרות אי-שליליות חדשות:</p>
+                            
+                            <p>$a_n^+ = \frac{|a_n| + a_n}{2}$ ו-$a_n^- = \frac{|a_n| - a_n}{2}$</p>
+                            
+                            <p>נשים לב כי: $0 \le a_n^+ \le |a_n|$ ו-$0 \le a_n^- \le |a_n|$</p>
+                            
+                            <p>מכיוון שהטור $\sum |a_n|$ מתכנס, ו-$a_n^+$ ו-$a_n^-$ הן סדרות אי-שליליות שכל איבר שלהן קטן או שווה לאיבר המקביל ב-$|a_n|$, לפי מבחן ההשוואה לטורים אי-שליליים, גם הטורים $\sum a_n^+$ ו-$\sum a_n^-$ מתכנסים.</p>
+                            
+                            <p>כעת נבטא את האיבר הכללי: $a_n = a_n^+ - a_n^-$. מכיוון ששני הטורים $\sum a_n^+$ ו-$\sum a_n^-$ מתכנסים, לפי אריתמטיקה של טורים מתכנסים, גם הטור $\sum (a_n^+ - a_n^-)$ מתכנס. כלומר, הטור $\sum a_n$ מתכנס.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>ג. בסס על דוגמאות מהחומר את משפט רימן לגבי שינוי סדר בטורים.</strong>
+                            
+                            <p><strong>משפט רימן:</strong> אם טור $\sum a_n$ מתכנס בתנאי, אז לכל מספר ממשי $\lambda \in \mathbb{R}$ קיים סידור מחדש של איברי הטור שמתכנס ל-$\lambda$. בנוסף, קיימים סידורים מחדש שמתבדרים ל-$\infty$ או ל-$-\infty$.</p>
+                            
+                            <p><strong>דוגמה:</strong> הטור ההרמוני המתחלף: $\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots$</p>
+                            
+                            <p>זהו טור מתכנס בתנאי (מתכנס לפי מבחן לייבניץ, אך טור הערכים המוחלטים מתבדר). על ידי הכפלה ב-$\frac{1}{2}$ וסידור מחדש מתקבל: $\frac{3}{2}L = 1 + \frac{1}{3} - \frac{1}{2} + \frac{1}{5} + \frac{1}{7} - \frac{1}{4} + \dots$</p>
+                            
+                            <p><strong>עבור טורים מתכנסים בהחלט:</strong> כל סידור מחדש מתכנס לאותו סכום. הסיבה היא שגם טור האיברים החיוביים וגם השליליים מתכנסים, ולכן ההפרש ביניהם נשאר קבוע.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-answer">
+                        <h4>2. תכונות האינטגרל ושימושיו:</h4>
+                        
+                        <div class="theorem">
+                            <strong>א. נסח והוכח את תכונת הלינאריות של האינטגרל המסוים.</strong>
+                            
+                            <p><strong>הומוגניות:</strong> $\int_a^b (\lambda f)(x) dx = \lambda \int_a^b f(x) dx$</p>
+                            
+                            <p><strong>הוכחה:</strong> עבור סכום רימן: $S(\lambda f, P, P^*) = \sum \lambda f(c_i) \Delta x_i = \lambda \sum f(c_i) \Delta x_i = \lambda S(f, P, P^*)$</p>
+                            
+                            <p>כיוון ש-$f$ אינטגרבילית, $\lim_{\Delta(P) \to 0} S(\lambda f, P, P^*) = \lambda \lim_{\Delta(P) \to 0} S(f, P, P^*) = \lambda \int_a^b f(x) dx$</p>
+                            
+                            <p><strong>אדיטיביות:</strong> $\int_a^b (f+g)(x) dx = \int_a^b f(x) dx + \int_a^b g(x) dx$</p>
+                            
+                            <p><strong>הוכחה באמצעות סכומי דרבו:</strong> לכל תת-קטע מתקיים:</p>
+                            <ul>
+                                <li>$m_i(f) + m_i(g) \le m_i(f+g)$ ו-$M_i(f+g) \le M_i(f) + M_i(g)$</li>
+                                <li>$L(f, P) + L(g, P) \le L(f+g, P)$ ו-$U(f+g, P) \le U(f, P) + U(g, P)$</li>
+                            </ul>
+                            
+                            <p>מכיוון ש-$f$ ו-$g$ אינטגרביליות, מתקיים השוויון: $\int_a^b (f+g)(x) dx = \int_a^b f(x) dx + \int_a^b g(x) dx$</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>ב. הוכח שאם פונקציה אי-שלילית ורציפה בקטע $[a,b]$ ובנקודה $x_0$ מתקיים $f(x_0) > 0$, אז $\int_a^b f(x)dx > 0$.</strong>
+                            
+                            <p><strong>הוכחה:</strong> מרציפות $f$ ב-$x_0$, עבור $\epsilon = \frac{f(x_0)}{2} > 0$, קיים $\delta > 0$ כך שלכל $x$ המקיים $|x-x_0| < \delta$, מתקיים $f(x) > \frac{f(x_0)}{2}$.</p>
+                            
+                            <p>נסמן $I_\delta = (x_0 - \delta, x_0 + \delta) \cap [a, b]$. אז:</p>
+                            
+                            <p>$\int_a^b f(x) dx = \int_{I_\delta} f(x) dx + \int_{[a,b] \setminus I_\delta} f(x) dx$</p>
+                            
+                            <p>מכיוון ש-$f(x) \ge 0$, האינטגרל השני אי-שלילי. עבור האינטגרל הראשון:</p>
+                            
+                            <p>$\int_{I_\delta} f(x) dx \ge \int_{I_\delta} \frac{f(x_0)}{2} dx = \frac{f(x_0)}{2} \cdot \text{length}(I_\delta) > 0$</p>
+                            
+                            <p>לכן $\int_a^b f(x) dx > 0$.</p>
+                        </div>
+                        
+                        <div class="definition">
+                            <strong>ג. הסבר כיצד המשפט היסודי מקשר בין הפונקציה האקספוננציאלית לפונקציה הלוגריתמית.</strong>
+                            
+                            <p>המשפט היסודי קובע שאם $f$ רציפה בקטע $[a,b]$, אז $F(x) = \int_a^x f(t) dt$ היא פונקציה קדומה של $f$.</p>
+                            
+                            <p><strong>הקשר:</strong></p>
+                            <ul>
+                                <li>$\exp(x)$ היא פונקציה קדומה של עצמה: $\frac{d}{dx} \int_a^x \exp(t) dt = \exp(x)$</li>
+                                <li>$\ln(x)$ היא פונקציה קדומה של $\frac{1}{x}$: $\ln(x) = \int_1^x \frac{1}{t} dt$</li>
+                                <li>המשפט מחזק את ההבנה שגזירת האקספוננט מניבה את האקספוננט עצמו, וגזירת הלוגריתם מניבה את $\frac{1}{x}$</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-answer">
+                        <h4>3. השוואת קירוב לפונקציה:</h4>
+                        
+                        <div class="definition">
+                            <strong>א. הגדרת פולינום טיילור ומשפט טיילור עם שארית בצורת לגראנז'.</strong>
+                            
+                            <p><strong>פולינום טיילור:</strong> $P_{n,f,a}(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!} (x-a)^k$</p>
+                            
+                            <p><strong>משפט טיילור (צורת לגראנז'):</strong> תהי $f$ בעלת נגזרת מסדר $n$ רציפה בקטע $[a, b]$ ונגזרת מסדר $n+1$ בקטע $(a, b)$. אז קיימת נקודה $c \in (a, b)$ כך ש:</p>
+                            
+                            <p>$f(b) = P_{n,f,a}(b) + R_{n,f,a}(b)$</p>
+                            
+                            <p>כאשר $R_{n,f,a}(b) = \frac{f^{(n+1)}(c)}{(n+1)!} (b-a)^{n+1}$</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>ב. דוגמה לקירוב $\sqrt{3.99}$ תוך הערכת שגיאת הקירוב.</strong>
+                            
+                            <p>נבחר $f(x) = \sqrt{x}$ ו-$a = 4$. נחשב נגזרות:</p>
+                            <ul>
+                                <li>$f(4) = 2$</li>
+                                <li>$f'(4) = \frac{1}{4}$</li>
+                                <li>$f''(x) = -\frac{1}{4x\sqrt{x}}$</li>
+                            </ul>
+                            
+                            <p><strong>קירוב מסדר ראשון:</strong> $P_{1,f,4}(3.99) = 2 + \frac{1}{4}(3.99-4) = 2 - 0.0025 = 1.9975$</p>
+                            
+                            <p><strong>הערכת שגיאה:</strong> $|R_{1,f,4}(3.99)| = \left|\frac{f''(c)}{2!}(-0.01)^2\right|$ עבור $c \in (3.99, 4)$</p>
+                            
+                            <p>$|R_{1,f,4}(3.99)| < \frac{1}{8 \times 3.99\sqrt{3.99}} \times 0.0001 \approx 1.5 \times 10^{-6}$</p>
+                            
+                            <p>השגיאה קטנה מאוד, והקירוב מדויק מספיק לרוב היישומים.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>ג. הסבר כיצד פולינום טיילור הוא הקירוב הפולינומי הטוב ביותר.</strong>
+                            
+                            <p><strong>משפט היחידות:</strong> יהי $Q(x)$ פולינום ממעלה $\leq n$ המקיים $\lim_{x \to a} \frac{f(x) - Q(x)}{(x-a)^n} = 0$. אזי $Q(x) = P_{n,f,a}(x)$.</p>
+                            
+                            <p><strong>משמעות:</strong> שארית הקירוב $f(x) - P_{n,f,a}(x)$ שואפת ל-0 מהר יותר מ-$(x-a)^n$ כאשר $x \to a$. שום פולינום אחר מאותה מעלה לא יכול לקרב טוב יותר.</p>
+                            
+                            <p><strong>דוגמה:</strong> עבור $f(x) = \frac{1}{1-x}$, ניתן לזהות ישירות $P_{n,f,0}(x) = \sum_{k=0}^n x^k$ מבלי לחשב נגזרות.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-answer">
+                        <h4>4. מבחני התכנסות לטורים:</h4>
+                        
+                        <div class="definition">
+                            <strong>א. מבחן המנה (ד'אלמבר) ומבחן השורש (קושי).</strong>
+                            
+                            <p><strong>מבחן המנה:</strong> יהי $\sum a_n$ טור אי-שלילי עם $a_n \neq 0$. נניח $L = \lim_{n \to \infty} \frac{a_{n+1}}{a_n}$.</p>
+                            <ul>
+                                <li>אם $L < 1$, הטור מתכנס</li>
+                                <li>אם $L > 1$, הטור מתבדר</li>
+                                <li>אם $L = 1$, המבחן אינו מכריע</li>
+                            </ul>
+                            
+                            <p><strong>מבחן השורש:</strong> יהי $\sum a_n$ טור אי-שלילי. נניח $L = \limsup_{n \to \infty} \sqrt[n]{a_n}$.</p>
+                            <ul>
+                                <li>אם $L < 1$, הטור מתכנס</li>
+                                <li>אם $L > 1$, הטור מתבדר</li>
+                                <li>אם $L = 1$, המבחן אינו מכריע</li>
+                            </ul>
+                            
+                            <p><strong>עקרון הפעולה:</strong> שני המבחנים משווים את הטור לטור הנדסי. אם האיברים דועכים מהר יותר מטור הנדסי מתכנס, הטור מתכנס.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>ב. מצבים בהם המבחנים אינם מכריעים ודרכים חלופיות.</strong>
+                            
+                            <p><strong>מצבים לא מכריעים:</strong> כאשר $L = 1$. דוגמאות:</p>
+                            <ul>
+                                <li>הטור ההרמוני $\sum \frac{1}{n}$ מתבדר (L=1)</li>
+                                <li>הטור $\sum \frac{1}{n^2}$ מתכנס (L=1)</li>
+                            </ul>
+                            
+                            <p><strong>מבחן ההשוואה הגבולי:</strong> יהיו $\sum a_n, \sum b_n$ טורים אי-שליליים. אם $L = \lim_{n \to \infty} \frac{a_n}{b_n}$ קיים ו-$0 < L < \infty$, אז הטורים מתכנסים או מתבדרים יחד.</p>
+                            
+                            <p><strong>מבחן האינטגרל:</strong> תהי $f$ פונקציה חיובית, מונוטונית יורדת ב-$[1, \infty)$. אז $\sum_{n=1}^\infty f(n)$ מתכנס אם ורק אם $\int_1^\infty f(x) dx$ מתכנס.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>ג. דוגמאות מפורטות.</strong>
+                            
+                            <p><strong>מבחן המנה:</strong> $\sum_{n=1}^\infty \frac{2^n}{n!}$</p>
+                            <p>$\frac{a_{n+1}}{a_n} = \frac{2^{n+1}}{(n+1)!} \cdot \frac{n!}{2^n} = \frac{2}{n+1}$</p>
+                            <p>$L = \lim_{n \to \infty} \frac{2}{n+1} = 0 < 1$ → הטור מתכנס</p>
+                            
+                            <p><strong>מבחן השורש:</strong> $\sum_{n=1}^\infty \left(\frac{n-1}{n}\right)^{n^2}$</p>
+                            <p>$\sqrt[n]{a_n} = \left(1 - \frac{1}{n}\right)^n$</p>
+                            <p>$L = \lim_{n \to \infty} \left(1 - \frac{1}{n}\right)^n = e^{-1} < 1$ → הטור מתכנס</p>
+                            
+                            <p><strong>מבחן האינטגרל:</strong> $\sum_{n=1}^\infty \frac{1}{n}$ (הטור ההרמוני)</p>
+                            <p>$\int_1^\infty \frac{1}{x} dx = \lim_{N \to \infty} \ln N = \infty$ → הטור מתבדר</p>
+                        </div>
+                    </div>
+                    
+                    <div class="essay-answer">
+                        <h4>5. התכנסות במ"ש וטורי פונקציות:</h4>
+                        
+                        <div class="definition">
+                            <strong>א. הגדרת התכנסות במ"ש וקריטריון קושי.</strong>
+                            
+                            <p><strong>התכנסות במ"ש:</strong> סדרת פונקציות $(f_n)$ מתכנסת במ"ש לפונקציה $f$ על $A$ אם לכל $\epsilon > 0$ קיים $N \in \mathbb{N}$ כך שלכל $x \in A$ ולכל $n > N$, מתקיים $|f_n(x) - f(x)| < \epsilon$.</p>
+                            
+                            <p><strong>קריטריון קושי:</strong> $(f_n)$ מתכנסת במ"ש על $A$ אם ורק אם לכל $\epsilon > 0$ קיים $N$ כך שלכל $x \in A$ ולכל $n, m > N$, מתקיים $|f_n(x) - f_m(x)| < \epsilon$.</p>
+                            
+                            <p><strong>עקרון הפעולה:</strong> קריטריון קושי מאפשר לבדוק התכנסות במ"ש מבלי לדעת את פונקציית הגבול מראש.</p>
+                        </div>
+                        
+                        <div class="theorem">
+                            <strong>ב. משפטי שמירת רציפות ואינטגרביליות.</strong>
+                            
+                            <p><strong>משפט שמירת רציפות:</strong> אם $(f_n)$ סדרת פונקציות רציפות המתכנסת במ"ש לפונקציה $f$ על קטע $I$, אז $f$ רציפה על $I$.</p>
+                            
+                            <p><strong>משפט שמירת אינטגרביליות:</strong> אם $(f_n)$ סדרת פונקציות אינטגרביליות המתכנסת במ"ש לפונקציה $f$ על $[a,b]$, אז $f$ אינטגרבילית על $[a,b]$ ומתקיים:</p>
+                            
+                            <p>$\lim_{n \to \infty} \int_a^b f_n(x) dx = \int_a^b f(x) dx$</p>
+                            
+                            <p><strong>משמעות לטורי פונקציות:</strong> אם $\sum f_k(x)$ מתכנס במ"ש לפונקציה $g(x)$ וכל $f_k$ רציפה, אז $g$ רציפה.</p>
+                        </div>
+                        
+                        <div class="property">
+                            <strong>ג. גזירה ואינטגרציה איבר-איבר בטורי חזקות.</strong>
+                            
+                            <p><strong>טור חזקות:</strong> $\sum_{k=0}^\infty a_k(x-x_0)^k$ עם רדיוס התכנסות $R$</p>
+                            
+                            <p><strong>גזירה איבר-איבר:</strong> אם $f(x) = \sum_{k=0}^\infty a_k(x-x_0)^k$ בתחום $(x_0-R, x_0+R)$, אז:</p>
+                            
+                            <p>$f'(x) = \sum_{k=1}^\infty k a_k(x-x_0)^{k-1}$</p>
+                            
+                            <p>הרדיוס נשאר $R$. דוגמה: $e^x = \sum_{n=0}^\infty \frac{x^n}{n!}$ → $(e^x)' = \sum_{n=1}^\infty \frac{n x^{n-1}}{n!} = \sum_{n=0}^\infty \frac{x^n}{n!} = e^x$</p>
+                            
+                            <p><strong>אינטגרציה איבר-איבר:</strong> $\int_{x_0}^x f(t) dt = \sum_{n=0}^\infty \frac{a_n}{n+1}(x-x_0)^{n+1}$</p>
+                            
+                            <p>הרדיוס נשאר $R$, אך תחום ההתכנסות יכול להתרחב. דוגמה: $\frac{1}{1-x} = \sum_{n=0}^\infty x^n$ → $-\ln(1-x) = \sum_{n=1}^\infty \frac{x^n}{n}$</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="faq" class="faq-section">
+                <h2>שאלות נפוצות מתקדמות</h2>
+                <p><em>להלן 8 שאלות נפוצות עם תשובות מפורטות המבוססות על התיאוריה המתמטית:</em></p>
+                
+                <div class="faq-questions">
+                    <div class="faq-item">
+                        <div class="faq-question">1. מהי פונקציה קדומה, וכיצד היא מתייחסת למושג האינטגרל?</div>
+                        <div class="faq-answer">
+                            <p>פונקציה קדומה $F(x)$ של פונקציה נתונה $f(x)$ בקטע $I$ היא פונקציה שגזירתה, $F'(x)$, שווה ל-$f(x)$ בכל נקודה $x \in I$. כלומר, $F'(x) = f(x)$. אם קיימת פונקציה קדומה $F$ ל-$f$ בקטע $I$, אזי אוסף כל הפונקציות הקדומות ל-$f$ באותו קטע הוא $\{F(x) + C | C \in \mathbb{R}\}$, כאשר $C$ הוא קבוע אינטגרציה.</p>
+                            
+                            <p>מושג זה מוביל להגדרת האינטגרל הלא מסוים של $f(x)$, המסומן ב-$\int f(x) dx$, המייצג פונקציה קדומה שרירותית של $f(x)$. חשוב להבין שפונקציה קדומה נקבעת עד כדי קבוע חיבורי על פני קטע, ולכן אין משמעות לאמירה "הפונקציה הקדומה היא $F$" אלא אם כן מדובר על אוסף כל הפונקציות הקדומות. במילים אחרות, "גזירה היא מיומנות, אינטגרציה היא אמנות."</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">2. מהו כלל לופיטל, ומתי ניתן להשתמש בו לחישוב גבולות?</div>
+                        <div class="faq-answer">
+                            <p>כלל לופיטל הוא כלי לחישוב גבולות של פונקציות המופיעות בצורות אי-ודאות מהסוגים $\frac{0}{0}$ או $\frac{\infty}{\infty}$. אם יש לנו שתי פונקציות $f(x)$ ו-$g(x)$ שגזירות בנקודה $x_0$ (ומוגדרות בסביבתה), ואם $f(x_0) = g(x_0) = 0$ (או ששתיהן שואפות לאינסוף כש-$x \to x_0$), וכן $g'(x_0) \neq 0$, אז הגבול של מנת הפונקציות שווה למנת הנגזרות שלהן:</p>
+                            
+                            $$\lim_{x \to x_0} \frac{f(x)}{g(x)} = \frac{f'(x_0)}{g'(x_0)}$$
+                            
+                            <p>הכלל תקף גם עבור גבולות חד-צדדיים, ועבור גבולות כאשר $x \to \pm \infty$. יש לשים לב שהכלל אינו אומר שאם גבול מנת הנגזרות אינו קיים, אז גם גבול מנת הפונקציות אינו קיים. במקרים מסוימים, ייתכן שיהיה צורך להפעיל את הכלל מספר פעמים ברצף אם מנת הנגזרות עדיין מניבה צורת אי-ודאות.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">3. מהו פולינום טיילור, וכיצד הוא משמש לקירוב פונקציות?</div>
+                        <div class="faq-answer">
+                            <p>פולינום טיילור מסדר $n$ של פונקציה $f(x)$ סביב נקודה $a$ (מסומן כ-$P_{n,f,a}(x)$) הוא פולינום שמשמש לקירוב הפונקציה בסביבת אותה נקודה. הוא מוגדר באופן הבא:</p>
+                            
+                            $$P_{n,f,a}(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \dots + \frac{f^{(n)}(a)}{n!}(x-a)^n = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}(x-a)^k$$
+                            
+                            <p>הרעיון הוא להחליף את הפונקציה המקורית בפולינום שהערכים של הפונקציה ונגזרותיה (עד סדר $n$) בנקודה $a$ שווים לאלה של הפונקציה. פולינום טיילור הוא הקירוב הפולינומי הטוב ביותר לפונקציה בסביבת $a$ במובן שגבול השארית (ההפרש בין הפונקציה לפולינום) חלקי $(x-a)^n$ שואף ל-0 כאשר $x \to a$.</p>
+                            
+                            <p>השארית עצמה ($R_{n,f,a}(x) = f(x) - P_{n,f,a}(x)$) ניתנת להצגה בצורת לגראנז':</p>
+                            $$R_{n,f,a}(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$
+                            <p>כאשר $c$ היא נקודה כלשהי בין $a$ ל-$x$. זה מאפשר לא רק לקרב את הפונקציה, אלא גם להעריך את גודל השגיאה בקירוב.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">4. מה ההבדל בין אינטגרל רימן לאינטגרל דארבו, ומדוע פונקציה מונוטונית בקטע סגור בהכרח אינטגרבילית?</div>
+                        <div class="faq-answer">
+                            <p>אינטגרל רימן ואינטגרל דארבו הם שתי דרכים שקולות להגדיר את מושג האינטגרל המסוים. אינטגרל דארבו מוגדר באמצעות סכומי דארבו עליונים ותחתונים. עבור פונקציה חסומה $f$ בקטע $[a,b]$ וחלוקה $P$ של הקטע, סכום דארבו התחתון $L(f,P)$ הוא סכום מכפלות האינפימום של $f$ בכל תת-קטע באורך של אותו תת-קטע, וסכום דארבו העליון $U(f,P)$ הוא סכום מכפלות הסופרמום של $f$ בכל תת-קטע באורך של אותו תת-קטע.</p>
+                            
+                            <p>הפונקציה אינטגרבילית דארבו אם האינטגרל התחתון (סופרמום כל הסכומים התחתונים) שווה לאינטגרל העליון (אינפימום כל הסכומים העליונים). אינטגרל רימן מוגדר באמצעות סכומי רימן. עבור חלוקה $P$ ובחירה של נקודות ביניים $P^*$ בכל תת-קטע, סכום רימן $S(f, P, P^*)$ הוא סכום מכפלות ערך הפונקציה בנקודת הביניים באורך תת-הקטע.</p>
+                            
+                            <p>הפונקציה אינטגרבילית רימן אם גבול סכומי רימן קיים ושווה לערך יחיד, ללא תלות בבחירת נקודות הביניים, כאשר גודל תת-החלוקות שואף ל-0. המשפטים המהותיים קובעים שפונקציה אינטגרבילית רימן אם ורק אם היא אינטגרבילית דארבו, והאינטגרלים שווים.</p>
+                            
+                            <p><strong>לגבי פונקציה מונוטונית:</strong> משפט קובע שאם פונקציה $f: [a,b] \to \mathbb{R}$ מונוטונית בקטע סגור $[a,b]$, אזי היא אינטגרבילית בקטע זה. זאת משום שעבור פונקציה מונוטונית, ניתן להבטיח שניתן למצוא חלוקה שבה ההפרש בין סכום דארבו העליון לסכום דארבו התחתון קטן כרצוננו, מה שמבטיח את אינטגרביליות דארבו שלה.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">5. מהי התכנסות במידה שווה של סדרת פונקציות, ומדוע היא חשובה?</div>
+                        <div class="faq-answer">
+                            <p>התכנסות במידה שווה של סדרת פונקציות $(f_n)_{n=1}^\infty$ לפונקציה $f$ בתחום $D$ (מסומן כ-$f_n \xrightarrow{u.c.} f$) אומרת שלכל $\varepsilon > 0$ קיים מספר טבעי $N$ כך שלכל $n > N$ ולכל $x \in D$, מתקיים $|f_n(x) - f(x)| < \varepsilon$. המשמעות הגיאומטרית היא שמעבר לאינדקס $N$ מסוים, הגרפים של כל הפונקציות $f_n$ נמצאים בתוך רצועה צרה ברוחב $2\varepsilon$ סביב גרף פונקציית הגבול $f$.</p>
+                            
+                            <p>התכנסות במידה שווה חשובה מכיוון שהיא משמרת תכונות "רצויות" של הפונקציות בסדרה, בניגוד להתכנסות נקודתית:</p>
+                            
+                            <ul>
+                                <li><strong>רציפות:</strong> אם סדרת פונקציות רציפות מתכנסת במידה שווה, אז פונקציית הגבול גם היא רציפה. (לא נכון להתכנסות נקודתית, כפי שמוצג בדוגמאות).</li>
+                                <li><strong>אינטגרביליות:</strong> אם סדרת פונקציות אינטגרביליות מתכנסת במידה שווה, אז פונקציית הגבול גם היא אינטגרבילית, וניתן להחליף את סדר פעולת הגבול והאינטגרציה.</li>
+                                <li><strong>גזירות:</strong> ניתן להחליף את סדר פעולת הגבול והגזירה תחת תנאים נוספים (התכנסות במידה שווה של סדרת הנגזרות וקיום גבול נקודתי של סדרת הפונקציות עצמה בנקודה אחת לפחות).</li>
+                            </ul>
+                            
+                            <p>בניגוד לכך, התכנסות נקודתית (שבה לכל $x_0$ בנפרד, הסדרה המספרית $(f_n(x_0))$ מתכנסת) אינה מבטיחה שאף אחת מתכונות אלו תישמר.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">6. מהו מבחן וויירשטראס M להתכנסות טורים של פונקציות?</div>
+                        <div class="faq-answer">
+                            <p>מבחן וויירשטראס M הוא כלי נוח לקביעת התכנסות במידה שווה (ובפרט, התכנסות בהחלט במידה שווה) של טור פונקציות $\sum_{n=1}^\infty f_n(x)$. המשפט קובע שאם יש לנו טור פונקציות $\sum_{n=1}^\infty f_n(x)$ המוגדר בתחום $D$, וקיימת סדרה של מספרים חיוביים $(M_n)_{n=1}^\infty$ כך שלכל $x \in D$ ולכל $n \in \mathbb{N}$ מתקיים $|f_n(x)| \leq M_n$, וכן הטור המספרי $\sum_{n=1}^\infty M_n$ מתכנס, אזי טור הפונקציות $\sum_{n=1}^\infty f_n(x)$ מתכנס בהחלט במידה שווה בתחום $D$.</p>
+                            
+                            <p>המשמעות היא שאם אנחנו יכולים "לחסום" את ערכם המוחלט של אברי טור הפונקציות על ידי אברי טור מספרי מתכנס, אז טור הפונקציות מתכנס "יפה" מאוד. זהו כלי שימושי במיוחד, לדוגמה, להוכחת התכנסות במידה שווה של טורי חזקות בתוך תחום ההתכנסות שלהם.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">7. מה ההבדל בין התכנסות בהחלט להתכנסות בתנאי של טורים?</div>
+                        <div class="faq-answer">
+                            <p>עבור טור מספרים $\sum_{n=1}^\infty a_n$:</p>
+                            
+                            <p><strong>התכנסות בהחלט:</strong> הטור $\sum_{n=1}^\infty a_n$ נקרא "מתכנס בהחלט" אם טור הערכים המוחלטים שלו, $\sum_{n=1}^\infty |a_n|$, מתכנס.</p>
+                            
+                            <p><strong>התכנסות בתנאי:</strong> הטור $\sum_{n=1}^\infty a_n$ נקרא "מתכנס בתנאי" אם הוא מתכנס (כלומר, סדרת הסכומים החלקיים שלו מתכנסת לגבול סופי), אך טור הערכים המוחלטים שלו, $\sum_{n=1}^\infty |a_n|$, מתבדר.</p>
+                            
+                            <p><strong>התכנסות בהחלט גוררת התכנסות (רגילה):</strong> משפט חשוב קובע שאם טור מתכנס בהחלט, אז הוא מתכנס גם באופן רגיל (אך לא להיפך!).</p>
+                            
+                            <p><strong>חשיבות ההבחנה:</strong> ההבחנה בין התכנסות בהחלט להתכנסות בתנאי חשובה מאוד בגלל "משפט רימן": אם טור מתכנס בתנאי, ניתן לסדר מחדש את אבריו כך שהטור החדש יתכנס לכל מספר ממשי רצוי, או שיתבדר ל-$\pm \infty$, או שלא יתכנס כלל במובן הרחב. לעומת זאת, אם טור מתכנס בהחלט, כל סידור מחדש של אבריו יתכנס לאותו סכום. זה מראה שהתכנסות בהחלט היא תכונה "חזקה" ויציבה יותר של טורים.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">8. מהו רדיוס ההתכנסות של טור חזקות, וכיצד הוא קשור לתכונות הפונקציה המוגדרת על ידי הטור?</div>
+                        <div class="faq-answer">
+                            <p>טור חזקות סביב $x_0$ הוא טור מהצורה $\sum_{n=0}^\infty a_n(x-x_0)^n$. "רדיוס ההתכנסות" (R) של טור חזקות הוא מספר ממשי אי-שלילי (שיכול להיות גם אינסוף) המגדיר את הקטע הסימטרי $(x_0-R, x_0+R)$ שבו הטור מתכנס. מחוץ לקטע זה, הטור מתבדר. בנקודות הקצה $x_0 \pm R$, ייתכן שהטור יתכנס או יתבדר, ויש לבדוק זאת בנפרד.</p>
+                            
+                            <p>רדיוס ההתכנסות ניתן לחישוב באמצעות נוסחת קושי-הדאמר:</p>
+                            $$R = \left(\limsup_{n \to \infty} \sqrt[n]{|a_n|}\right)^{-1}$$
+                            
+                            <p>או לעיתים קרובות יותר, באמצעות מבחן ד'אלמבר:</p>
+                            $$R = \lim_{n \to \infty} \left|\frac{a_n}{a_{n+1}}\right|$$
+                            <p>בתנאי שהגבולות קיימים.</p>
+                            
+                            <p><strong>חשיבות הקשר לתכונות הפונקציה:</strong> פונקציית הסכום $f(x) = \sum_{n=0}^\infty a_n(x-x_0)^n$ המוגדרת על ידי טור חזקות בתוך קטע ההתכנסות הפתוח $(x_0-R, x_0+R)$ היא בעלת תכונות "יפות" מאוד:</p>
+                            
+                            <ul>
+                                <li><strong>רציפות:</strong> פונקציית הסכום רציפה בכל נקודה בתוך קטע ההתכנסות הפתוח.</li>
+                                <li><strong>גזירות אינסוף פעמים:</strong> פונקציית הסכום גזירה אינסוף פעמים בתוך קטע ההתכנסות הפתוח, וניתן לגזור את הטור "איבר-איבר". טור הנגזרות מתכנס לאותה פונקציה (הנגזרת של $f(x)$) ובאותו רדיוס התכנסות.</li>
+                                <li><strong>אינטגרביליות:</strong> ניתן לבצע אינטגרציה לטור "איבר-איבר" בתוך קטע ההתכנסות הפתוח, וטור האינטגרלים מתכנס לאותה פונקציה (פונקציה קדומה של $f(x)$) ובאותו רדיוס התכנסות.</li>
+                            </ul>
+                            
+                            <p>תכונות אלו הופכות טורי חזקות לכלי חזק מאוד באנליזה ובתחומים רבים אחרים במתמטיקה.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>מדריך לימוד אינפי 2 - מעוצב במיוחד להצגה נקייה של נוסחאות מתמטיות בעברית</p>
+        </footer>
+    </div>
+</body>
+</html> 

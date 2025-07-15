@@ -49,8 +49,8 @@
 }
 
 .hamburger-btn.active {
-    background: #e74c3c;
-    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.6);
+    background: #2980b9;
+    box-shadow: 0 8px 25px rgba(41, 128, 185, 0.6);
 }
 
 /* Floating Table of Contents */

@@ -2751,6 +2751,7 @@
                 hamburgerBtn.addEventListener('click', function() {
                     hamburgerBtn.classList.toggle('active');
                     floatingToc.classList.toggle('show');
+                    document.body.classList.toggle('menu-open');
                 });
             }
 
@@ -2759,6 +2760,7 @@
                 closeBtn.addEventListener('click', function() {
                     hamburgerBtn.classList.remove('active');
                     floatingToc.classList.remove('show');
+                    document.body.classList.remove('menu-open');
                 });
             }
 
@@ -2809,6 +2811,7 @@
                 if (!floatingToc.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                     hamburgerBtn.classList.remove('active');
                     floatingToc.classList.remove('show');
+                    document.body.classList.remove('menu-open');
                 }
             });
 

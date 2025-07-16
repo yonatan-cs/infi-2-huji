@@ -348,12 +348,7 @@
     box-shadow: 0 8px 25px rgba(39, 174, 96, 0.6);
 }
 
-/* Hide search toggle when menu is open */
-.menu-open .search-toggle-btn {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
+
 
 /* Back to Top Button */
 .back-to-top {
@@ -432,7 +427,7 @@
     height: 100vh;
     background: #ffffff;
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
+    z-index: 1001;
     transition: right 0.3s ease;
     overflow-y: auto;
     border-left: 3px solid #3498db;

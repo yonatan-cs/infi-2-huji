@@ -41,6 +41,7 @@ class MathStudyGuideSearch {
         // Create search container
         const searchContainer = document.createElement('div');
         searchContainer.className = 'search-container';
+        searchContainer.style.display = 'none'; // Hide by default
         searchContainer.innerHTML = `
             <div class="search-input-wrapper">
                 <input type="text" class="search-input" placeholder="חפש נושאים, הגדרות, משפטים..." />
@@ -57,6 +58,7 @@ class MathStudyGuideSearch {
         // Create search navigation
         const searchNavigation = document.createElement('div');
         searchNavigation.className = 'search-navigation';
+        searchNavigation.style.display = 'none'; // Hide by default
         searchNavigation.innerHTML = `
             <div class="search-counter"></div>
             <button class="search-nav-btn search-prev" aria-label="תוצאה קודמת">↑</button>
@@ -314,6 +316,11 @@ class MathStudyGuideSearch {
             this.elements.container.classList.add('expanded');
         }
         
+        // Show navigation if there are results
+        if (this.currentHighlights.length > 0) {
+            this.elements.navigation.style.display = 'block';
+        }
+        
         setTimeout(() => {
             this.elements.input.focus();
         }, 100);
@@ -566,6 +573,7 @@ class MathStudyGuideSearch {
      */
     updateNavigation() {
         if (this.currentHighlights.length > 0) {
+            this.elements.navigation.style.display = 'block';
             this.elements.navigation.classList.add('show');
             this.updateNavigationState();
         } else {
@@ -577,6 +585,7 @@ class MathStudyGuideSearch {
      * Hide navigation
      */
     hideNavigation() {
+        this.elements.navigation.style.display = 'none';
         this.elements.navigation.classList.remove('show');
     }
 

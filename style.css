@@ -18,7 +18,7 @@
 }
 
 .search-container.expanded {
-    top: 20px;
+    top: 85px;
     width: 400px;
     max-width: calc(100vw - 40px);
 }
@@ -1121,7 +1121,7 @@ body {
     }
     
     .search-container.expanded {
-        top: 10px;
+        top: 75px;
         right: 10px;
         left: 10px;
         width: auto;
@@ -1178,7 +1178,7 @@ body {
     }
     
     .search-container.expanded {
-        top: 5px;
+        top: 65px;
         right: 5px;
         left: 5px;
     }

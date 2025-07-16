@@ -4,7 +4,7 @@
 /* Search Functionality Styles */
 .search-container {
     position: fixed;
-    top: 90px;
+    top: 150px;
     right: 20px;
     z-index: 1000;
     background: #ffffff;
@@ -18,7 +18,7 @@
 }
 
 .search-container.expanded {
-    top: 85px;
+    top: 150px;
     width: 400px;
     max-width: calc(100vw - 40px);
 }
@@ -324,8 +324,8 @@
 /* Search Button in Header */
 .search-toggle-btn {
     position: fixed;
-    top: 20px;
-    right: 85px;
+    top: 85px;
+    right: 20px;
     z-index: 1000;
     background: #27ae60;
     border: none;
@@ -1113,7 +1113,7 @@ body {
 /* Mobile Responsive Styles for Search */
 @media (max-width: 768px) {
     .search-container {
-        top: 85px;
+        top: 130px;
         right: 10px;
         left: 10px;
         width: auto;
@@ -1121,14 +1121,15 @@ body {
     }
     
     .search-container.expanded {
-        top: 75px;
+        top: 130px;
         right: 10px;
         left: 10px;
         width: auto;
     }
     
     .search-toggle-btn {
-        right: 75px;
+        top: 75px;
+        right: 10px;
         width: 45px;
         height: 45px;
         font-size: 16px;
@@ -1172,13 +1173,13 @@ body {
 
 @media (max-width: 480px) {
     .search-container {
-        top: 75px;
+        top: 115px;
         right: 5px;
         left: 5px;
     }
     
     .search-container.expanded {
-        top: 65px;
+        top: 115px;
         right: 5px;
         left: 5px;
     }
@@ -1189,7 +1190,8 @@ body {
     }
     
     .search-toggle-btn {
-        right: 60px;
+        top: 65px;
+        right: 15px;
         width: 40px;
         height: 40px;
         font-size: 14px;

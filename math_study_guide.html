@@ -534,6 +534,52 @@
                         
                         <br><strong>דוגמה: פונקציית דיריכלה:</strong> פונקציית דיריכלה מוגדרת כ-$D(x) = \begin{cases} 1 & \text{if } x \in \mathbb{Q} \\ 0 & \text{if } x \notin \mathbb{Q} \end{cases}$. פונקציה זו אינה אינטגרבילית בכל קטע $[a,b]$ כי התנודה שלה בכל תת-קטע היא 1 (מכיוון שכל קטע מכיל מספרים רציונליים ואי-רציונליים). אם נשנה את הפונקציה כך שתחזיר 1 בנקודה בודדת ו-0 בכל מקום אחר, הפונקציה החדשה תהיה אינטגרבילית ואינטגרלה יהיה 0.
                     </div>
+                    
+                    <div class="definition">
+                        <strong>סכומי רימן לחישוב גבולות:</strong>
+                        <br><strong>הגדרה:</strong> עבור פונקציה $f: [a,b] \to \mathbb{R}$ אינטגרבילית וחלוקה $P = \{x_0, x_1, \ldots, x_n\}$ של הקטע $[a,b]$ עם בחירת נקודות ביניים $\xi_i \in [x_{i-1}, x_i]$, סכום רימן מוגדר על ידי:
+                        $$S(f,P) = \sum_{i=1}^n f(\xi_i)(x_i - x_{i-1})$$
+                        
+                        <br><strong>למה (קירוב לאינטגרל באמצעות סכומי רימן):</strong> אם $f$ רציפה ב-$[a,b]$, אז לכל $\varepsilon > 0$ קיים $\delta > 0$ כך שלכל חלוקה $P$ עם $\Delta(P) < \delta$ (כאשר $\Delta(P) = \max_{1 \leq i \leq n}(x_i - x_{i-1})$) ולכל בחירת נקודות ביניים, מתקיים:
+                        $$\left|S(f,P) - \int_a^b f(x) dx\right| < \varepsilon$$
+                    </div>
+                    
+                    <div class="theorem">
+                        <strong>שימוש בסכומי רימן לחישוב גבולות:</strong>
+                        
+                        <br><strong>משפט (חישוב גבול באמצעות אינטגרל):</strong> תהי $f: [0,1] \to \mathbb{R}$ פונקציה רציפה. אזי:
+                        $$\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n f\left(\frac{k}{n}\right) = \int_0^1 f(x) dx$$
+                        
+                        <br><strong>הוכחה:</strong> נגדיר חלוקה שווה של הקטע $[0,1]$ ל-$n$ חלקים שווים: $x_i = \frac{i}{n}$ עבור $i = 0, 1, \ldots, n$.<br>
+                        אורך כל תת-קטע הוא $\Delta x = \frac{1}{n}$.<br>
+                        נבחר את הנקודות הימניות כנקודות ביניים: $\xi_i = \frac{i}{n}$.<br><br>
+                        
+                        סכום רימן המתאים הוא:
+                        $$S_n = \sum_{i=1}^n f\left(\frac{i}{n}\right) \cdot \frac{1}{n} = \frac{1}{n} \sum_{i=1}^n f\left(\frac{i}{n}\right)$$
+                        
+                        מכיוון ש-$f$ רציפה ב-$[0,1]$, היא אינטגרבילית רימן. לכן:
+                        $$\lim_{n \to \infty} S_n = \int_0^1 f(x) dx$$
+                        
+                        <br><strong>הכללה:</strong> עבור קטע $[a,b]$ כללי:
+                        $$\lim_{n \to \infty} \frac{b-a}{n} \sum_{k=1}^n f\left(a + k \cdot \frac{b-a}{n}\right) = \int_a^b f(x) dx$$
+                    </div>
+                    
+                    <div class="property">
+                        <strong>דוגמאות לחישוב גבולות באמצעות אינטגרלים:</strong>
+                        
+                        <br><strong>דוגמה 1:</strong> חישוב $\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \sqrt{\frac{k}{n}}$
+                        <br>פתרון: נזהה $f(x) = \sqrt{x}$ על הקטע $[0,1]$. לכן:
+                        $$\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \sqrt{\frac{k}{n}} = \int_0^1 \sqrt{x} dx = \int_0^1 x^{1/2} dx = \left[\frac{x^{3/2}}{3/2}\right]_0^1 = \frac{2}{3}$$
+                        
+                        <br><strong>דוגמה 2:</strong> חישוב $\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \frac{1}{1+\left(\frac{k}{n}\right)^2}$
+                        <br>פתרון: נזהה $f(x) = \frac{1}{1+x^2}$ על הקטע $[0,1]$. לכן:
+                        $$\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \frac{1}{1+\left(\frac{k}{n}\right)^2} = \int_0^1 \frac{1}{1+x^2} dx = [\arctan(x)]_0^1 = \arctan(1) - \arctan(0) = \frac{\pi}{4}$$
+                        
+                        <br><strong>דוגמה 3:</strong> חישוב $\lim_{n \to \infty} \frac{1}{n^2} \sum_{k=1}^n k$
+                        <br>פתרון: נכתוב מחדש: $\frac{1}{n^2} \sum_{k=1}^n k = \frac{1}{n} \sum_{k=1}^n \frac{k}{n}$.<br>
+                        נזהה $f(x) = x$ על הקטע $[0,1]$. לכן:
+                        $$\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \frac{k}{n} = \int_0^1 x dx = \left[\frac{x^2}{2}\right]_0^1 = \frac{1}{2}$$
+                    </div>
                 </div>
                     </div><div class="topic" id="fundamental-theorem">
                     <h3>שבוע 8: המשפט היסודי של החשבון האינפיניטסימלי</h3>
@@ -2319,6 +2365,73 @@
                         <strong>3. מסקנה:</strong><br>
                         מכיוון ששני המחוברים של הסכום החלקי $\sum_{n=1}^N a_n b_n$ מתכנסים כאשר $N \to \infty$, אזי הסכום עצמו מתכנס.<br>
                         כלומר, הטור $\sum a_n b_n$ מתכנס. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>משפט ההצבה באינטגרל מסוים (Integration by Substitution)</h3>
+                    <div class="definition">
+                        <strong>משפט ההצבה באינטגרל מסוים:</strong> תהי $f: [a,b] \to \mathbb{R}$ פונקציה רציפה ותהי $g: [\alpha, \beta] \to [a,b]$ פונקציה גזירה ברציפות (כלומר $g'$ רציפה) כך ש-$g(\alpha) = a$ ו-$g(\beta) = b$. אזי:
+                        $$\int_a^b f(x) dx = \int_{\alpha}^{\beta} f(g(t)) \cdot g'(t) dt$$
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        תהי $F: [a,b] \to \mathbb{R}$ פונקציה קדומה של $f$, כלומר $F'(x) = f(x)$ לכל $x \in [a,b]$.<br>
+                        קיומה של $F$ מובטח מהמשפט היסודי של החשבון האינפיניטסימלי, מכיוון ש-$f$ רציפה.<br><br>
+                        
+                        נגדיר פונקציה $H: [\alpha, \beta] \to \mathbb{R}$ על ידי $H(t) = F(g(t))$.<br><br>
+                        
+                        נחשב את נגזרתה של $H$ בעזרת כלל השרשרת:<br>
+                        $H'(t) = F'(g(t)) \cdot g'(t) = f(g(t)) \cdot g'(t)$<br><br>
+                        
+                        מכאן, $H$ היא פונקציה קדומה של הפונקציה $f(g(t)) \cdot g'(t)$.<br><br>
+                        
+                        לפי המשפט היסודי של החשבון האינפיניטסימלי (חלק ב'):<br>
+                        $\int_{\alpha}^{\beta} f(g(t)) \cdot g'(t) dt = H(\beta) - H(\alpha) = F(g(\beta)) - F(g(\alpha))$<br><br>
+                        
+                        מהתנאים $g(\alpha) = a$ ו-$g(\beta) = b$, נקבל:<br>
+                        $F(g(\beta)) - F(g(\alpha)) = F(b) - F(a)$<br><br>
+                        
+                        שוב לפי המשפט היסודי של החשבון האינפיניטסימלי:<br>
+                        $F(b) - F(a) = \int_a^b f(x) dx$<br><br>
+                        
+                        לכן: $\int_a^b f(x) dx = \int_{\alpha}^{\beta} f(g(t)) \cdot g'(t) dt$ $\blacksquare$
+                    </div>
+                    <div class="property">
+                        <strong>דוגמה למשפט ההצבה:</strong><br>
+                        נחשב $\int_0^1 2x \cos(x^2) dx$.<br>
+                        נבחר $u = x^2$, אז $du = 2x dx$.<br>
+                        כאשר $x = 0$: $u = 0$, כאשר $x = 1$: $u = 1$.<br>
+                        לכן: $\int_0^1 2x \cos(x^2) dx = \int_0^1 \cos(u) du = \sin(1) - \sin(0) = \sin(1)$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>פונקציה אינטגרבילית היא בהכרח חסומה</h3>
+                    <div class="definition">
+                        <strong>משפט:</strong> תהי $f: [a,b] \to \mathbb{R}$ פונקציה אינטגרבילית רימן (או דרבו) בקטע $[a,b]$. אזי $f$ חסומה בקטע $[a,b]$.
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        ההוכחה נובעת ישירות מההגדרה של אינטגרביליות דרבו.<br><br>
+                        
+                        על פי הגדרת אינטגרביליות דרבו, פונקציה $f$ אינטגרבילית בקטע $[a,b]$ אם ורק אם האינטגרל העליון של דרבו שווה לאינטגרל התחתון של דרבו:<br>
+                        $\overline{\int_a^b} f(x) dx = \underline{\int_a^b} f(x) dx$<br><br>
+                        
+                        כדי שסכומי דרבו יהיו מוגדרים היטב, יש צורך שעבור כל חלוקה $P = \{x_0, x_1, \ldots, x_n\}$ של הקטע $[a,b]$, הערכים:<br>
+                        $m_i = \inf_{x \in [x_{i-1}, x_i]} f(x)$ ו-$M_i = \sup_{x \in [x_{i-1}, x_i]} f(x)$<br>
+                        יהיו סופיים לכל $i \in \{1, 2, \ldots, n\}$.<br><br>
+                        
+                        אם $f$ אינה חסומה בקטע $[a,b]$, אז קיים תת-קטע $[x_{i-1}, x_i]$ כלשהו שבו $f$ אינה חסומה. במקרה זה:<br>
+                        - אם $f$ אינה חסומה מלמעלה באותו תת-קטע, אז $M_i = +\infty$<br>
+                        - אם $f$ אינה חסומה מלמטה באותו תת-קטע, אז $m_i = -\infty$<br><br>
+                        
+                        בכל אחד מהמקרים הללו, סכומי דרבו (העליון או התחתון) יהיו אינסופיים, מה שאומר שהאינטגרלים העליון והתחתון של דרבו לא יהיו מוגדרים כמספרים ממשיים סופיים.<br><br>
+                        
+                        לכן, אם $f$ אינטגרבילית בקטע $[a,b]$, היא חייבת להיות חסומה באותו קטע. $\blacksquare$
+                    </div>
+                    <div class="property">
+                        <strong>הערה:</strong> המשפט הזה מסביר מדוע פונקציות כמו $f(x) = \frac{1}{x}$ בקטע $(0,1]$ אינן אינטגרביליות רימן - הן אינן חסומות בקטע זה.
                     </div>
                 </div>
             </section>

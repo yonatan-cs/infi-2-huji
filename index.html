@@ -1817,7 +1817,7 @@
                 </div>
 
                 <div class="theorem">
-                    <h3>המשפט היסודי - גזירות של הפונקציה הצוברת</h3>
+                    <h3>משפט גזירה איבר-איבר של טור חזקות</h3>
                     <div class="definition">
                         <strong>משפט:</strong> תהי $f: (x_0-R, x_0+R) \rightarrow \mathbb{R}$ המוגדרת על ידי טור חזקות $f(x) = \sum_{n=0}^\infty a_n (x-x_0)^n$ בעל רדיוס התכנסות $R > 0$.<br>
                         אזי $f$ <strong>גזירה</strong> ב- $(x_0-R, x_0+R)$ ומתקיים:<br>
@@ -1836,6 +1836,59 @@
                         בקטע $[x_0-r, x_0+r]$ מתקיימים תנאי המשפט על גזירה איבר-איבר של טורי פונקציות עבור $x_1 \in (x_0-r, x_0+r)$.<br>
                         לכן $f$ גזירה ב-$x_1$ ומתקיים $f'(x_1) = \sum_{n=0}^\infty f_n'(x_1) = \sum_{n=1}^\infty n a_n (x_1-x_0)^n$.<br>
                         כנדרש. $\blacksquare$
+                    </div>
+                </div>
+
+                <div class="theorem">
+                    <h3>המשפט היסודי של החשבון האינטגרלי</h3>
+                    <div class="definition">
+                        <strong>המשפט היסודי של החשבון האינטגרלי:</strong> תהי $f: [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית בקטע $[a, b]$, ותהי $a < b$. תהי $\tilde{F}: [a, b] \to \mathbb{R}$ המוגדרת על ידי $\tilde{F}(x) = \int_a^x f(t) dt$ (הנקראת הפונקציה הצוברת של $f$ ב-$[a, b]$). אזי:
+                        <ul>
+                            <li><strong>א.</strong> $\tilde{F}$ רציפה ב-$[a, b]$.</li>
+                            <li><strong>ב.</strong> אם בנוסף $f$ רציפה בנקודה $x_0 \in [a, b]$, אזי $\tilde{F}$ גזירה ב-$x_0$ (מימין, משמאל) ומתקיים: $\tilde{F}'(x_0) = f(x_0)$ ($\tilde{F}_+'(x_0) = f(x_0)$, $\tilde{F}_-'(x_0) = f(x_0)$).</li>
+                        </ul>
+                    </div>
+                    <div class="proof">
+                        <strong>הוכחה:</strong><br>
+                        <strong>א. הוכחת רציפות של $\tilde{F}$ ב-$[a, b]$</strong><br>
+                        תהי $f: [a, b] \to \mathbb{R}$ פונקציה אינטגרבילית. מכיוון ש-$f$ אינטגרבילית, היא חייבת להיות חסומה בקטע $[a, b]$. לכן, קיים $M > 0$ כך שלכל $x \in [a, b]$ מתקיים $|f(x)| \le M$.<br><br>
+                        לשם הוכחת רציפות, ניקח $x, x_0 \in [a, b]$. נניח, ללא הגבלת הכלליות, ש-$x > x_0$.<br>
+                        נבחן את ההפרש $|\tilde{F}(x) - \tilde{F}(x_0)|$:<br>
+                        $|\tilde{F}(x) - \tilde{F}(x_0)| = \left| \int_a^x f(t) dt - \int_a^{x_0} f(t) dt \right|$<br>
+                        $= \left| \int_{x_0}^x f(t) dt \right|$<br>
+                        $\le \int_{x_0}^x |f(t)| dt$ (ממונוטוניות האינטגרל)<br>
+                        $\le \int_{x_0}^x M dt$<br>
+                        $= M(x - x_0)$<br><br>
+                        לכל $\epsilon > 0$, נבחר $\delta = \frac{\epsilon}{M}$.<br>
+                        אם $|x - x_0| < \delta$, אז $M|x - x_0| < M \frac{\epsilon}{M} = \epsilon$.<br>
+                        לכן, $|\tilde{F}(x) - \tilde{F}(x_0)| \le M|x - x_0| < \epsilon$.<br>
+                        ההוכחה עבור $x < x_0$ דומה.<br>
+                        כלומר, $\tilde{F}$ רציפה ב-$[a, b]$.<br><br>
+                        <strong>ב. הוכחת גזירות של $\tilde{F}$ כאשר $f$ רציפה</strong><br>
+                        יהי $x_0 \in [a, b]$. נניח ש-$f$ רציפה בנקודה $x_0$ (מימין, אם $x_0 \in [a, b)$ או משמאל אם $x_0 \in (a, b]$).<br><br>
+                        נתחיל עם גזירות מימין. תהי $x_0 \in [a, b)$ ותהי $f$ רציפה מימין ב-$x_0$.<br>
+                        כלומר, לכל $\epsilon > 0$ קיים $\delta > 0$ כך שלכל $t \in [a, b]$ המקיים $x_0 \le t < x_0 + \delta$ מתקיים $|f(t) - f(x_0)| < \frac{\epsilon}{2}$.<br><br>
+                        ניקח כעת $x \in [a, b]$ כך ש-$x_0 < x < x_0 + \delta$.<br>
+                        נבחן את ההפרש:<br>
+                        $\left| \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} - f(x_0) \right|$<br>
+                        $= \left| \frac{1}{x - x_0} \left( \tilde{F}(x) - \tilde{F}(x_0) \right) - \frac{1}{x - x_0} f(x_0)(x - x_0) \right|$<br>
+                        $= \frac{1}{|x - x_0|} \left| \left( \int_a^x f(t) dt - \int_a^{x_0} f(t) dt \right) - f(x_0)(x - x_0) \right|$<br>
+                        $= \frac{1}{x - x_0} \left| \int_{x_0}^x f(t) dt - \int_{x_0}^x f(x_0) dt \right|$<br>
+                        $= \frac{1}{x - x_0} \left| \int_{x_0}^x (f(t) - f(x_0)) dt \right|$<br>
+                        $\le \frac{1}{x - x_0} \int_{x_0}^x |f(t) - f(x_0)| dt$ (ממונוטוניות האינטגרל)<br><br>
+                        נשים לב שלכל $t \in [x_0, x]$ מתקיים $x_0 < t \le x \le x_0 + \delta$, ולכן $|f(t) - f(x_0)| < \frac{\epsilon}{2}$.<br>
+                        מכאן, נובע:<br>
+                        $\frac{1}{x - x_0} \int_{x_0}^x |f(t) - f(x_0)| dt \le \frac{1}{x - x_0} \int_{x_0}^x \frac{\epsilon}{2} dt$<br>
+                        $= \frac{1}{x - x_0} \cdot \frac{\epsilon}{2} \cdot (x - x_0)$<br>
+                        $= \frac{\epsilon}{2} < \epsilon$<br><br>
+                        לפיכך, הראינו את הגרירה: $x_0 < x < x_0 + \delta \Rightarrow \left| \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} - f(x_0) \right| < \epsilon$.<br>
+                        זה אומר ש-$\lim_{x \to x_0^+} \frac{\tilde{F}(x) - \tilde{F}(x_0)}{x - x_0} = f(x_0)$, כלומר $\tilde{F}_+'(x_0) = f(x_0)$.<br><br>
+                        באופן דומה, אם $f$ רציפה משמאל בנקודה $x_0 \in (a, b]$, מוכיחים ש-$\tilde{F}$ גזירה משמאל ב-$x_0$ ומתקיים $\tilde{F}_-'(x_0) = f(x_0)$.<br><br>
+                        אם $f$ רציפה בנקודה $x_0 \in (a, b)$, אז היא רציפה בה מימין ומשמאל, ולכן $\tilde{F}$ גזירה ב-$x_0$ ומתקיים $\tilde{F}'(x_0) = f(x_0)$.<br><br>
+                        <strong>סיכום</strong><br>
+                        הפונקציה הצוברת $\tilde{F}(x) = \int_a^x f(t) dt$ תמיד רציפה בקטע $[a, b]$ אם $f$ אינטגרבילית בו.<br>
+                        בנוסף, אם $f$ רציפה בנקודה מסוימת, הפונקציה הצוברת תהיה גזירה בנקודה זו, ונגזרתה תהיה שווה לערך הפונקציה המקורית בנקודה זו.<br>
+                        מכאן נובע שאם $f$ רציפה על כל הקטע $[a, b]$, אז $\tilde{F}$ היא פונקציה קדומה של $f$ בקטע זה. $\blacksquare$
                     </div>
                 </div>
 
